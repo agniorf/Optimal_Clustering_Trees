@@ -8,8 +8,8 @@ using JLD
 datafolderpath = "/Users/agni/Packages/Optimal_Clustering_Trees/Testing_Class_Project/data"
 resultsfolderpath = "/Users/agni/Packages/Optimal_Clustering_Trees/Testing_Class_Project/results"
 
-filepath = joinpath(datafolderpath, "Target.csv")
-resultspath = joinpath(datafolderpath, "Target.jld")
+filepath = joinpath(datafolderpath, "Lsun.csv")
+resultspath = joinpath(datafolderpath, "Lsun.jld")
 
 data = readtable(filepath, makefactors = true);
 
@@ -19,7 +19,9 @@ lnr = OptimalTrees.OptimalTreeClassifier(max_depth=5, cp=0.01, localsearch=true,
 srand(100)
 OptimalTrees.fit!(lnr, data[:,1:(end-1)], data[:,:label])
 
-@save "Target.jld" lnr
+@save "WingNut.jld" lnr
+
+@load "WingNut.jld" lnr
 
 OptimalTrees.showinbrowser(lnr)
 #Find in which node each observation is mapped
