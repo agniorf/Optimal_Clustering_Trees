@@ -11,6 +11,7 @@ K = 4;
 ruspini = dataset("cluster", "ruspini");
 ruspini = convert(Array{Float64}, ruspini); ruspini_t = ruspini';
 
+srand(2)
 initseeds(:rand, ruspini_t, K); rusp_kmeans = kmeans(ruspini_t, K);
 
 data = ruspini;

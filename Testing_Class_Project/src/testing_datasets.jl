@@ -5,10 +5,10 @@ using JLD
 
 #First we would like to read the dataset
 #Set the directory
-datafolderpath = "/Users/agni/Packages/Optimal_Clustering_Trees/Testing_Class_Project/data"
-resultsfolderpath = "/Users/agni/Packages/Optimal_Clustering_Trees/Testing_Class_Project/results"
+datafolderpath = "/Users/Dropbox\ \(Personal\)/git/Optimal_Clustering_Trees/Testing_Class_Project/data"
+# resultsfolderpath = "/Users/agni/Packages/Optimal_Clustering_Trees/Testing_Class_Project/results"
 
-filepath = joinpath(datafolderpath, "Target.csv")
+filepath = joinpath(datafolderpath, "Lsun.csv")
 resultspath = joinpath(datafolderpath, "Target.jld")
 
 data = readtable(filepath, makefactors = true);
