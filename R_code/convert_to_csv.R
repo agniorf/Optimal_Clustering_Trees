@@ -37,6 +37,11 @@ df_class <- read.table("WingNut.cls", quote="\"", comment.char="%")
 data<-as.data.frame(cbind(df[,2:ncol(df)], label = df_class$V2))
 write.csv(data,"WingNut.csv",row.names = FALSE)
 
+#Lsurn
+df <- read.table("Lsun.lrn", quote="\"", comment.char="%")
+df_class <- read.table("Lsun.cls", quote="\"", comment.char="%")
+data<-as.data.frame(cbind(df[,2:ncol(df)], label = df_class$V2))
+write.csv(data,"Lsun.csv",row.names = FALSE)
 
 
 
