@@ -19,23 +19,40 @@ using Gadfly
 
 ######### RUSPINI
 
-# K = 4;
-# # initseeds(:rand, ruspini_t, K); 
+using RDatasets, MLDataUtils
+using Clustering
+using Gadfly
 
-# ruspini_data = dataset("cluster", "ruspini");
-# ruspini_data = convert(Array{Float64}, ruspini_data); ruspini_t = ruspini_data';
+# datafolderpath = "/Users/hollywiberg/Dropbox (Personal)/git/Optimal_Clustering_Trees/Testing_Class_Project/data"
 
-# srand(1234)
-# rusp_kmeans = kmeans(ruspini_t, K);
-# #Apply k-means with 4 classes and get the assignments
+# filepath = joinpath(datafolderpath, "Lsun.csv");
+# dataset = readtable(filepath, makefactors = true);
 
-# assignments = rusp_kmeans.assignments;
-# data = DataFrame(hcat(ruspini_data, assignments));
+dataset = dataset("cluster", "ruspini");
+dataset_array = convert(Array{Float64}, dataset);
+dataset_t = dataset_array';
 
-X = data[1:2]; y = data[3];
+K = 3;
+srand(1234);
+kmeans_result = kmeans(dataset_t, K);
 
-reload("OptimalTrees")
-lnr2 = OptimalTrees.OptimalTreeClassifier(max_depth=3, cp=0.01, criterion = :cluster, localsearch = true);
+assignments = kmeans_result.assignments;
+dataset_full = DataFrame(hcat(dataset, assignments));
+rename!(dataset_full, :x1, :kmean_assign)
+dataset_full[:binary] = ifelse.((dataset_full[:kmean_assign] .== 3) | (dataset_full[:kmean_assign] .== 4), "A", "B")
+
+# plot(dataset_full, x = :V2, y = :V3, color = :kmean_assign)
+
+X = dataset_full[1:2]; y = dataset_full[end];
+
+reload("OptimalTrees");
+srand(890);
+
+lnr_greedy = OptimalTrees.OptimalTreeClassifier(max_depth=3, cp=0, localsearch=false, criterion=:cluster);
+OptimalTrees.fit!(lnr_greedy, X, y)
+OptimalTrees.showinbrowser(lnr_greedy)
+
+lnr2 = OptimalTrees.OptimalTreeClassifier(max_depth=3, cp=0, localsearch=true, criterion=:cluster, ls_num_tree_restarts=10);
 OptimalTrees.fit!(lnr2, X, y)
 OptimalTrees.showinbrowser(lnr2)
 
