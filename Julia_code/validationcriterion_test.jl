@@ -68,15 +68,19 @@ OptimalTrees.showinbrowser(lnr2)
 reload("OptimalTrees");
 
 # s = 25;
-# X = europe_data[2:end]; y = europe_data[1];
-# lnr2 = OptimalTrees.OptimalTreeClassifier(max_depth=3, cp=0.01, criterion=:density,
-#  	localsearch=true, ls_num_tree_restarts=2, ls_random_seed = s);
-# OptimalTrees.fit!(lnr2, X, y)
+X = europe_data[2:end]; y = europe_data[1];
+lnr2 = OptimalTrees.OptimalTreeClassifier(max_depth=5, cp=0.2, criterion=:density,
+ 	localsearch=true, ls_num_tree_restarts=100, ls_random_seed = 100);
+OptimalTrees.fit!(lnr2, train_X, train_y)
 
 
 reload("OptimalTrees");
 
-lnr_grid = OptimalTrees.OptimalTreeClassifier(ls_num_tree_restarts = 5, ls_random_seed = s, cp = .05,
+
+X = europe_data[2:end]; y = europe_data[1];
+(train_X, train_y), (valid_X, valid_y) = splitobs(shuffleobs((X, y)), at=0.7);
+
+lnr_grid = OptimalTrees.OptimalTreeClassifier(ls_num_tree_restarts = 5, ls_random_seed = s, cp = .15,
 	criterion = :density, show_progress_bar=true);
 
 grid = OptimalTrees.GridSearch(lnr_grid, Dict(
@@ -87,18 +91,36 @@ OptimalTrees.fit!(grid, train_X, train_y, valid_X, valid_y, validation_criterion
 # OptimalTrees.showinbrowser(grid.best_lnr)
 
 
-ls_data = readtable("../data/localSearch_1.csv");
-X = ls_data[1:2]; y = ls_data[3];
 
-srand(1);
+############################# USE THIS $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+ls_data = readtable("../data/localSearch_3.csv");
+X = ls_data[1:2]; y = ls_data[2];
+
+
+reload("OptimalTrees");
+s = 25;
+lnr2 = OptimalTrees.OptimalTreeClassifier(max_depth=3, cp=0.2, criterion=:density,
+ 	localsearch=true, ls_num_tree_restarts=3, ls_random_seed = s);
+OptimalTrees.fit!(lnr2, X, y)
+OptimalTrees.showinbrowser(lnr2)
+
+
+
+ls_data = readtable("../data/localSearch_3.csv");
+
+
+reload("OptimalTrees")
+
+s = 10;
+srand(s);
+X = ls_data[1:2]; y = ones(size(X,1))
 (train_X, train_y), (valid_X, valid_y) = splitobs(shuffleobs((X, y)), at=0.7);
 
-lnr = OptimalTrees.OptimalTreeClassifier(ls_random_seed=2, ls_num_tree_restarts =20)
+lnr = OptimalTrees.OptimalTreeClassifier(ls_random_seed=s, ls_num_tree_restarts =20, minbucket = 5, criterion = :density)
 grid = OptimalTrees.GridSearch(lnr, Dict(
-    :max_depth => 1:2,
-    :minbucket => [5],
-    :criterion => [:density]
-));
+    :max_depth => 1:3),
+	autotune_cp = true);
 OptimalTrees.fit!(grid, train_X, train_y, valid_X, valid_y, validation_criterion=:silhouette);
 OptimalTrees.showinbrowser(grid.best_lnr)
 
