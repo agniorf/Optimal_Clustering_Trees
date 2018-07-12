@@ -16,24 +16,39 @@ using RDatasets
 
 # X = dataset_full[1:2]; y = dataset_full[:kmean_assign];
 
-ls_data = readtable("../data/localSearch_1.csv");
+rusp = dataset("cluster", "ruspini");
+X = rusp[1:2]; y = ones(size(X,1));
+
+### WITHOUT GRID SEARCH
+reload("OptimalTrees")
+s = 25;
+
+ls_data = readtable("../data/localSearch_6.csv");
 X = ls_data[1:2]; y = ls_data[3];
 
-europe_data = readtable("../data/EuropeJobs.csv");
-X = europe_data[2:end]; y = europe_data[1];
+lnr2 = OptimalTrees.OptimalTreeClassifier(max_depth=2, cp=0, criterion=:silhouette,
+ 	localsearch=true, ls_num_tree_restarts=30, ls_random_seed = s);
+OptimalTrees.fit!(lnr2, X, y)
+OptimalTrees.showinbrowser(lnr2)
 
-(train_X, train_y), (valid_X, valid_y) = splitobs(shuffleobs((X, y)), at=0.67);
+# europe_data = readtable("../data/EuropeJobs.csv");
+# X = europe_data[2:end]; y = europe_data[1];
+
+# ls_data = readtable("../data/localSearch_6.csv");
+# X = ls_data[1:2]; y = ones(size(ls_data, 1));
 
 #### WITH GRID SEARCH
 
 
 # reload("OptimalTrees");
 s = 22;
-lnr_grid = OptimalTrees.OptimalTreeClassifier(ls_num_tree_restarts = 100, ls_random_seed = s, cp = 0.0,
-	criterion = :density, show_progress_bar=true);
+(train_X, train_y), (valid_X, valid_y) = splitobs(shuffleobs((X, y)), at=0.67);
+
+lnr_grid = OptimalTrees.OptimalTreeClassifier(ls_num_tree_restarts = 50, ls_random_seed = s, cp = 0.0,
+	criterion = :silhouette, show_progress_bar=true);
 
 grid = OptimalTrees.GridSearch(lnr_grid, Dict(
-    :max_depth => 1:5),
+    :max_depth => 1:3),
     autotune_cp = false);
 
 OptimalTrees.fit!(grid, train_X, train_y, valid_X, valid_y, validation_criterion = :silhouette)
@@ -42,12 +57,6 @@ OptimalTrees.showinbrowser(grid.best_lnr)
 reload("OptimalTrees");
 # srand(890);
 
-### WITHOUT GRID SEARCH
-s = 25;
-lnr2 = OptimalTrees.OptimalTreeClassifier(max_depth=3, cp=0.0, criterion=:density,
- 	localsearch=true, ls_num_tree_restarts=3, ls_random_seed = s);
-OptimalTrees.fit!(lnr2, X, y)
-OptimalTrees.showinbrowser(lnr2)
 
 
 # lnr_grid = OptimalTrees.OptimalTreeClassifier(localsearch=false, cp = 0, criterion = :density, show_progress_bar=true);
