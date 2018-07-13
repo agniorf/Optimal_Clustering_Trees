@@ -61,8 +61,9 @@ end
 
 ########## MAIN FUNCTION - METRIC DEFINITION ############
 
-function s_dbw(data, assignments, K)
+function s_dbw(data, assignments)
 
+	K = length(unique(assignments))
 	# First find dens_bw
 
 	centroids = find_centroids(data, assignments, K);
