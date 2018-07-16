@@ -41,6 +41,7 @@ function run_single(;data::String=data,
 	####### STEP 3: KMEANS. Run k means with the chosen depth, and in the neighborhood of the tree
 	# Determine range for k based on leaves of OptClust result
 	if truelabels	
+			true_k = length(unique(y));	
 			min_k = max(min(leaf_cnt,true_k)-2,2); max_k = max(true_k, leaf_cnt)+2;
 	else 
 			min_k = max(leaf_cnt - 2, 2); max_k = leaf_cnt + 5;

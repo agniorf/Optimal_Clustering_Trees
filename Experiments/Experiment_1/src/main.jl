@@ -2,8 +2,8 @@ include("../src/evaluation_tools.jl")
 include("../src/evaluation_pipeline_exp.jl")
 
 datasets = readdir("../data/")
-# criter=[:silhouette,:dunnindex]
-criter=[:silhouette]
+criter=[:silhouette,:dunnindex]
+# criter=[:silhouette]
 clust_method=["localsearch","greedy"]
 
 datalistcriterionpairs =collect(Iterators.product(datasets,criter,clust_method))

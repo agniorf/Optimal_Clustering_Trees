@@ -14,30 +14,6 @@ function leafcount(lnr)
 	return leaf_cnt
 end
 
-# Running K means for several k
-# function eval_kmeans(X, k_range, seed)
-
-# 	score_dict = Dict{Int64,Float64}()
-# 	assignments_dict = Dict{Int64,Array{Int64}}()
-# 	X_t = Array{Float64}(X)'
-
-# 	for k in k_range
-# 		srand(seed)
-# 		kmeans_result = kmeans(X_t, k);
-# 		assignments = kmeans_result.assignments;
-# 		# fullresult = DataFrame(hcat(X, assignments));
-
-# 		score_dict[k] = silhouette_score(X, assignments)
-# 		assignments_dict[k] = assignments
-# 	end
-
-# 	bestk = collect(keys(score_dict))[indmax(values(score_dict))]
-
-# 	# return score, assignments
-# 	return score_dict, assignments_dict, bestk
-
-# end
-
 function eval_kmeans(X, k_range, seed, cr)
 
 	score_dict = Dict{Int64,Float64}()
@@ -63,13 +39,39 @@ end
 function silhouette_score(X, assignments)
 	X_t = Array{Float64}(X)'
 	dist_matrix = pairwise(Euclidean(), X_t);
+	assign_matrix = hcat(collect(1:size(assignments,1)), assignments);
+	
+	if length(unique(assign_matrix[:,2])) == 1
+		score = -2
+	else
+		# Bring in assignments and reorder to be 1-k
+		clustdict = Dict{Int64, Int64}()
+		k = 1
+		for clustindex in unique(assign_matrix[:,2])
+		  clustdict[clustindex] = k
+		  k += 1
+		end
 
-	counts = Int64[]
-	for i in sort(unique(assignments))
-		push!(counts, count(assignments.==i))
+		# Reassign to new cluster indices
+		for i in 1:size(assign_matrix,1)
+		  assign_matrix[i,2] = clustdict[assign_matrix[i,2]]
+		end
+
+		assignments_ordered = sortrows(assign_matrix, by=x->x[1])[:,2]
+
+		counts = Int64[]
+		for i in sort(unique(assignments_ordered))
+		  push!(counts, count(assignments_ordered.==i))
+		end
+
+		sil = silhouettes(assignments_ordered, counts, dist_matrix)
+
+		# Find average silhouette score of obs in this leaf
+		score = mean(sil)
+		# println("SCORE: ", -score)
 	end
 
-	return mean(silhouettes(assignments, counts, dist_matrix))
+  return score
 end
 
 function dunn_score(X, assignments)
