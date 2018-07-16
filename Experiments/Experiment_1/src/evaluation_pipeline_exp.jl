@@ -35,7 +35,8 @@ function run_single(;data::String=data,
 	leaf_cnt = leafcount(lnr) ## Defined in tools file
 	# optclust_depth = grid.best_params[:max_depth];
 	optclust_assignments = OptimalTrees.apply(lnr, X);
-	optclust_score = OptimalTrees.score(lnr, X, y, criterion = cr);
+	# optclust_score = OptimalTrees.score(lnr, X, y, criterion = cr);
+	optclust_score = cluster_score(X, optclust_assignments, cr);
 
 	####### STEP 3: KMEANS. Run k means with the chosen depth, and in the neighborhood of the tree
 	# Determine range for k based on leaves of OptClust result
@@ -49,12 +50,7 @@ function run_single(;data::String=data,
 	if truelabels
 		true_assignments = Array{Int64}(y)
 		true_k = length(unique(y));
-		if cr == :silhouette
-			true_score = silhouette_score(X, true_assignments)
-		elseif cr == :dunnindex
-			true_score = dunn_score(X, true_assignments)
-		else true_score = -10
-		end
+		true_score = cluster_score(X, true_assignments, cr)
 		ari_true_kmeans = randindex(true_assignments, kmeans_assignmentdict[true_k])[1]
 		if true_k == leaf_cnt 
 			ari_true_optclust = randindex(true_assignments, optclust_assignments)[1]
