@@ -1,70 +1,0 @@
-WARNING: Method definition info(Any...) in module Base at util.jl:532 overwritten in module Logging at /home/agniorf/.julia/v0.6/Logging/src/Logging.jl:115.
-WARNING: Method definition warn(Any...) in module Base at util.jl:585 overwritten in module Logging at /home/agniorf/.julia/v0.6/Logging/src/Logging.jl:115.
-Training trees...  1%|                                  |  ETA: 0:25:35[KTraining trees...  2%|█                                 |  ETA: 0:23:37[KTraining trees...  3%|█                                 |  ETA: 0:22:44[KTraining trees...  4%|█                                 |  ETA: 0:22:11[KTraining trees...  5%|██                                |  ETA: 0:21:46[KTraining trees...  6%|██                                |  ETA: 0:21:25[KTraining trees...  7%|██                                |  ETA: 0:21:05[KTraining trees...  8%|███                               |  ETA: 0:20:48[KTraining trees...  9%|███                               |  ETA: 0:20:32[Kslurmstepd: error: *** STEP 11889048.0 ON node947 CANCELLED AT 2018-07-16T16:17:00 ***
-
-signal (15): Terminated
-while loading /home/agniorf/Optimal_Clustering_Trees/Experiments/Experiment_1/src/run-main.jl, in expression starting on line 2
-cfree at /usr/lib64/libc.so.6 (unknown line)
-slurmstepd: error: *** JOB 11889048 ON node947 CANCELLED AT 2018-07-16T16:17:00 ***
-jl_gc_free_array at /home/centos/buildbot/slave/package_tarball64/build/src/gc.c:837 [inlined]
-sweep_malloced_arrays at /home/centos/buildbot/slave/package_tarball64/build/src/gc.c:858 [inlined]
-gc_sweep_other at /home/centos/buildbot/slave/package_tarball64/build/src/gc.c:1186 [inlined]
-_jl_gc_collect at /home/centos/buildbot/slave/package_tarball64/build/src/gc.c:2024
-jl_gc_collect at /home/centos/buildbot/slave/package_tarball64/build/src/gc.c:2093
-jl_gc_pool_alloc at /home/centos/buildbot/slave/package_tarball64/build/src/gc.c:919
-jl_gc_alloc_ at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:249 [inlined]
-jl_gc_alloc at /home/centos/buildbot/slave/package_tarball64/build/src/gc.c:2129
-_new_array_ at /home/centos/buildbot/slave/package_tarball64/build/src/array.c:108
-jl_array_copy at /home/centos/buildbot/slave/package_tarball64/build/src/array.c:917
-_deepcopy_array_t at ./deepcopy.jl:63 [inlined]
-deepcopy_internal at ./deepcopy.jl:58
-raw_error at /home/agniorf/.julia/v0.6/OptimalTrees/src/classification/classification_base.jl:91
-update_score! at /home/agniorf/.julia/v0.6/OptimalTrees/src/evaluator.jl:248
-update_scores_numeric! at /home/agniorf/.julia/v0.6/OptimalTrees/src/localsearch/numeric.jl:295
-scan_split! at /home/agniorf/.julia/v0.6/OptimalTrees/src/localsearch/numeric.jl:58
-parallel_split! at /home/agniorf/.julia/v0.6/OptimalTrees/src/localsearch/parallel.jl:40
-unknown function (ip: 0x2aaacb93962d)
-jl_call_fptr_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:339 [inlined]
-jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:358 [inlined]
-jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1933
-best_split! at /home/agniorf/.julia/v0.6/OptimalTrees/src/localsearch/search.jl:594
-try_greedy_split! at /home/agniorf/.julia/v0.6/OptimalTrees/src/localsearch/greedy.jl:168
-unknown function (ip: 0x2aaacb935571)
-jl_call_fptr_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:339 [inlined]
-jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:358 [inlined]
-jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1933
-greedy_search! at /home/agniorf/.julia/v0.6/OptimalTrees/src/localsearch/greedy.jl:98
-unknown function (ip: 0x2aaacb933bc6)
-jl_call_fptr_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:339 [inlined]
-jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:358 [inlined]
-jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1933
-run_worker! at /home/agniorf/.julia/v0.6/OptimalTrees/src/localsearch/distributed.jl:109
-fit_heuristic_localsearch! at /home/agniorf/.julia/v0.6/OptimalTrees/src/localsearch/distributed.jl:63
-_fit! at /home/agniorf/.julia/v0.6/OptimalTrees/src/api.jl:216
-fit! at /home/agniorf/.julia/v0.6/OptimalTrees/src/api.jl:32
-unknown function (ip: 0x2aaacb91092d)
-jl_call_fptr_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:339 [inlined]
-jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:358 [inlined]
-jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1933
-#run_single#1 at /home/agniorf/Optimal_Clustering_Trees/Experiments/Experiment_1/src/../src/../src/evaluation_pipeline_exp.jl:27
-unknown function (ip: 0x2aaacb8f0512)
-jl_call_fptr_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:339 [inlined]
-jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:358 [inlined]
-jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1933
-#run_single at ./<missing>:0
-#main#2 at /home/agniorf/Optimal_Clustering_Trees/Experiments/Experiment_1/src/../src/main.jl:20
-unknown function (ip: 0x2aaacb8eeea7)
-jl_call_fptr_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:339 [inlined]
-jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:358 [inlined]
-jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1933
-jl_apply at /home/centos/buildbot/slave/package_tarball64/build/src/julia.h:1424 [inlined]
-jl_invoke at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:51
-#main at ./<missing>:0
-unknown function (ip: 0x2aaacb8ee9a2)
-jl_call_fptr_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:339 [inlined]
-jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:358 [inlined]
-jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1933
-do_call at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:75
-eval at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:242
-jl_interpret_toplevel_expr at /home/centos/buildbot/slave/package_tarball64/build/src/interpreter.c:34
-jl_toplevel_eval_flex at /home/centos/buildbot/slave/package_tarball64/build/src/toplevel.c:577
