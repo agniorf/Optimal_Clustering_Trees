@@ -41,25 +41,31 @@ function run_single(;data::String=data,
 	min_k = max(leaf_cnt - 2, 2); max_k = leaf_cnt + 2;
 	
 	# Return a dictionary of scores and assignments for each k, as well as the best k value (max score)
-	kmeans_scoredict, kmeans_assignmentdict, kmeans_best = eval_kmeans(X, min_k:max_k, seed); ## Defined in tools file
+	kmeans_scoredict, kmeans_assignmentdict, kmeans_best = eval_kmeans(X, min_k:max_k, seed, cr); ## Defined in tools file
 	ari_optclust_kmeans = randindex(optclust_assignments, kmeans_assignmentdict[leaf_cnt])[1];
 	
 	##### STEP 5: If ground truth available, compare
 	if truelabels
 		true_assignments = Array{Int64}(y)
 		true_k = length(unique(y));
-		true_silhouette = silhouette_score(X, true_assignments)
+		if cr == :silhouette
+			true_score = silhouette_score(X, true_assignments)
+		elseif cr == :dunnindex
+			true_score = dunn_score(X, true_assignments)
+		else true_score = -10
+		end
 		ari_true_kmeans = randindex(true_assignments, kmeans_assignmentdict[true_k])[1]
 		if true_k == leaf_cnt 
 			ari_true_optclust = randindex(true_assignments, optclust_assignments)[1]
 		else ari_true_optclust = -10
 		end
-	else true_assignments = -10; true_k = -10; true_silhouette = -10; ari_true_kmeans = -10;
+	else true_assignments = -10; true_k = -10; true_score = -10; ari_true_kmeans = -10;
 	end
 	#Results
 	### Save results in an array to paste into Excel file 
 	results = DataFrame(seed = seed, K_optclust=leaf_cnt, kmeans_k=kmeans_best, true_k=true_k ,
-	score_optclust = optclust_score , score_kmeans_bestk=kmeans_scoredict[kmeans_best],  score_kmeans_kc=kmeans_scoredict[leaf_cnt], score_true=true_silhouette,
+	score_optclust = optclust_score, score_kmeans_bestk=kmeans_scoredict[kmeans_best], score_kmeans_kc=kmeans_scoredict[leaf_cnt], 
+	score_true=true_score,
 	ari_optclust_kmeans=ari_optclust_kmeans, ari_true_kmeans=ari_true_kmeans, are_true_optclust=ari_true_optclust)
 
 	filepath_lnr = joinpath(resultsfolderpath, "lnr-$dataset_name-$criterion-$method-lnr.jld")
