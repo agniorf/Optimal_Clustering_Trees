@@ -1,7 +1,7 @@
 include("../src/evaluation_tools.jl")
 include("../src/evaluation_pipeline_exp.jl")
 
-datasets = readdir()
+datasets = readdir("../data/")
 # criter=[:silhouette,:dunnindex]
 criter=[:silhouette]
 clust_method=["localsearch","greedy"]
