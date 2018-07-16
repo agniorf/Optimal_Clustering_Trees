@@ -1,0 +1,33 @@
+WARNING: Method definition info(Any...) in module Base at util.jl:532 overwritten in module Logging at /home/agniorf/.julia/v0.6/Logging/src/Logging.jl:115.
+WARNING: Method definition warn(Any...) in module Base at util.jl:585 overwritten in module Logging at /home/agniorf/.julia/v0.6/Logging/src/Logging.jl:115.
+Training trees...  1%|                                  |  ETA: 0:08:24[KTraining trees...  2%|█                                 |  ETA: 0:06:32[KTraining trees...  3%|█                                 |  ETA: 0:05:59[KTraining trees...  4%|█                                 |  ETA: 0:05:33[KTraining trees...  5%|██                                |  ETA: 0:05:22[KTraining trees...  6%|██                                |  ETA: 0:05:13[KTraining trees...  7%|██                                |  ETA: 0:05:09[KTraining trees...  8%|███                               |  ETA: 0:05:00[KTraining trees...  9%|███                               |  ETA: 0:04:52[KTraining trees... 10%|███                               |  ETA: 0:04:49[KTraining trees... 11%|████                              |  ETA: 0:04:46[KTraining trees... 12%|████                              |  ETA: 0:04:43[KTraining trees... 13%|████                              |  ETA: 0:04:38[KTraining trees... 14%|█████                             |  ETA: 0:04:32[KTraining trees... 15%|█████                             |  ETA: 0:04:28[KTraining trees... 16%|█████                             |  ETA: 0:04:24[KTraining trees... 17%|██████                            |  ETA: 0:04:21[KTraining trees... 18%|██████                            |  ETA: 0:04:17[KTraining trees... 19%|██████                            |  ETA: 0:04:12[KTraining trees... 20%|███████                           |  ETA: 0:04:10[KTraining trees... 21%|███████                           |  ETA: 0:04:08[KTraining trees... 22%|███████                           |  ETA: 0:04:03[KTraining trees... 23%|████████                          |  ETA: 0:03:59[KTraining trees... 24%|████████                          |  ETA: 0:03:55[KTraining trees... 25%|████████                          |  ETA: 0:03:51[KTraining trees... 26%|█████████                         |  ETA: 0:03:47[KTraining trees... 27%|█████████                         |  ETA: 0:03:44[KTraining trees... 28%|██████████                        |  ETA: 0:03:41[KTraining trees... 29%|██████████                        |  ETA: 0:03:36[KTraining trees... 30%|██████████                        |  ETA: 0:03:31[KTraining trees... 31%|███████████                       |  ETA: 0:03:28[KTraining trees... 32%|███████████                       |  ETA: 0:03:24[KTraining trees... 33%|███████████                       |  ETA: 0:03:21[KTraining trees... 34%|████████████                      |  ETA: 0:03:18[KTraining trees... 35%|████████████                      |  ETA: 0:03:15[KTraining trees... 36%|████████████                      |  ETA: 0:03:11[KTraining trees... 37%|█████████████                     |  ETA: 0:03:09[KTraining trees... 38%|█████████████                     |  ETA: 0:03:05[KTraining trees... 39%|█████████████                     |  ETA: 0:03:03[KTraining trees... 40%|██████████████                    |  ETA: 0:02:59[KTraining trees... 41%|██████████████                    |  ETA: 0:02:56[Kslurmstepd: error: *** STEP 11889047.0 ON node947 CANCELLED AT 2018-07-16T16:17:00 ***
+
+signal (15): Terminated
+while loading /home/agniorf/Optimal_Clustering_Trees/Experiments/Experiment_1/src/run-main.jl, in expression starting on line 2
+sil_aggregate_dists at /home/agniorf/.julia/v0.6/Clustering/src/silhouette.jl:15
+silhouettes at /home/agniorf/.julia/v0.6/Clustering/src/silhouette.jl:34
+unknown function (ip: 0x2aaadf9010fd)
+slurmstepd: error: *** JOB 11889047 ON node947 CANCELLED AT 2018-07-16T16:17:00 ***
+jl_call_fptr_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:339 [inlined]
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:358 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1933
+raw_error at /home/agniorf/.julia/v0.6/OptimalTrees/src/classification/classification_base.jl:118
+update_score! at /home/agniorf/.julia/v0.6/OptimalTrees/src/evaluator.jl:248
+update_scores_numeric! at /home/agniorf/.julia/v0.6/OptimalTrees/src/localsearch/numeric.jl:295
+scan_split! at /home/agniorf/.julia/v0.6/OptimalTrees/src/localsearch/numeric.jl:58
+parallel_split! at /home/agniorf/.julia/v0.6/OptimalTrees/src/localsearch/parallel.jl:40
+unknown function (ip: 0x2aaadf93962d)
+jl_call_fptr_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:339 [inlined]
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:358 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1933
+best_split! at /home/agniorf/.julia/v0.6/OptimalTrees/src/localsearch/search.jl:594
+try_greedy_split! at /home/agniorf/.julia/v0.6/OptimalTrees/src/localsearch/greedy.jl:168
+unknown function (ip: 0x2aaadf935571)
+jl_call_fptr_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:339 [inlined]
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:358 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1933
+greedy_search! at /home/agniorf/.julia/v0.6/OptimalTrees/src/localsearch/greedy.jl:98
+unknown function (ip: 0x2aaadf933bc6)
+jl_call_fptr_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:339 [inlined]
+jl_call_method_internal at /home/centos/buildbot/slave/package_tarball64/build/src/julia_internal.h:358 [inlined]
+jl_apply_generic at /home/centos/buildbot/slave/package_tarball64/build/src/gf.c:1933
