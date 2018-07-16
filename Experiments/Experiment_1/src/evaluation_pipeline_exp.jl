@@ -13,7 +13,8 @@ function run_single(;data::String=data,
              		 resultsfolderpath::String=resultsfolderpath)
 	#READ THE DATA
 	dataset_name = deepcopy(data);
-	data = readtable(data); 
+	data_path = joinpath(datafolderpath, data)
+	data = readtable(data_path); 
 	X = data[1:(end-1)]; 
 	y = data[:label]; 
 	truelabels = true; 
@@ -68,9 +69,9 @@ function run_single(;data::String=data,
 	score_true=true_score,
 	ari_optclust_kmeans=ari_optclust_kmeans, ari_true_kmeans=ari_true_kmeans, are_true_optclust=ari_true_optclust)
 
-	filepath_lnr = joinpath(resultsfolderpath, "lnr-$dataset_name-$criterion-$method-lnr.jld")
+	filepath_lnr = joinpath(resultsfolderpath, "lnr-$dataset_name-$cr-$method-lnr.jld")
 	# println(filepath_lnr)
     @save filepath_lnr lnr
-    filepath_accuracy = joinpath(resultsfolderpath, "results-$dataset_name-$criterion-$method.csv")
+    filepath_accuracy = joinpath(resultsfolderpath, "results-$dataset_name-$cr-$method.csv")
   	writetable(filepath_accuracy, results)
 end
