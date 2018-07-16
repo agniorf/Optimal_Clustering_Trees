@@ -1,0 +1,15 @@
+WARNING: Method definition info(Any...) in module Base at util.jl:532 overwritten in module Logging at /home/agniorf/.julia/v0.6/Logging/src/Logging.jl:115.
+WARNING: Method definition warn(Any...) in module Base at util.jl:585 overwritten in module Logging at /home/agniorf/.julia/v0.6/Logging/src/Logging.jl:115.
+ERROR: LoadError: KeyError: key 6 not found
+Stacktrace:
+ [1] getindex at ./dict.jl:474 [inlined]
+ [2] #run_single#1(::String, ::Symbol, ::String, ::Int64, ::Bool, ::Int64, ::Float64, ::Int64, ::Int64, ::String, ::String, ::#run_single) at /home/agniorf/Optimal_Clustering_Trees/Experiments/Experiment_1/src/../src/../src/evaluation_pipeline_exp.jl:53
+ [3] (::#kw##run_single)(::Array{Any,1}, ::#run_single) at ./<missing>:0
+ [4] #main#2(::Int64, ::Bool, ::Int64, ::Float64, ::Int64, ::String, ::String, ::Function) at /home/agniorf/Optimal_Clustering_Trees/Experiments/Experiment_1/src/../src/main.jl:20
+ [5] (::#kw##main)(::Array{Any,1}, ::#main) at ./<missing>:0
+ [6] include_from_node1(::String) at ./loading.jl:569
+ [7] include(::String) at ./sysimg.jl:14
+ [8] process_options(::Base.JLOptions) at ./client.jl:305
+ [9] _start() at ./client.jl:371
+while loading /home/agniorf/Optimal_Clustering_Trees/Experiments/Experiment_1/src/run-main.jl, in expression starting on line 2
+srun: error: node951: task 0: Exited with exit code 1

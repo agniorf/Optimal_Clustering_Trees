@@ -1,0 +1,11 @@
+WARNING: Method definition info(Any...) in module Base at util.jl:532 overwritten in module Logging at /home/agniorf/.julia/v0.6/Logging/src/Logging.jl:115.
+WARNING: Method definition warn(Any...) in module Base at util.jl:585 overwritten in module Logging at /home/agniorf/.julia/v0.6/Logging/src/Logging.jl:115.
+Training trees...  1%|                                  |  ETA: 0:43:40[KTraining trees...  2%|█                                 |  ETA: 0:40:47[KTraining trees...  3%|█                                 |  ETA: 0:39:20[KTraining trees...  4%|█                                 |  ETA: 0:38:27[KTraining trees...  5%|██                                |  ETA: 0:37:48[KTraining trees...  6%|██                                |  ETA: 0:37:13[KTraining trees...  7%|██                                |  ETA: 0:36:40[KTraining trees...  8%|███                               |  ETA: 0:36:11[KTraining trees...  9%|███                               |  ETA: 0:35:43[KTraining trees... 10%|███                               |  ETA: 0:35:13[KTraining trees... 11%|████                              |  ETA: 0:34:46[KTraining trees... 12%|████                              |  ETA: 0:34:19[KTraining trees... 13%|████                              |  ETA: 0:33:53[KTraining trees... 14%|█████                             |  ETA: 0:33:29[KTraining trees... 15%|█████                             |  ETA: 0:33:04[KTraining trees... 16%|█████                             |  ETA: 0:32:39[KTraining trees... 17%|██████                            |  ETA: 0:32:16[KTraining trees... 18%|██████                            |  ETA: 0:31:52[Ksrun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 11885997.0 ON node944 CANCELLED AT 2018-07-16T14:51:01 ***
+
+signal (15): Terminated
+while loading /home/agniorf/Optimal_Clustering_Trees/Experiments/Experiment_1/src/run-main.jl, in expression starting on line 2
+sil_aggregate_dists at /home/agniorf/.julia/v0.6/Clustering/src/silhouette.jl:18
+silhouettes at /home/agniorf/.julia/v0.6/Clustering/src/silhouette.jl:34
+unknown function (ip: 0x2aaad590364d)
+slurmstepd: error: *** JOB 11885997 ON node944 CANCELLED AT 2018-07-16T14:51:01 ***

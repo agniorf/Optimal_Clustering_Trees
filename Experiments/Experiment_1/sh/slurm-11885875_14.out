@@ -1,0 +1,13 @@
+WARNING: Method definition info(Any...) in module Base at util.jl:532 overwritten in module Logging at /home/agniorf/.julia/v0.6/Logging/src/Logging.jl:115.
+WARNING: Method definition warn(Any...) in module Base at util.jl:585 overwritten in module Logging at /home/agniorf/.julia/v0.6/Logging/src/Logging.jl:115.
+ERROR: LoadError: LoadError: LoadError: LoadError: ArgumentError: Module HttpCommon not found in current path.
+Run `Pkg.add("HttpCommon")` to install the HttpCommon package.
+Stacktrace:
+ [1] _require(::Symbol) at ./loading.jl:428
+ [2] require(::Symbol) at ./loading.jl:398
+ [3] include_from_node1(::String) at ./loading.jl:569
+while loading /home/agniorf/.julia/v0.6/OptimalTrees/src/OptimalTrees.jl, in expression starting on line 19
+while loading /home/agniorf/Optimal_Clustering_Trees/Experiments/Experiment_1/src/../src/../src/evaluation_tools.jl, in expression starting on line 4
+while loading /home/agniorf/Optimal_Clustering_Trees/Experiments/Experiment_1/src/../src/main.jl, in expression starting on line 1
+while loading /home/agniorf/Optimal_Clustering_Trees/Experiments/Experiment_1/src/run-main.jl, in expression starting on line 1
+srun: error: node949: task 0: Exited with exit code 1
