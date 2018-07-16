@@ -63,9 +63,9 @@ function run_single(;data::String=data,
 	score_optclust = optclust_score , score_kmeans_bestk=kmeans_scoredict[kmeans_best],  score_kmeans_kc=kmeans_scoredict[leaf_cnt], score_true=true_silhouette,
 	ari_optclust_kmeans=ari_optclust_kmeans, ari_true_kmeans=ari_true_kmeans, are_true_optclust=ari_true_optclust)
 
-	filepath_lnr = joinpath(resultsfolderpath, "lnr-$dataset_name-$criterion-$method-lnr.jld")
+	filepath_lnr = joinpath(resultsfolderpath, "lnr-$dataset_name-$cr-$method-lnr.jld")
 	# println(filepath_lnr)
     @save filepath_lnr lnr
-    filepath_accuracy = joinpath(resultsfolderpath, "results-$dataset_name-$criterion-$method.csv")
+    filepath_accuracy = joinpath(resultsfolderpath, "results-$dataset_name-$cr-$method.csv")
   	writetable(filepath_accuracy, results)
 end
