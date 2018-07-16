@@ -1,2 +1,0 @@
-WARNING: Method definition info(Any...) in module Base at util.jl:532 overwritten in module Logging at /home/agniorf/.julia/v0.6/Logging/src/Logging.jl:115.
-WARNING: Method definition warn(Any...) in module Base at util.jl:585 overwritten in module Logging at /home/agniorf/.julia/v0.6/Logging/src/Logging.jl:115.

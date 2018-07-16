@@ -27,9 +27,9 @@ OptimalTrees.fit!(lnr_class, X, y)
 OptimalTrees.showinbrowser(lnr_class)
 
 (train_X, train_y), (valid_X, valid_y) = splitobs(shuffleobs((X, y)), at=0.7)
-lnr = OptimalTrees.OptimalTreeClassifier(ls_random_seed=123, ls_num_tree_restarts =500)
+lnr = OptimalTrees.OptimalTreeClassifier(ls_random_seed=123, ls_num_tree_restarts =100)
 grid = OptimalTrees.GridSearch(lnr, Dict(
-    :max_depth => 1:3,
+    :max_depth => 2,
     :minbucket => [5],
     :criterion => [:density]
 ))
@@ -37,28 +37,41 @@ OptimalTrees.fit!(grid, train_X, train_y, valid_X, valid_y, validation_criterion
 OptimalTrees.showinbrowser(grid.best_lnr)
 
 datafolderpath = "/Users/agni/Packages/Optimal_Clustering_Trees/data"
-filepath = joinpath(datafolderpath, "localSearch_1.csv")
+filepath = joinpath(datafolderpath, "localSearch_5.csv")
+reload("OptimalTrees");
 
 data = readtable(filepath, makefactors = true);
 X = data[:,1:2]
 y = data[:,3]
 
-s=1
-lnr2 = OptimalTrees.OptimalTreeClassifier(max_depth=4, cp=0.001, criterion=:density,
- 	localsearch=true, ls_num_tree_restarts=10, ls_random_seed = s);
-OptimalTrees.fit!(lnr2, X, y)
+ s=1
+ lnr2 = OptimalTrees.OptimalTreeClassifier(max_depth=2, cp=0.01, criterion=:density,
+   	localsearch=true, ls_num_tree_restarts=20, ls_random_seed = s);
+  OptimalTrees.fit!(lnr2, X, y)
+  
+OptimalTrees.showinbrowser(lnr2)
 
 
+srand();
+(train_X, train_y), (valid_X, valid_y) = splitobs(shuffleobs((X, y)), at=0.65)
 
-(train_X, train_y), (valid_X, valid_y) = splitobs(shuffleobs((X, y)), at=0.7)
-
-
-lnr = OptimalTrees.OptimalTreeClassifier(ls_random_seed=1, ls_num_tree_restarts =5)
+reload("OptimalTrees");
+lnr = OptimalTrees.OptimalTreeClassifier(ls_random_seed=1, ls_num_tree_restarts = 20)
 grid = OptimalTrees.GridSearch(lnr, Dict(
-    :max_depth => 1:2,
-    :minbucket => [5],
-    :criterion => [:density]
-))
+    :max_depth => 2,
+    :minbucket => [1],
+    :criterion => [:density]), 
+	autotune_cp = true)
+OptimalTrees.fit!(grid, train_X, train_y, valid_X, valid_y, validation_criterion=:silhouette)
+OptimalTrees.showinbrowser(grid.best_lnr)
+
+reload("OptimalTrees");
+lnr = OptimalTrees.OptimalTreeClassifier(ls_random_seed=1, ls_num_tree_restarts = 20, cp = 0.01)
+grid = OptimalTrees.GridSearch(lnr, Dict(
+    :max_depth => 2,
+    :minbucket => [1],
+    :criterion => [:density]), 
+	autotune_cp = false)
 OptimalTrees.fit!(grid, train_X, train_y, valid_X, valid_y, validation_criterion=:silhouette)
 OptimalTrees.showinbrowser(grid.best_lnr)
 
@@ -77,7 +90,7 @@ OptimalTrees.fit!(lnr2, X, y)
 
 #Logging.configure(level=OFF)
 #reload("OptimalTrees");
-lnr = OptimalTrees.OptimalTreeClassifier(ls_random_seed=1, ls_num_tree_restarts =5)
+lnr = OptimalTrees.OptimalTreeClassifier(ls_random_seed=1, ls_num_tree_restarts =10)
 grid = OptimalTrees.GridSearch(lnr, Dict(
     :max_depth => 1:3,
     :minbucket => [1],
