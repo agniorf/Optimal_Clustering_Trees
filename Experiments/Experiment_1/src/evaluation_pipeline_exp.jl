@@ -40,8 +40,11 @@ function run_single(;data::String=data,
 
 	####### STEP 3: KMEANS. Run k means with the chosen depth, and in the neighborhood of the tree
 	# Determine range for k based on leaves of OptClust result
-	min_k = max(leaf_cnt - 2, 2); max_k = leaf_cnt + 2;
-	
+	if truelabels	
+			min_k = max(min(leaf_cnt,true_k)-2,2); max_k = max(true_k, leaf_cnt)+2;
+	else 
+			min_k = max(leaf_cnt - 2, 2); max_k = leaf_cnt + 5;
+	end
 	# Return a dictionary of scores and assignments for each k, as well as the best k value (max score)
 	kmeans_scoredict, kmeans_assignmentdict, kmeans_best = eval_kmeans(X, min_k:max_k, seed, cr); ## Defined in tools file
 	ari_optclust_kmeans = randindex(optclust_assignments, kmeans_assignmentdict[leaf_cnt])[1];
