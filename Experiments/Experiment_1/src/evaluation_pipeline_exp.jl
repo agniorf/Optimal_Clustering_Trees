@@ -13,7 +13,8 @@ function run_single(;data::String=data,
              		 resultsfolderpath::String=resultsfolderpath)
 	#READ THE DATA
 	dataset_name = deepcopy(data);
-	data = readtable(data); 
+	data_path = joinpath(datafolderpath, data)
+	data = readtable(data_path); 
 	X = data[1:(end-1)]; 
 	y = data[:label]; 
 	truelabels = true; 
