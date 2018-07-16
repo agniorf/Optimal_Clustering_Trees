@@ -1,3 +1,4 @@
+Pkg.add("HttpCommon")
 using DataFrames, MLDataUtils
 using Clustering, Distances
 using RDatasets
