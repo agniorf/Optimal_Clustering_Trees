@@ -34,3 +34,8 @@ for (dataname in datasetlist) {
 }
 
 write.csv(df, "summary.csv", row.names = F)
+
+df[which(df$score_optclust>=df$score_kmeans_bestk),]
+
+
+
