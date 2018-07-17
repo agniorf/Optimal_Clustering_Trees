@@ -1,0 +1,17 @@
+WARNING: Module DataArrays uuid did not match cache file.
+ERROR: LoadError: LoadError: LoadError: Module DataFrames declares __precompile__(true) but require failed to create a usable precompiled cache file.
+Stacktrace:
+ [1] _require(::Symbol) at ./loading.jl:495
+ [2] require(::Symbol) at ./loading.jl:398
+ [3] include_from_node1(::String) at ./loading.jl:569
+ [4] include(::String) at ./sysimg.jl:14
+ [5] include_from_node1(::String) at ./loading.jl:569
+ [6] include(::String) at ./sysimg.jl:14
+ [7] include_from_node1(::String) at ./loading.jl:569
+ [8] include(::String) at ./sysimg.jl:14
+ [9] process_options(::Base.JLOptions) at ./client.jl:305
+ [10] _start() at ./client.jl:371
+while loading /home/agniorf/Optimal_Clustering_Trees/Experiments/Experiment_Real_World/src/../src/../src/evaluation_tools.jl, in expression starting on line 1
+while loading /home/agniorf/Optimal_Clustering_Trees/Experiments/Experiment_Real_World/src/../src/main.jl, in expression starting on line 1
+while loading /home/agniorf/Optimal_Clustering_Trees/Experiments/Experiment_Real_World/src/run-main.jl, in expression starting on line 1
+srun: error: node945: task 0: Exited with exit code 1

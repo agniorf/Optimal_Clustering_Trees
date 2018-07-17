@@ -1,0 +1,21 @@
+ERROR: LoadError: LoadError: LoadError: LoadError: LoadError: SystemError: opening file /home/agniorf/.julia/lib/v0.6/JSON.ji: No such file or directory
+Stacktrace:
+ [1] #systemerror#44 at ./error.jl:64 [inlined]
+ [2] systemerror(::String, ::Bool) at ./error.jl:64
+ [3] open(::String, ::Bool, ::Bool, ::Bool, ::Bool, ::Bool) at ./iostream.jl:104
+ [4] open(::String, ::String) at ./iostream.jl:132
+ [5] stale_cachefile(::String, ::String) at ./loading.jl:770
+ [6] _require_search_from_serialized(::Int64, ::Symbol, ::String, ::Bool) at ./loading.jl:228
+ [7] _require(::Symbol) at ./loading.jl:434
+ [8] require(::Symbol) at ./loading.jl:398
+ [9] include_from_node1(::String) at ./loading.jl:569
+ [10] eval(::Module, ::Any) at ./boot.jl:235
+ [11] _require(::Symbol) at ./loading.jl:483
+ [12] require(::Symbol) at ./loading.jl:398
+ [13] include_from_node1(::String) at ./loading.jl:569
+while loading /home/agniorf/.julia/v0.6/ColorBrewer/src/ColorBrewer.jl, in expression starting on line 4
+while loading /home/agniorf/.julia/v0.6/OptimalTrees/src/OptimalTrees.jl, in expression starting on line 8
+while loading /home/agniorf/Optimal_Clustering_Trees/Experiments/Experiment_Real_World/src/../src/../src/evaluation_tools.jl, in expression starting on line 4
+while loading /home/agniorf/Optimal_Clustering_Trees/Experiments/Experiment_Real_World/src/../src/main.jl, in expression starting on line 1
+while loading /home/agniorf/Optimal_Clustering_Trees/Experiments/Experiment_Real_World/src/run-main.jl, in expression starting on line 1
+srun: error: node945: task 0: Exited with exit code 1
