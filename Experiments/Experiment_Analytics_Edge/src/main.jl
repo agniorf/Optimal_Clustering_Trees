@@ -1,8 +1,9 @@
 include("../src/evaluation_tools.jl")
 include("../src/evaluation_pipeline_exp.jl")
 
-datasets = readdir()
+datasets = readdir("../data/")
 criter=[:silhouette,:dunnindex]
+# criter=[:silhouette]
 clust_method=["localsearch","greedy"]
 
 datalistcriterionpairs =collect(Iterators.product(datasets,criter,clust_method))
@@ -23,8 +24,8 @@ function main(;seed::Int64=2,
              gridsearch=false,
              num_tree_restarts=100,
              complexity= 0.0,
-             min_bucket=1,
-             maxdepth=5,
+             min_bucket=100,
+             maxdepth=6,
              datafolderpath=datafolderpath,
              resultsfolderpath=resultsfolderpath)
 end
