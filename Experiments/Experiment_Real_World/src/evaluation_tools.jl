@@ -36,9 +36,11 @@ function eval_kmeans(X, k_range, seed, cr)
 
 end
 
-function silhouette_score(X, assignments)
-	X_t = Array{Float64}(X)'
-	dist_matrix = pairwise(Euclidean(), X_t);
+function silhouette_score(lnr, assignments)
+	K = length(unique(assignments));
+
+	distance_matrix = lnr.prb_.data.features.distance_matrix;
+
 	assign_matrix = hcat(collect(1:size(assignments,1)), assignments);
 	
 	if length(unique(assign_matrix[:,2])) == 1
@@ -64,7 +66,7 @@ function silhouette_score(X, assignments)
 		  push!(counts, count(assignments_ordered.==i))
 		end
 
-		sil = silhouettes(assignments_ordered, counts, dist_matrix)
+		sil = silhouettes(assignments_ordered, counts, distance_matrix)
 
 		# Find average silhouette score of obs in this leaf
 		score = mean(sil)
@@ -74,12 +76,11 @@ function silhouette_score(X, assignments)
   return score
 end
 
-function dunn_score(X, assignments)
+function dunn_score(lnr, assignments)
 
 	K = length(unique(assignments));
 
-	X_t = Array{Float64}(X)'
-	distance_matrix = pairwise(Euclidean(), X_t);
+	distance_matrix = lnr.prb_.data.features.distance_matrix;
 
 
 	assign_df = DataFrame(hcat(collect(1:size(assignments,1)), assignments));
@@ -106,13 +107,15 @@ function dunn_score(X, assignments)
 	        min_dist = minimum(distance_matrix[clust_dict[c1], clust_dict[c2]])
 	        minimum_separation = min(minimum_separation, min_dist)
 	    end
-
+	    println("The minimum separation is :", minimum_separation)
+        println("The maximum_diameter is :", maximum_diameter)
 	    score = minimum_separation/maximum_diameter
 	end
 
     return score
 
 end
+
 
 function cluster_score(X, assignments, cr)
 	if cr == :silhouette

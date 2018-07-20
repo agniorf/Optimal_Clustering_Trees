@@ -27,7 +27,7 @@ function run_single(;data::String=data,
 		OptimalTrees.fit!(lnr, X, y);
 	elseif method =="greedy"
 		lnr = OptimalTrees.OptimalTreeClassifier(localsearch = false, cp = complexity, max_depth = maxdepth,
-		minbucket = min_bucket, criterion = cr);
+		minbucket = min_bucket, criterion = cr, ls_warmstart_criterion = cr);
 		OptimalTrees.fit!(lnr, X, y);
 	end
 	
