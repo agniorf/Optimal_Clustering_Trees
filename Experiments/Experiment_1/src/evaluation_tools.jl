@@ -14,7 +14,7 @@ function leafcount(lnr)
 	return leaf_cnt
 end
 
-function eval_kmeans(X, k_range, seed, cr)
+function eval_kmeans(X, lnr, k_range, seed, cr)
 
 	score_dict = Dict{Int64,Float64}()
 	assignments_dict = Dict{Int64,Array{Int64}}()
@@ -25,7 +25,7 @@ function eval_kmeans(X, k_range, seed, cr)
 		kmeans_result = kmeans(X_t, k);
 		assignments = kmeans_result.assignments;
 		# fullresult = DataFrame(hcat(X, assignments));
-		score_dict[k] = cluster_score(X, assignments, cr)
+		score_dict[k] = cluster_score(lnr, assignments, cr)
 		assignments_dict[k] = assignments
 	end
 
