@@ -117,11 +117,11 @@ function dunn_score(lnr, assignments)
 end
 
 
-function cluster_score(X, assignments, cr)
+function cluster_score(lnr, assignments, cr)
 	if cr == :silhouette
-		score = silhouette_score(X, assignments)
+		score = silhouette_score(lnr, assignments)
 	elseif cr == :dunnindex
-		score = dunn_score(X, assignments)
+		score = dunn_score(lnr, assignments)
 	else score = -10
 	end
 	return score

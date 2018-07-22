@@ -36,7 +36,7 @@ function run_single(;data::String=data,
 	# optclust_depth = grid.best_params[:max_depth];
 	optclust_assignments = OptimalTrees.apply(lnr, X);
 	# optclust_score = OptimalTrees.score(lnr, X, y, criterion = cr);
-	optclust_score = cluster_score(X, optclust_assignments, cr);
+	optclust_score = cluster_score(lnr, optclust_assignments, cr);
 
 	####### STEP 3: KMEANS. Run k means with the chosen depth, and in the neighborhood of the tree
 	# Determine range for k based on leaves of OptClust result
