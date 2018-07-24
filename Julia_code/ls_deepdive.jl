@@ -32,8 +32,9 @@ include("evaluation_tools.jl")
 
 # ls_data = readtable("../data/localSearch_2.csv");X = ls_data[1:2];  y = ones(size(X,1)); truelabels = false;
 
-atom = readtable("Atom.csv"); X = atom[1:end-1]; y = atom[end];
-rusp = dataset("cluster", "ruspini"); X = rusp[1:end]; y = ones(size(rusp,1));
+
+atom = readtable("../data/Atom.csv"); X = atom[1:end-1]; y = atom[end];
+# rusp = dataset("cluster", "ruspini"); X = rusp[1:end]; y = ones(size(rusp,1));
 
 
 s = 2;
