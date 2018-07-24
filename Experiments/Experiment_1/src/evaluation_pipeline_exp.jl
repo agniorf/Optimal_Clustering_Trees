@@ -27,7 +27,7 @@ function run_single(;data::String=data,
 		OptimalTrees.fit!(lnr, X, y);
 	elseif method =="greedy"
 		lnr = OptimalTrees.OptimalTreeClassifier(localsearch = false, cp = complexity, max_depth = maxdepth,
-		minbucket = min_bucket, criterion = cr);
+		minbucket = min_bucket, criterion = cr, ls_warmstart_criterion = cr);
 		OptimalTrees.fit!(lnr, X, y);
 	end
 	
@@ -36,7 +36,7 @@ function run_single(;data::String=data,
 	# optclust_depth = grid.best_params[:max_depth];
 	optclust_assignments = OptimalTrees.apply(lnr, X);
 	# optclust_score = OptimalTrees.score(lnr, X, y, criterion = cr);
-	optclust_score = cluster_score(X, optclust_assignments, cr);
+	optclust_score = cluster_score(lnr, optclust_assignments, cr);
 
 	####### STEP 3: KMEANS. Run k means with the chosen depth, and in the neighborhood of the tree
 	# Determine range for k based on leaves of OptClust result
@@ -47,14 +47,14 @@ function run_single(;data::String=data,
 			min_k = max(leaf_cnt - 2, 2); max_k = leaf_cnt + 5;
 	end
 	# Return a dictionary of scores and assignments for each k, as well as the best k value (max score)
-	kmeans_scoredict, kmeans_assignmentdict, kmeans_best = eval_kmeans(X, min_k:max_k, seed, cr); ## Defined in tools file
+	kmeans_scoredict, kmeans_assignmentdict, kmeans_best = eval_kmeans(X, lnr, min_k:max_k, seed, cr); ## Defined in tools file
 	ari_optclust_kmeans = randindex(optclust_assignments, kmeans_assignmentdict[leaf_cnt])[1];
 	
 	##### STEP 5: If ground truth available, compare
 	if truelabels
 		true_assignments = Array{Int64}(y)
 		true_k = length(unique(y));
-		true_score = cluster_score(X, true_assignments, cr)
+		true_score = cluster_score(lnr, true_assignments, cr)
 		ari_true_kmeans = randindex(true_assignments, kmeans_assignmentdict[true_k])[1]
 		if true_k == leaf_cnt 
 			ari_true_optclust = randindex(true_assignments, optclust_assignments)[1]

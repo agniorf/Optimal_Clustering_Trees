@@ -14,7 +14,7 @@ function leafcount(lnr)
 	return leaf_cnt
 end
 
-function eval_kmeans(X, k_range, seed, cr)
+function eval_kmeans(X, lnr, k_range, seed, cr)
 
 	score_dict = Dict{Int64,Float64}()
 	assignments_dict = Dict{Int64,Array{Int64}}()
@@ -25,7 +25,7 @@ function eval_kmeans(X, k_range, seed, cr)
 		kmeans_result = kmeans(X_t, k);
 		assignments = kmeans_result.assignments;
 		# fullresult = DataFrame(hcat(X, assignments));
-		score_dict[k] = cluster_score(X, assignments, cr)
+		score_dict[k] = cluster_score(lnr, assignments, cr)
 		assignments_dict[k] = assignments
 	end
 
@@ -36,9 +36,11 @@ function eval_kmeans(X, k_range, seed, cr)
 
 end
 
-function silhouette_score(X, assignments)
-	X_t = Array{Float64}(X)'
-	dist_matrix = pairwise(Euclidean(), X_t);
+function silhouette_score(lnr, assignments)
+	K = length(unique(assignments));
+
+	distance_matrix = lnr.prb_.data.features.distance_matrix;
+
 	assign_matrix = hcat(collect(1:size(assignments,1)), assignments);
 	
 	if length(unique(assign_matrix[:,2])) == 1
@@ -64,7 +66,7 @@ function silhouette_score(X, assignments)
 		  push!(counts, count(assignments_ordered.==i))
 		end
 
-		sil = silhouettes(assignments_ordered, counts, dist_matrix)
+		sil = silhouettes(assignments_ordered, counts, distance_matrix)
 
 		# Find average silhouette score of obs in this leaf
 		score = mean(sil)
@@ -74,12 +76,11 @@ function silhouette_score(X, assignments)
   return score
 end
 
-function dunn_score(X, assignments)
+function dunn_score(lnr, assignments)
 
 	K = length(unique(assignments));
 
-	X_t = Array{Float64}(X)'
-	distance_matrix = pairwise(Euclidean(), X_t);
+	distance_matrix = lnr.prb_.data.features.distance_matrix;
 
 
 	assign_df = DataFrame(hcat(collect(1:size(assignments,1)), assignments));
@@ -106,7 +107,8 @@ function dunn_score(X, assignments)
 	        min_dist = minimum(distance_matrix[clust_dict[c1], clust_dict[c2]])
 	        minimum_separation = min(minimum_separation, min_dist)
 	    end
-
+	    println("The minimum separation is :", minimum_separation)
+        println("The maximum_diameter is :", maximum_diameter)
 	    score = minimum_separation/maximum_diameter
 	end
 
@@ -114,11 +116,12 @@ function dunn_score(X, assignments)
 
 end
 
-function cluster_score(X, assignments, cr)
+
+function cluster_score(lnr, assignments, cr)
 	if cr == :silhouette
-		score = silhouette_score(X, assignments)
+		score = silhouette_score(lnr, assignments)
 	elseif cr == :dunnindex
-		score = dunn_score(X, assignments)
+		score = dunn_score(lnr, assignments)
 	else score = -10
 	end
 	return score

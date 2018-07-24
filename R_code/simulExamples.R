@@ -17,7 +17,7 @@ df2$cluster <-2
 df3<-createBall(0.3,0.6,0.5,0.8,60)
 df3$cluster <-3
 
-#df<-read.csv("/Users/agni/Packages/Optimal_Clustering_Trees/data/localSearch_5.csv")
+df<-read.csv("/Users/agni/Packages/Optimal_Clustering_Trees/data/localSearch_7.csv")
 
 df<-as.data.frame(rbind(df1,df2,df3))
 plot(x = df$V1, y=df$V2)
