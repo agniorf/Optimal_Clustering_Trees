@@ -32,16 +32,16 @@ reload("OptimalTrees")
 
 # ls_data = readtable("../data/localSearch_2.csv");X = ls_data[1:2];  y = ones(size(X,1)); truelabels = false;
 
-atom = readtable("../data/Atom.csv"); X = atom[1:end-1]; y = atom[end];
+# atom = readtable("../data/Atom.csv"); X = atom[1:end-1]; y = atom[end];
+rusp = dataset("cluster", "ruspini"); X = rusp[1:end]; y = ones(size(rusp,1));
+
 
 s = 2;
-
-lnr_local = OptimalTrees.OptimalTreeClassifier(ls_num_tree_restarts = 100, cp = 0.0, ls_random_seed = s,
-	max_depth = 3, minbucket = 1, criterion = :dunnindex, show_progress_bar=true);
-
+cr = :silhouette; 
 lnr_greedy = OptimalTrees.OptimalTreeClassifier(localsearch = false, cp = 0.0,
 	max_depth = 3, minbucket = 1, criterion = :dunnindex, show_progress_bar=true, ls_warmstart_criterion = :dunnindex);
 OptimalTrees.fit!(lnr_greedy, X, y);
+a = OptimalTrees.score(lnr_greedy, X, y);
 OptimalTrees.showinbrowser(lnr_greedy)
 
 lnr_local = OptimalTrees.OptimalTreeClassifier(ls_num_tree_restarts = 5, cp = 0.0, ls_random_seed = s,
@@ -86,6 +86,7 @@ lnr_local = OptimalTrees.OptimalTreeClassifier(ls_num_tree_restarts = 20, cp = 0
 	max_depth = 3, minbucket = 1, criterion = :dunnindex, show_progress_bar=true, ls_warmstart_criterion=:dunnindex);
 
 OptimalTrees.fit!(lnr_local, X, y);
+b = OptimalTrees.score(lnr_local, X, y);
 OptimalTrees.showinbrowser(lnr_local)
 
 #Scoring functions
