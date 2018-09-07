@@ -3,7 +3,7 @@ using Clustering, Distances
 using RDatasets
 using OptimalTrees
 
-dataset = readtable("../data/WingNut.csv"); 
+dataset = readtable("../data/localSearch_7.csv"); 
 X = dataset[1:end-1]; y = dataset[end];
 
 s = 2;
