@@ -118,6 +118,7 @@ end
 
 function robustdunn_score(lnr, assignments)
 
+	λ = .2
 	K = length(unique(assignments));
 	distance_matrix = lnr.prb_.data.features.distance_matrix;
 
@@ -176,7 +177,7 @@ function cluster_score(lnr, assignments, cr)
 		score = silhouette_score(lnr, assignments)
 	elseif cr == :dunnindex
 		score = dunn_score(lnr, assignments)
-	elseif cr = :robustdunn
+	elseif cr == :robustdunn
 		score = robustdunn_score(lnr, assignments)
 	else score = -10
 	end

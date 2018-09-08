@@ -24,11 +24,11 @@ function run_single(;data::String=data,
 	if method =="localsearch"
 		lnr = OptimalTrees.OptimalTreeClassifier(ls_num_tree_restarts = num_tree_restarts, ls_random_seed = seed, cp = complexity, max_depth = maxdepth,
 		minbucket = min_bucket, criterion = cr, ls_warmstart_criterion = cr);
-		OptimalTrees.fit!(lnr, X, y);
+		@time OptimalTrees.fit!(lnr, X, y);
 	elseif method =="greedy"
 		lnr = OptimalTrees.OptimalTreeClassifier(localsearch = false, cp = complexity, max_depth = maxdepth,
 		minbucket = min_bucket, criterion = cr, ls_warmstart_criterion = cr);
-		OptimalTrees.fit!(lnr, X, y);
+		@time OptimalTrees.fit!(lnr, X, y);
 	end
 	
 	#Get the statistics from the local search
