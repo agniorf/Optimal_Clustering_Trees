@@ -118,7 +118,7 @@ end
 
 function robustdunn_score(lnr, assignments)
 
-	λ = .2
+	λ = .05
 	K = length(unique(assignments));
 	distance_matrix = lnr.prb_.data.features.distance_matrix;
 
