@@ -1,8 +1,8 @@
 library(data.table)
 library(tidyverse)
 
-setwd("~/Packages/Optimal_Clustering_Trees/Experiments/Experiment_1/results")
-# setwd("~/git/Optimal_Clustering_Trees/Experiments/Experiment_1/results")
+# setwd("~/Packages/Optimal_Clustering_Trees/Experiments/Experiment_1/results")
+setwd("~/git/Optimal_Clustering_Trees/Experiments/Experiment_1/results/robustdunn05minbucket20")
 temp = list.files(pattern="*.csv")
 temp_csv<-temp[which(!temp %like% "jld")]
 
@@ -34,9 +34,28 @@ for (metric in metriclist) {
   }
 }
 
-write.csv(df, "summary.csv", row.names = F)
+write.csv(df, "summary_withrobustdunn.csv", row.names = F)
 
 df[which(df$score_optclust>=df$score_kmeans_bestk),]
 
+filenames <- list.files(pattern="*.csv", full.names=TRUE)
+filenames <- setdiff(filenames, "./summary_withrobustdunn05minbucket20.csv")
+df <- data.frame()
+df_params <- data.frame()
 
+for (filename in filenames) {
+  str = filename
+  x <- unlist(strsplit(str, "-"))
+  dataname <- substr(x[2],1,nchar(x[2])-4); metric <- x[3]; method <- substr(x[4],1,nchar(x[4])-4);
+  
+  df_next <- read.table(file = filename, sep = ",", header = T)
+  df_next$dataname <- dataname
+  df_next$metric <- metric
+  df_next$method <- method
+  df <- rbind(df, df_next)
+  
+  df_next <- read.table(file = filename, sep = ",", header = T)
+  df_params <- rbind(df_params, df_next)
+}
 
+write.csv(df, "summary_withrobustdunn05minbucket1.csv", row.names = F)
