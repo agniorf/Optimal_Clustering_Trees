@@ -39,7 +39,7 @@ function raw_error(assignments::Array{Int64,1}, distance_matrix::Array{Float64,2
   intra_means = []
   intra_n = 0
   clust_dict = Dict{Int64, Array{Int64,1}}()
-  intra_f_dict = Dict{Int64, Float64}()
+  intra_f = 0
 
   for clust in unique(assignments)
     index_list = assign_df[assign_df[:x2] .== clust, :x1];
@@ -48,16 +48,13 @@ function raw_error(assignments::Array{Int64,1}, distance_matrix::Array{Float64,2
 
     clust_size = size(index_list,1)
     clust_pairs = size(index_list,1)*(size(index_list,1)-1) # not unique
+    intra_n += clust_pairs
 
     m_k = sum(cluster_distances)/clust_pairs
-
-    intra_n += clust_pairs
-    push!(intra_means, sum(cluster_distances))
-
-    f_k = (sum(cluster_distances .< m_k) - clust_size)/clust_pairs
-    # println("K = $clust (size = $(clust_size)): m_k = $(m_k), f_k = $(f_k)")
-
-    intra_f_dict[clust] = f_k
+    # push!(intra_means, sum(cluster_distances))
+    f_k = (sum(cluster_distances .< m_k) - clust_size)
+    # println("K = $clust (size = $(clust_size)): m_k = $(m_k), f_k = $(f_k),  cluster pairs = $(clust_pairs)")
+    intra_f += f_k
 
   end
 
@@ -80,11 +77,14 @@ function raw_error(assignments::Array{Int64,1}, distance_matrix::Array{Float64,2
     end
   end
 
-  scat = sum(intra_means)/((intra_n)*M)
+  # scat = sum(intra_means)/((intra_n)*M)
+  scat = 1 - intra_f/intra_n
+  # println("scat calculation: intra_f = $(intra_f), intra_n = $(intra_n)")
+
+
   dens_bw_inner = 0
   for l=1:K, k=1:(l-1)
     dens_bw_inner += pairs_f_dict[(k,l)]
-    # dens_bw_inner += pairs_f_dict[(k,l)]/max(intra_f_dict[k], intra_f_dict[l])
   end
 
   # dens_bw = 2/(K*(K-1))*dens_bw_inner
@@ -110,10 +110,6 @@ assign_1clust = convert(Array{Int64,1},ones(75));
 assign_2clust = Array(ifelse.(X[2].<= 91,1,2));
 assign_3clust = Array(ifelse.(X[2].<= 91, ifelse.(X[1].<= 50,1,2),3));
 assign_4clust = Array(ifelse.(X[2].<= 91, ifelse.(X[1].<= 50,1,2),ifelse.(X[1].<68.5,3,4)));
-# assign_5clust = Array(ifelse.(X[1].< 56.5, 
-#   ifelse.(X[2].< 106,1,2),
-#   ifelse.(X[1].<84,
-#     ifelse.(X[2].< 62.5,3,4),5)));
 assign_5clust = Array(ifelse.(X[1].<84,ifelse.(X[2].<= 91, ifelse.(X[1].<= 50,1,2), ifelse.(X[1].<68.5,3,4)),5));
 
 
@@ -124,5 +120,3 @@ println("2 clust: ", raw_error(assign_2clust, distance_matrix));
 println("3 clust: ", raw_error(assign_3clust, distance_matrix));
 println("4 clust: ", raw_error(assign_4clust, distance_matrix));
 println("5 clust: ", raw_error(assign_5clust, distance_matrix));
-
-
