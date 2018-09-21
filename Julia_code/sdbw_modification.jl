@@ -4,7 +4,7 @@ using RDatasets
 # using OptimalTrees
 
 ######## LSUN
-dataset_full = readtable("../Experiments/Experiment_1/data/Lsun.csv"); 
+dataset_full = readtable("../Experiments/Experiment_1/data/TwoDiamonds.csv"); 
 # dataset = readtable("../Testing_Class_Project/data/TwoDiamonds.csv")
 dataset_t = convert(Array{Float64}, dataset_full[1:end-1])';
 assign_3clust = Array(dataset_full[end]);
@@ -128,7 +128,7 @@ end
 
 #### Evaluate Splits
 
-for i = 1:.1:5
+for i = .1:.1:5
   assign = Array(ifelse.(X[2].<= i,1,2))
   score = raw_error(assign, distance_matrix)
   println("Threshold = $(i): Raw error = $(score)")

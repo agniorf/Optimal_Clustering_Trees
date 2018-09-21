@@ -5,15 +5,15 @@ using OptimalTrees
 using StatsBase
 
 
-data = dataset("cluster", "ruspini");
-dataset_array = convert(Array{Float64}, data);
-dataset_t = dataset_array';
+# data = dataset("cluster", "ruspini");
+# dataset_array = convert(Array{Float64}, data);
+# dataset_t = dataset_array';
 
-K = 3; srand(1234); 
+# K = 3; srand(1234); 
 
-kmeans_result = kmeans(dataset_t, K);
-assignments = kmeans_result.assignments;
-dataset_full = DataFrame(hcat(data, assignments));
+# kmeans_result = kmeans(dataset_t, K);
+# assignments = kmeans_result.assignments;
+# dataset_full = DataFrame(hcat(data, assignments));
 
 X = dataset_full[1:end-1]; y = dataset_full[end];
 
@@ -61,8 +61,8 @@ function raw_error(assignments::Array{Int64,1}, distance_matrix::Array{Float64,2
   
   intra_means = []
   intra_n = 0
-  min_f_dict = Dict{Int64, Float64}()
-  max_f_dict = Dict{Int64, Float64}()
+  # min_f_dict = Dict{Int64, Float64}()
+  # max_f_dict = Dict{Int64, Float64}()
 
   s_score = 0
   for clust in unique(assignments)
