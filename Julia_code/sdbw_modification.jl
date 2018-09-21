@@ -1,22 +1,45 @@
 using DataFrames, MLDataUtils
 using Clustering, Distances
 using RDatasets
-using OptimalTrees
+# using OptimalTrees
+
+######## LSUN
+dataset_full = readtable("../Experiments/Experiment_1/data/Lsun.csv"); 
+# dataset = readtable("../Testing_Class_Project/data/TwoDiamonds.csv")
+dataset_t = convert(Array{Float64}, dataset_full[1:end-1])';
+assign_3clust = Array(dataset_full[end]);
+assign_4clust = Array(ifelse.(X[2].<= 1.75, ifelse.(X[1].<= 2.1,1,2),ifelse.(X[1].<1.7,3,4)));
 
 
-data = dataset("cluster", "ruspini");
-dataset_array = convert(Array{Float64}, data);
-dataset_t = dataset_array';
 
-K = 3; srand(1234); 
+######## RUSPINI 
+# data = dataset("cluster", "ruspini");
+# dataset_array = convert(Array{Float64}, data);
+# dataset_t = dataset_array';
 
-kmeans_result = kmeans(dataset_t, K);
-assignments = kmeans_result.assignments;
-dataset_full = DataFrame(hcat(data, assignments));
+# K = 3; srand(1234); kmeans_result = kmeans(dataset_t, K); assignments = kmeans_result.assignments;
+# dataset_full = DataFrame(hcat(data, assignments));
+
+# assign_1clust = convert(Array{Int64,1},ones(75));
+# assign_2clust = Array(ifelse.(X[2].<= 91,1,2));
+# assign_3clust = Array(ifelse.(X[2].<= 91, ifelse.(X[1].<= 50,1,2),3));
+# assign_4clust = Array(ifelse.(X[2].<= 91, ifelse.(X[1].<= 50,1,2),ifelse.(X[1].<68.5,3,4)));
+# # assign_5clust = Array(ifelse.(X[1].< 56.5, 
+# #   ifelse.(X[2].< 106,1,2),
+# #   ifelse.(X[1].<84,
+# #     ifelse.(X[2].< 62.5,3,4),5)));
+# assign_5clust = Array(ifelse.(X[1].<84,ifelse.(X[2].<= 91, ifelse.(X[1].<= 50,1,2), ifelse.(X[1].<68.5,3,4)),5));
+
+# assign_50 = Array(ifelse.(X[2].<= 50,1,2));
+# assign_91 = Array(ifelse.(X[2].<= 91,1,2));
+
 
 X = dataset_full[1:end-1]; y = dataset_full[end];
 
 distance_matrix = Distances.pairwise(Euclidean(), dataset_t);
+
+
+### Process data
 
 function make_assignments(X, dim, threshold)
   col = X[:,dim]
@@ -100,29 +123,20 @@ end
 
 #### Evaluate Splits
 
-for i = 1:160
+for i = 1:.1:5
   assign = Array(ifelse.(X[2].<= i,1,2))
   score = raw_error(assign, distance_matrix)
   println("Threshold = $(i): Raw error = $(score)")
 end
 
-assign_1clust = convert(Array{Int64,1},ones(75));
-assign_2clust = Array(ifelse.(X[2].<= 91,1,2));
-assign_3clust = Array(ifelse.(X[2].<= 91, ifelse.(X[1].<= 50,1,2),3));
-assign_4clust = Array(ifelse.(X[2].<= 91, ifelse.(X[1].<= 50,1,2),ifelse.(X[1].<68.5,3,4)));
-# assign_5clust = Array(ifelse.(X[1].< 56.5, 
-#   ifelse.(X[2].< 106,1,2),
-#   ifelse.(X[1].<84,
-#     ifelse.(X[2].< 62.5,3,4),5)));
-assign_5clust = Array(ifelse.(X[1].<84,ifelse.(X[2].<= 91, ifelse.(X[1].<= 50,1,2), ifelse.(X[1].<68.5,3,4)),5));
-
-
-assign_50 = Array(ifelse.(X[2].<= 50,1,2));
-assign_91 = Array(ifelse.(X[2].<= 91,1,2));
-
 println("2 clust: ", raw_error(assign_2clust, distance_matrix));
 println("3 clust: ", raw_error(assign_3clust, distance_matrix));
 println("4 clust: ", raw_error(assign_4clust, distance_matrix));
 println("5 clust: ", raw_error(assign_5clust, distance_matrix));
+
+s_dbw(X, assign_2clust)
+s_dbw(X, assign_3clust)
+s_dbw(X, assign_4clust)
+s_dbw(X, assign_5clust)
 
 

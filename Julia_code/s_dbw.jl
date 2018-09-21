@@ -63,6 +63,8 @@ end
 
 function s_dbw(data, assignments)
 
+	data = Array(data);
+
 	K = length(unique(assignments))
 	# First find dens_bw
 
