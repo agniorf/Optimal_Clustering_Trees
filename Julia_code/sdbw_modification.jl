@@ -71,9 +71,14 @@ function raw_error(assignments::Array{Int64,1}, distance_matrix::Array{Float64,2
       kl_pairs = length(cluster_distances)
       between_n += kl_pairs
 
-      m_kl = sum(cluster_distances)/kl_pairs
+      # m_kl = sum(cluster_distances)/kl_pairs
+      m_kl = minimum(cluster_distances)
+      
       # f_kl = sum(cluster_distances .<= m_kl)/kl_pairs
-      f_kl = sum(cluster_distances .< m_kl)
+      std_d = std(cluster_distances)
+      # f_kl = sum(cluster_distances .< (m_kl -std_d))
+      f_kl = sum(cluster_distances .< (m_kl +std_d))
+      println("(k,l) = ($k,$l): m_kl = $(m_kl), f_kl = $(f_kl), std = $(std_d)")
       # println("(k,l) = ($k,$l): m_kl = $(m_kl), f_kl = $(f_kl)")
       pairs_f_dict[(k,l)] = f_kl
 
@@ -115,8 +120,6 @@ assign_4clust = Array(ifelse.(X[2].<= 91, ifelse.(X[1].<= 50,1,2),ifelse.(X[1].<
 #   ifelse.(X[1].<84,
 #     ifelse.(X[2].< 62.5,3,4),5)));
 assign_5clust = Array(ifelse.(X[1].<84,ifelse.(X[2].<= 91, ifelse.(X[1].<= 50,1,2), ifelse.(X[1].<68.5,3,4)),5));
-
-
 assign_50 = Array(ifelse.(X[2].<= 50,1,2));
 assign_91 = Array(ifelse.(X[2].<= 91,1,2));
 
