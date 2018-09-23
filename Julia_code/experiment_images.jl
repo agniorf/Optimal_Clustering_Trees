@@ -1,12 +1,10 @@
 using JLD
 using OptimalTrees
 
-datasets = readdir("~/research/Optimal_Clustering_Trees/Experiments/Experiment_1/data/");
+datasets = readdir("/home/hwiberg/research/Optimal_Clustering_Trees/Experiments/Experiment_1/data/");
 # criter=[:silhouette,:dunnindex]
 criter=[:robustdunn];
 clust_method=["localsearch","greedy"];
-
-;));
 
 for i in 1:length(datalistcriterionpairs)
 	(d, c, m) = datalistcriterionpairs[i]
