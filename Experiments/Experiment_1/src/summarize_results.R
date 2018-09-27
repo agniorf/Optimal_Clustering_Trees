@@ -3,10 +3,10 @@ library(tidyverse)
 
 # setwd("~/Packages/Optimal_Clustering_Trees/Experiments/Experiment_1/results")
 
-setwd("~/git/Optimal_Clustering_Trees/Experiments/Experiment_1/results/newdunn_min10")
+setwd("~/git/Optimal_Clustering_Trees/Experiments/Experiment_1/results/newdunn_min25")
 
 filenames <- list.files(pattern="*.csv$", full.names=TRUE)
-# filenames <- setdiff(filenames, "./summary_withrobustdunn05minbucket20.csv")
+filenames <- setdiff(filenames, "./summary.csv")
 df <- data.frame()
 df_params <- data.frame()
 
@@ -25,7 +25,7 @@ for (filename in filenames) {
   df_params <- rbind(df_params, df_next)
 }
 
-write.csv(df, "summary_newdunn_min10.csv", row.names = F)
+write.csv(df, "summary_newdunn_min25.csv", row.names = F)
 
 
 # temp = list.files(pattern="*.csv")
