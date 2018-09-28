@@ -15,7 +15,6 @@ function run_single(;data::String=data,
 	dataset_name = deepcopy(data);
 	data_path = joinpath(datafolderpath, data)
 	data = readtable(data_path); 
-	data = data[1:40,:]
 	X = data[1:(end-1)]; 
 	y = ones(size(data,1)); 
 	truelabels = false; 
@@ -75,7 +74,7 @@ function run_single(;data::String=data,
  #    @save filepath_lnr lnr
 
     OptimalTrees.writedot("$(resultsfolderpath)/$dataset_name-$criterion-$method.dot", lnr);
-	run(`dot -Tpng -o ../$(resultsfolderpath)/$dataset_name-$criterion-$method.png ../$(resultsfolderpath)/$dataset_name-$criterion-$method.dot`);
+	run(`dot -Tpng -o $(resultsfolderpath)/$dataset_name-$criterion-$method.png $(resultsfolderpath)/$dataset_name-$criterion-$method.dot`);
 
     filepath_accuracy = joinpath(resultsfolderpath, "results-$dataset_name-$cr-$method.csv")
   	writetable(filepath_accuracy, results)
