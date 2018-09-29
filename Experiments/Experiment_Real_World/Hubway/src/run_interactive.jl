@@ -10,7 +10,7 @@ clust_method=["localsearch","greedy"]
 datalistcriterionpairs =collect(Iterators.product(datasets,criter,clust_method))
 
 
-###### TO DO: 1-24
+###### TO DO: 1-24 (1,2; 5,6; 9,10; localsearch silhouette)
 (data, cr, method) = datalistcriterionpairs[2]
 
 seed=2; gridsearch=false; num_tree_restarts=100; 
@@ -73,12 +73,12 @@ score_optclust = optclust_score, score_kmeans_bestk=kmeans_scoredict[kmeans_best
 score_true=true_score,
 ari_optclust_kmeans=ari_optclust_kmeans, ari_true_kmeans=ari_true_kmeans, are_true_optclust=ari_true_optclust)
 
-# filepath_lnr = joinpath(resultsfolderpath, "lnr-$dataset_name-$cr-$method-lnr.jld")
-# # println(filepath_lnr)
-#    @save filepath_lnr lnr
+filepath_lnr = joinpath(resultsfolderpath, "lnr-$dataset_name-$cr-$method-lnr.jld")
+# println(filepath_lnr)
+@save filepath_lnr lnr
 
-OptimalTrees.writedot("$(resultsfolderpath)/$dataset_name-$criterion-$method.dot", lnr);
-run(`dot -Tpng -o $(resultsfolderpath)/$dataset_name-$criterion-$method.png $(resultsfolderpath)/$dataset_name-$criterion-$method.dot`);
+OptimalTrees.writedot("$(resultsfolderpath)/$dataset_name-$cr-$method.dot", lnr);
+run(`dot -Tpng -o $(resultsfolderpath)/$dataset_name-$cr-$method.png $(resultsfolderpath)/$dataset_name-$criterion-$method.dot`);
 
 filepath_accuracy = joinpath(resultsfolderpath, "results-$dataset_name-$cr-$method.csv")
 writetable(filepath_accuracy, results)
