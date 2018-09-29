@@ -73,8 +73,8 @@ function run_single(;data::String=data,
 	# # println(filepath_lnr)
  #    @save filepath_lnr lnr
 
-    OptimalTrees.writedot("$(resultsfolderpath)/$dataset_name-$criterion-$method.dot", lnr);
-	run(`dot -Tpng -o $(resultsfolderpath)/$dataset_name-$criterion-$method.png $(resultsfolderpath)/$dataset_name-$criterion-$method.dot`);
+    OptimalTrees.writedot("$(resultsfolderpath)/$dataset_name-$cr-$method.dot", lnr);
+	run(`dot -Tpng -o $(resultsfolderpath)/$dataset_name-$cr-$method.png $(resultsfolderpath)/$dataset_name-$cr-$method.dot`);
 
     filepath_accuracy = joinpath(resultsfolderpath, "results-$dataset_name-$cr-$method.csv")
   	writetable(filepath_accuracy, results)

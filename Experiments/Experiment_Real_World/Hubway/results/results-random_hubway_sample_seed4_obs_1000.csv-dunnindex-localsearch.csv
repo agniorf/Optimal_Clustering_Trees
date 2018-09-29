@@ -1,0 +1,2 @@
+"seed","K_optclust","kmeans_k","true_k","score_optclust","score_kmeans_bestk","score_kmeans_kc","score_true","ari_optclust_kmeans","ari_true_kmeans","are_true_optclust"
+2,5,4,-10,0.732955028390792,0.059240445839298515,0.00013365677555037586,-10,0.005119252107943543,-10,-10
