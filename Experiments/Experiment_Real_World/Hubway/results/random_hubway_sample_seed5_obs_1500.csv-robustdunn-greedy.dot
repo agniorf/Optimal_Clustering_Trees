@@ -1,0 +1,460 @@
+digraph {
+    1 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>Weekday &lt; 0.5000</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>1500 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR class="highlighted">
+    <TD ALIGN="LEFT">1.0</TD>
+    <TD ALIGN="RIGHT">1500</TD>
+    <TD ALIGN="RIGHT">100.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#EBEBEB",shape=box,fontname="bold arial",style="filled"];
+    1 -> 2 [labeldistance=2.5, labelangle=45, headlabel="True",fontname="arial"];
+    1 -> 9 [labeldistance=2.5, labelangle=-45, headlabel="False",fontname="arial"];
+    2 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>Afternoon &lt; 0.5000</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>263 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR class="highlighted">
+    <TD ALIGN="LEFT">1.0</TD>
+    <TD ALIGN="RIGHT">263</TD>
+    <TD ALIGN="RIGHT">100.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#EBEBEB",shape=box,fontname="bold arial",style="filled"];
+    2 -> 3;
+    2 -> 6;
+    3 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>Evening &lt; 0.5000</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>144 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR class="highlighted">
+    <TD ALIGN="LEFT">1.0</TD>
+    <TD ALIGN="RIGHT">144</TD>
+    <TD ALIGN="RIGHT">100.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#EBEBEB",shape=box,fontname="bold arial",style="filled"];
+    3 -> 4;
+    3 -> 5;
+    4 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>predict 1.0</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>74 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR class="highlighted">
+    <TD ALIGN="LEFT">1.0</TD>
+    <TD ALIGN="RIGHT">74</TD>
+    <TD ALIGN="RIGHT">100.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#FFFFFFff",shape=box,fontname="bold arial",style="filled",color=black];
+    5 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>predict 1.0</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>70 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR class="highlighted">
+    <TD ALIGN="LEFT">1.0</TD>
+    <TD ALIGN="RIGHT">70</TD>
+    <TD ALIGN="RIGHT">100.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#FFFFFFff",shape=box,fontname="bold arial",style="filled",color=black];
+    6 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>Male &lt; 0.5000</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>119 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR class="highlighted">
+    <TD ALIGN="LEFT">1.0</TD>
+    <TD ALIGN="RIGHT">119</TD>
+    <TD ALIGN="RIGHT">100.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#EBEBEB",shape=box,fontname="bold arial",style="filled"];
+    6 -> 7;
+    6 -> 8;
+    7 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>predict 1.0</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>30 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR class="highlighted">
+    <TD ALIGN="LEFT">1.0</TD>
+    <TD ALIGN="RIGHT">30</TD>
+    <TD ALIGN="RIGHT">100.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#FFFFFFff",shape=box,fontname="bold arial",style="filled",color=black];
+    8 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>predict 1.0</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>89 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR class="highlighted">
+    <TD ALIGN="LEFT">1.0</TD>
+    <TD ALIGN="RIGHT">89</TD>
+    <TD ALIGN="RIGHT">100.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#FFFFFFff",shape=box,fontname="bold arial",style="filled",color=black];
+    9 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>Afternoon &lt; 0.5000</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>1237 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR class="highlighted">
+    <TD ALIGN="LEFT">1.0</TD>
+    <TD ALIGN="RIGHT">1237</TD>
+    <TD ALIGN="RIGHT">100.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#EBEBEB",shape=box,fontname="bold arial",style="filled"];
+    9 -> 10;
+    9 -> 15;
+    10 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>Evening &lt; 0.5000</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>780 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR class="highlighted">
+    <TD ALIGN="LEFT">1.0</TD>
+    <TD ALIGN="RIGHT">780</TD>
+    <TD ALIGN="RIGHT">100.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#EBEBEB",shape=box,fontname="bold arial",style="filled"];
+    10 -> 11;
+    10 -> 12;
+    11 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>predict 1.0</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>463 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR class="highlighted">
+    <TD ALIGN="LEFT">1.0</TD>
+    <TD ALIGN="RIGHT">463</TD>
+    <TD ALIGN="RIGHT">100.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#FFFFFFff",shape=box,fontname="bold arial",style="filled",color=black];
+    12 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>Male &lt; 0.5000</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>317 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR class="highlighted">
+    <TD ALIGN="LEFT">1.0</TD>
+    <TD ALIGN="RIGHT">317</TD>
+    <TD ALIGN="RIGHT">100.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#EBEBEB",shape=box,fontname="bold arial",style="filled"];
+    12 -> 13;
+    12 -> 14;
+    13 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>predict 1.0</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>83 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR class="highlighted">
+    <TD ALIGN="LEFT">1.0</TD>
+    <TD ALIGN="RIGHT">83</TD>
+    <TD ALIGN="RIGHT">100.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#FFFFFFff",shape=box,fontname="bold arial",style="filled",color=black];
+    14 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>predict 1.0</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>234 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR class="highlighted">
+    <TD ALIGN="LEFT">1.0</TD>
+    <TD ALIGN="RIGHT">234</TD>
+    <TD ALIGN="RIGHT">100.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#FFFFFFff",shape=box,fontname="bold arial",style="filled",color=black];
+    15 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>Male &lt; 0.5000</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>457 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR class="highlighted">
+    <TD ALIGN="LEFT">1.0</TD>
+    <TD ALIGN="RIGHT">457</TD>
+    <TD ALIGN="RIGHT">100.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#EBEBEB",shape=box,fontname="bold arial",style="filled"];
+    15 -> 16;
+    15 -> 17;
+    16 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>predict 1.0</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>122 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR class="highlighted">
+    <TD ALIGN="LEFT">1.0</TD>
+    <TD ALIGN="RIGHT">122</TD>
+    <TD ALIGN="RIGHT">100.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#FFFFFFff",shape=box,fontname="bold arial",style="filled",color=black];
+    17 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>predict 1.0</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>335 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR class="highlighted">
+    <TD ALIGN="LEFT">1.0</TD>
+    <TD ALIGN="RIGHT">335</TD>
+    <TD ALIGN="RIGHT">100.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#FFFFFFff",shape=box,fontname="bold arial",style="filled",color=black];
+}
