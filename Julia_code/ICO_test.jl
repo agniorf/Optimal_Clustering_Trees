@@ -12,19 +12,21 @@ using BenchmarkTools
 # dataset = readtable("../data/localSearch_6.csv");
 # X = dataset[1:end-1]; y = dataset[end];
 
+data = dataset("cluster", "ruspini");
+data_array = convert(Array{Float64}, data);
+data_t = data_array';
 
-dataset = dataset("cluster", "ruspini");
-dataset_array = convert(Array{Float64}, dataset);
-dataset_t = dataset_array';
-
-K = 4;
+K = 3;
 srand(1234);
-kmeans_result = kmeans(dataset_t, K);
+kmeans_result = kmeans(data_t, K);
+
 assignments = kmeans_result.assignments;
-dataset_full = DataFrame(hcat(dataset, assignments));
-rename!(dataset_full, :x1, :kmean_assign)
-# plot(dataset_full, x = :X, y = :Y, color = :kmean_assign)
-X = dataset_full[1:2]; y = dataset_full[:kmean_assign];
+data_full = DataFrame(hcat(data, assignments));
+rename!(data_full, :x1, :kmean_assign);
+# plot(dataset_full, x = :V2, y = :V3, color = :kmean_assign)
+
+X = data_full[1:2]; y = data_full[end];
+
 
 
 s = 2;

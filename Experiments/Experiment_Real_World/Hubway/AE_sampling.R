@@ -1,4 +1,5 @@
 setwd("~/Packages/Optimal_Clustering_Trees/Experiments/Experiment_Real_World/Hubway")
+setwd("~/git/Optimal_Clustering_Trees/Experiments/Experiment_Real_World/Hubway_LS_mod")
 
 df<- read.csv("HubwayTrips.csv")
 #We read in from the Analytics Edge the clusters and we sample from there the data.
@@ -32,7 +33,7 @@ plot(1:k.max, wss,
 
 #Sample multiple datasets for a given size
 
-numSeeds <-10
+numSeeds <-1
 numRows <-500
 data <- df
 k<-4
