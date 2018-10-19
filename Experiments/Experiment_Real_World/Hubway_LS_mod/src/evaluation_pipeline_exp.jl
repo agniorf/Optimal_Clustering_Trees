@@ -19,9 +19,9 @@ function run_single(;data::String=data,
 
 	data_path = joinpath(datafolderpath, data)
 	data = readtable(data_path); 
-	X = data[1:(end-1)]; 
-	y = data[:label]; 
-	truelabels = true; 
+	X = data; 
+	y = ones(size(data,1)); 
+	truelabels = false; 
 	srand(seed);
 
 	#RUN OPTIMAL CLUSTERING TREES BOTH WITH GREEDY AND LOCAL SEARCH
