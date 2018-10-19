@@ -66,7 +66,7 @@ function run_single(;data::String=data,
 			ari_true_optclust = randindex(true_assignments, optclust_assignments)[1]
 		else ari_true_optclust = -10
 		end
-	else true_assignments = -10; true_k = -10; true_score = -10; ari_true_kmeans = -10;
+	else true_assignments = -10; true_k = -10; true_score = -10; ari_true_kmeans = -10; ari_true_optclust = -10;
 	end
 	#Results
 	### Save results in an array to paste into Excel file 
