@@ -15,7 +15,7 @@ function run_single(;data::String=data,
 	dataset_name = deepcopy(data);
 	data_path = joinpath(datafolderpath, data)
 	data = readtable(data_path); 
-	X = data[1:(end-1)]; 
+	X = data; 
 	y = ones(size(data,1)); 
 	truelabels = false; 
 	srand(seed)

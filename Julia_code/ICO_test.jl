@@ -43,6 +43,7 @@ a = OptimalTrees.score(lnr_greedy, X, y);
 reload("OptimalTrees")
 lnr_local = OptimalTrees.OptimalTreeClassifier(ls_num_tree_restarts = 10, cp = 0.0, ls_random_seed = s,
 	max_depth = 3, minbucket = 2, criterion = cr, show_progress_bar=true, ls_warmstart_criterion= cr, geom_search=true, geom_threshold=0.9);
+>>>>>>> 27872488e259671ad1f781cf525b8b7cea3a3e08
 @btime OptimalTrees.fit!(lnr_local, X, y);
 b = OptimalTrees.score(lnr_local, X, y);
 
