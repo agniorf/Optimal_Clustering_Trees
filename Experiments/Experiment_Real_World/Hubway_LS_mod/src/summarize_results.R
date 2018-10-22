@@ -4,6 +4,7 @@ library(tidyverse)
 # setwd("~/Packages/Optimal_Clustering_Trees/Experiments/Experiment_1/results")
 
 setwd("~/git/Optimal_Clustering_Trees/Experiments/Experiment_1/LS_mod/results/")
+setwd("~/git/Optimal_Clustering_Trees/Experiments/Experiment_Real_World/Hubway_LS_mod/results/")
 
 filenames <- list.files(pattern="*.csv$", full.names=TRUE)
 filenames <- setdiff(filenames, "./summary_lsmod.csv")
@@ -27,7 +28,7 @@ for (filename in filenames) {
   df_params <- rbind(df_params, df_next)
 }
 
-write.csv(df, "summary_lsmod.csv", row.names = F)
+write.csv(df, "summary_hubway_lsmod.csv", row.names = F)
 
 
 # temp = list.files(pattern="*.csv")
