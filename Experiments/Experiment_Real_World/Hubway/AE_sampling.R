@@ -14,7 +14,7 @@ denormalize <- function(orig, new) {
 
 df_norm<-as.data.frame(lapply(df, normalize)) 
 set.seed(20)
-clusters <- kmeans(df_norm, 5)
+clusters <- kmeans(df_norm, 7)
 df$cluster<- clusters$cluster
 
 #Number of points in each cluster
@@ -22,6 +22,14 @@ table(clusters$cluster)
 df$cluster<- clusters$cluster
 new<-as.data.frame(clusters$centers)
 df_cent<-round(mapply(denormalize, df[,1:9], new))
+
+k.max=10
+wss <- sapply(1:k.max,function(k){kmeans(df_norm, k, nstart=50,iter.max = 15)$tot.withinss})
+plot(1:k.max, wss,
+     type="b", pch = 19, frame = FALSE, 
+     xlab="Number of clusters K",
+     ylab="Total within-clusters sum of squares")
+
 
 #Sample multiple datasets for a given size
 
