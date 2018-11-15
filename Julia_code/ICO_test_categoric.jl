@@ -36,20 +36,18 @@ data_full[(data_full[:Y].<= 91.00) .& (data_full[:X].>47.0) , :cat2] = "B"
 data_full[(data_full[:Y].<= 91.00) .& (data_full[:X].<=47.0) , :cat2] = "C"
 
 
-cols = [:cat,:X,:Y,:cat2]
+cols = [:X,:Y,:cat2]
 X = data_full[:,cols]; y = data_full[:kmean_assign];
-pool!(X, [:cat, :cat2])
-
-
-DataFrame(vcat())
+pool!(X, [:cat2])
 
 s = 2;
 cr = :silhouette; 
+cat_param = 0.5
 
-# reload("OptimalTrees")
+reload("OptimalTrees")
 lnr_greedy = OptimalTrees.OptimalTreeClassifier(localsearch = false, cp = 0.0,
 	max_depth = 3, minbucket = 1, criterion = cr, show_progress_bar=true, ls_warmstart_criterion = cr);
-@btime OptimalTrees.fit!(lnr_greedy, X, y);
+@time OptimalTrees.fit!(lnr_greedy, X, y);
 a = OptimalTrees.score(lnr_greedy, X, y);
 OptimalTrees.showinbrowser(lnr_greedy)
 
@@ -57,8 +55,8 @@ OptimalTrees.showinbrowser(lnr_greedy)
 
 reload("OptimalTrees")
 lnr_local = OptimalTrees.OptimalTreeClassifier(ls_num_tree_restarts = 10, cp = 0.0, ls_random_seed = s,
-	max_depth = 3, minbucket = 2, criterion = cr, show_progress_bar=true, ls_warmstart_criterion= cr, geom_search=true, geom_threshold=0.9);
-@btime OptimalTrees.fit!(lnr_local, X, y);
+	max_depth = 3, minbucket = 2, criterion = cr, show_progress_bar=true, ls_warmstart_criterion= cr, geom_search=true, geom_threshold=0.9, a = cat_param);
+@time OptimalTrees.fit!(lnr_local, X, y);
 b = OptimalTrees.score(lnr_local, X, y);
 
 OptimalTrees.showinbrowser(lnr_local)
