@@ -35,10 +35,10 @@ data_full[:cat2] = "A"
 data_full[(data_full[:Y].<= 91.00) .& (data_full[:X].>47.0) , :cat2] = "B"
 data_full[(data_full[:Y].<= 91.00) .& (data_full[:X].<=47.0) , :cat2] = "C"
 
-
 cols = [:X,:Y,:cat2]
 X = data_full[:,cols]; y = data_full[:kmean_assign];
 pool!(X, [:cat2])
+
 
 s = 2;
 cr = :silhouette; 
