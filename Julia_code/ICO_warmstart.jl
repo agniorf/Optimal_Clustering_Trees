@@ -13,13 +13,12 @@ using BenchmarkTools
 # dataset = readtable("../data/localSearch_6.csv");
 # X = dataset[1:end-1]; y = dataset[end];
 
-data = dataset("cluster", "ruspini");
+# data = dataset("cluster", "ruspini");
 data = readtable("../data/fscs/Lsun.csv"); 
-
 K = 3;
 
 s = 2;
-cr = :silhouette; 
+cr = :dunnindex; 
 bucket = 1; depth = 3; restarts = 10;
 
 data_array = convert(Array{Float64}, data);
@@ -47,11 +46,20 @@ X = data_full[1:p]; y = data_full[end];
 lnr_greedy = ICOT.OptimalTreeClassifier(localsearch = false, cp = 0.0,
 	max_depth = depth, minbucket = bucket, criterion = cr, ls_warmstart_criterion = cr,
 	kmeans_warmstart = false);
-@btime ICOT.fit!(lnr_greedy, X, y);
+@time ICOT.fit!(lnr_greedy, X, y);
 score_greedy = ICOT.score(lnr_greedy, X, y);
 
 ICOT.showinbrowser(lnr_greedy)
 
+
+# lnr_local = ICOT.OptimalTreeClassifier(ls_num_tree_restarts = restarts, cp = 0.0, ls_random_seed = s,
+# 	max_depth = depth, minbucket = bucket, criterion = cr, show_progress_bar=true, 
+# 	ls_warmstart_criterion= cr, geom_search=false, geom_threshold=0.0, 
+# 	kmeans_warmstart = false);
+# @time ICOT.fit!(lnr_local, X, y);
+# score_local = ICOT.score(lnr_local, X, y);
+
+# ICOT.showinbrowser(lnr_local)
 
 lnr_local = ICOT.OptimalTreeClassifier(ls_num_tree_restarts = restarts, cp = 0.0, ls_random_seed = s,
 	max_depth = depth, minbucket = bucket, criterion = cr, show_progress_bar=true, 
