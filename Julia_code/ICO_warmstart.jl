@@ -5,6 +5,7 @@ using ICOT
 using OptimalTrees
 # using Gadfly
 using BenchmarkTools
+using RCall
 
 
 # dataset = readtable("../Experiments/Experiment_1/data/Lsun.csv"); 
@@ -13,9 +14,23 @@ using BenchmarkTools
 # dataset = readtable("../data/localSearch_6.csv");
 # X = dataset[1:end-1]; y = dataset[end];
 
-# data = dataset("cluster", "ruspini");
-data = readtable("../data/fscs/Lsun.csv"); 
-K = 3;
+data = dataset("cluster", "ruspini");
+data = readtable("../data/Lsun.csv"); 
+
+
+R"""
+	library("cluster")
+	set.seed($s)
+	gap <- clusGap($data, FUN = kmeans, nstart = 25,
+                    K.max = 10, B = 50)
+    tab <- gap$Tab
+    k <- maxSE(tab[, 'gap'], tab[, 'SE.sim'], method='Tibs2001SEmax')
+"""
+
+    
+
+
+K = @rget k;
 
 s = 2;
 cr = :dunnindex; 
@@ -31,7 +46,7 @@ kmeans_result = kmeans(data_t, K);
 assignments = kmeans_result.assignments;
 data_full = DataFrame(hcat(data, assignments));
 rename!(data_full, :x1, :kmean_assign);
-# plot(dataset_full, x = :V2, y = :V3, color = :kmean_assign)
+# plot(data_full, x = :V2, y = :V3, color = :kmean_assign)
 
 X = data_full[1:p]; y = data_full[end];
 
