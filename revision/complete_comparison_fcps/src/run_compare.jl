@@ -44,10 +44,10 @@ paramList = collect(Iterators.product(datasets, criter, clust_method, warm_start
 arg_in = parse(Int64, ARGS[1])
 (data, criterion, clust_method, warm_start, geom_search, threshold, seed) = paramList[arg_in]
 
-
-# dataset_name = deepcopy(data);
-# name_short = split(dataset_name, ".")[1];
-# data_path = joinpath(datafolderpath, data)
+println("Experiment: ", arg_in)
+println("Dataset: ", data)
+println("Seed: ", seed)
+println("Validation criterion: ", criterion)
 
 run_single(;data=data,
              cr=criterion,
@@ -64,4 +64,12 @@ run_single(;data=data,
              datafolderpath="../data/",
              resultsfolderpath="../results/")
  
-
+# cr=criterion; 
+# method = clust_method;
+# gridsearch=false;
+# num_tree_restarts=100;
+# complexity= 0.0;
+# min_bucket=1;
+# maxdepth=3;
+# datafolderpath="../data/";
+# resultsfolderpath="../results/"
