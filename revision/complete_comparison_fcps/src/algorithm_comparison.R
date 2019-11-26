@@ -2,7 +2,7 @@ library(ClusterR)
 library(dbscan)
 
 ## 
-df <- read.csv("../../data/FCPS/01FCPSdata/Lsun.csv")
+df <- read.csv("../data/Lsun.csv")
 X = df[, -ncol(df)]   # data (excluding the response variable)
 y = df[, ncol(df)]    # the response variable
 dat = center_scale(X, mean_center = T, sd_scale = T)  # centering and scaling the data
@@ -46,4 +46,6 @@ hullplot(dat, dbs)
 
 
 ########## HIERARCHICAL #########
-clusters <- hclust(dist(X), method = 'average')
+a = as.matrix(dist(X))
+clusters <- hclust(as.dist((X), method = 'average')
+clusterCut <- cutree(clusters, 5)
