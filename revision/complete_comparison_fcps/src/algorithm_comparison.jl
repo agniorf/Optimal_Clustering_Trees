@@ -1,12 +1,14 @@
-function run_gmm(X, K; km_it_cnt = 10, em_it_cnt = 10)
+function run_gmm(X, K; seed = 1, km_it_cnt = 20, em_it_cnt = 20)
+	## Generally > 10 sufficient for km_it_cnt, em_it_cnt
 	@rput X 
 	@rput K
 	@rput km_it_cnt
 	@rput em_it_cnt
+	@rput seed
 	R"
 	library(ClusterR)
 	gmm = GMM(X, K, dist_mode = 'maha_dist', seed_mode = 'random_subset',
-	  km_iter = km_it_cnt, em_iter = em_it_cnt, verbose = F)          
+	  km_iter = km_it_cnt, em_iter = em_it_cnt, verbose = F, seed = seed)          
 	## predict centroids, covariance matrix and weights
 	pr = predict_GMM(X, gmm$centroids, gmm$covariance_matrices, gmm$weights)
 	assignments <- pr$cluster_labels
@@ -15,42 +17,61 @@ function run_gmm(X, K; km_it_cnt = 10, em_it_cnt = 10)
 	return Array{Int64}(assignments)
 end
 
-function run_kmeansplus(X, K; init_cnt = 5, max_it_cnt = 100)
+function run_kmeansplus(X, K; seed = 1, init_cnt = 100, max_it_cnt = 100)
 	@rput X 
 	@rput K
 	@rput init_cnt
 	@rput max_it_cnt
+	@rput seed
 	R"
 	library(ClusterR)
 	km = KMeans_rcpp(X, clusters = K, 
-	                 num_init = init_cnt, max_iters = max_it_cnt, initializer = 'kmeans++')
+	                 num_init = init_cnt, max_iters = max_it_cnt, 
+	                 initializer = 'kmeans++', seed = seed)
 	assignments <- km$clusters
 	"
 	@rget assignments
 	return Array{Int64}(assignments)
 end
 
-function run_dbscan(X, epsilon; minpts = 5)
+function run_dbscan(X, epsilon; seed = 1, minpts = 5)
 	@rput X 
 	@rput epsilon
 	@rput minpts
+	@rput seed
 	R"
 	library(dbscan)
+
+	getmode <- function(v) {
+		uniqv <- setdiff(unique(v),0)
+		t <- uniqv[which.max(tabulate(match(v, uniqv)))]
+	}
+
+	set.seed(seed)
 	dbs <- dbscan(X, epsilon, minPts = minpts, weights = NULL, borderPoints = TRUE)
 	assignments <- dbs$cluster
-	ind <- assignments == 0
-	assignments[ind] <- max(assignments) + 1:sum(ind)
+	neighbors <- kNN(X, minpts)
+	ind_list = which(assignments == 0)
+	for (i in(ind_list)){
+	assignments[i] <- getmode(assignments[neighbors$id[i,]])
+	}
+
+	ind <- is.na(assignments)
+	assignments[ind] <- max(c(assignments,0),na.rm=TRUE) + 1:sum(ind)
 	"
 	@rget assignments
 	return Array{Int64}(assignments)
 end
 
-function run_hclust(X, K)
+function run_hclust(X, K; seed = 1, m = "average")
 	distance_matrix = create_distance_matrix_numeric(convert(Matrix{Float64},X))
 	@rput distance_matrix
 	@rput K
+	@rput seed
+	@rput m
 	R"
-	clusters <- hclust(as.dist(distance_matrix), method = 'average')
+	set.seed(seed)
+	clusters <- hclust(as.dist(distance_matrix), method = m)
 	assignments <- cutree(clusters, K)
 	"
 	@rget assignments
@@ -66,13 +87,13 @@ function eval_method(X, param_range, seed, cr, method)
 	for k in param_range
 		Random.seed!(seed)
 		if method == "gmm"
-			assignments = run_gmm(X, k)
+			assignments = run_gmm(X, k, seed = seed)
 		elseif method == "kmeans_plus"
-			assignments = run_kmeansplus(X, k)
+			assignments = run_kmeansplus(X, k, seed = seed)
 		elseif method == "dbscan"
-			assignments = run_dbscan(X, k)
+			assignments = run_dbscan(X, k, seed = seed)
 		elseif method == "hclust"
-			assignments = run_hclust(X, k)
+			assignments = run_hclust(X, k, seed = seed)
 		end
 		score_dict[k] = cluster_score(distance_matrix, assignments, cr)
 		assignments_dict[k] = assignments

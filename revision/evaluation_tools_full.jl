@@ -50,7 +50,7 @@ function silhouette_score(distance_matrix, assignments)
 
 	assign_matrix = hcat(collect(1:size(assignments,1)), assignments);
 	
-	if length(unique(assign_matrix[:,2])) == 1
+	if K in(1,length(assignments))
 		score = -2
 	else
 		# Bring in assignments and reorder to be 1-k
@@ -90,7 +90,7 @@ function dunn_score(distance_matrix, assignments)
 	# distance_matrix = lnr.prb_.data.features.distance_matrix;
 	assign_df = DataFrame(hcat(collect(1:size(assignments,1)), assignments));
 
-	if K == 1
+	if K in(1,length(assignments))
 		score = 0
 	else
     # Find maximum diameter and store indices for each assignment

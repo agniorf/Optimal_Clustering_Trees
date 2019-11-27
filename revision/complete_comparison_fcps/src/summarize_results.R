@@ -13,7 +13,11 @@ for (filename in filenames) {
   df_next <- read.table(file = filename, sep = ",", header = T)
   df_next$filename <- file_short
   df <- rbind(df, df_next)
-}
+} 
+
+
+df_dbs <- read.table(file = "all_dbscan.csv", sep = ",", header = T)
+df_dbs$filename <- "dbs_patch"
 
 write.csv(df, "../results_summary_nov26.csv", row.names = F)
 
@@ -30,7 +34,8 @@ df %>% filter(criterion == "silhouette") %>%
   group_by(data, method) %>%
   summarize(result_cnt = n(), 
             metric_score = mean(silhouette)) %>%
-  spread(method, metric_score)
+  spread(method, metric_score) %>%
+  select(data, result_cnt, ICOT_local, dbscan, gmm, hclust, kmeans_plus, OCT,True)
 
 ### Dunn Table
 df %>% filter(criterion == "dunnindex") %>%
@@ -38,7 +43,9 @@ df %>% filter(criterion == "dunnindex") %>%
   group_by(data, method) %>%
   summarize(result_cnt = n(), 
             metric_score = mean(dunn)) %>%
-  spread(method, metric_score)
+  spread(method, metric_score) %>%
+  select(data, result_cnt, ICOT_local, dbscan, gmm, hclust, kmeans_plus, OCT,True)
+
 
 ### Runtime
 df %>% filter(criterion == "silhouette") %>%
@@ -52,7 +59,7 @@ df %>% filter(criterion == "silhouette") %>%
 data <- c("Atom", "Chainlink", "EngyTime",
           "Hepta", "Lsun", "Target",
           "Tetra", "TwoDiamonds", "WingNut")
-seeds <- c(1,3,4,5)
+seeds <- c(1,3,4,5,2)
 criterion <- c("silhouette","dunnindex")
 
 df_match <- df %>% filter(method == "ICOT_local") %>%
@@ -61,4 +68,4 @@ df_match <- df %>% filter(method == "ICOT_local") %>%
 job_status <- as.data.frame(expand.grid(data, criterion, seeds)) %>%
   `colnames<-`(c("data","criterion","seed")) %>%
   left_join(., df_match) %>%
-  mutate(index = row_number())
+  mutate(index = c(1:72, 1:18))

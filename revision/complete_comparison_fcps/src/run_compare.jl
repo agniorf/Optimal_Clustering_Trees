@@ -35,9 +35,7 @@ geom_search = [true]
 #Geometric thresholds
 thresholds = [.99]
 
-#
-# seedSplitList = [2]
-seedSplitList = [1,3,4,5]
+seedSplitList = [1,2,3,4,5]
 
 paramList = collect(Iterators.product(datasets, criter, clust_method, warm_start, geom_search, thresholds, seedSplitList))[:]
 
