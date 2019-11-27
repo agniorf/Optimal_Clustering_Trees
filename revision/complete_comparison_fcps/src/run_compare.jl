@@ -35,9 +35,7 @@ geom_search = [true]
 #Geometric thresholds
 thresholds = [.99]
 
-#
-# seedSplitList = [2]
-seedSplitList = [1,3,4,5]
+seedSplitList = [1,2,3,4,5]
 
 paramList = collect(Iterators.product(datasets, criter, clust_method, warm_start, geom_search, thresholds, seedSplitList))[:]
 
@@ -64,12 +62,12 @@ run_single(;data=data,
              datafolderpath="../data/",
              resultsfolderpath="../results/")
  
-cr=criterion; 
-method = clust_method;
-gridsearch=false;
-num_tree_restarts=100;
-complexity= 0.0;
-min_bucket=1;
-maxdepth=3;
-datafolderpath="../data/";
-resultsfolderpath="../results/"
+# cr=criterion; 
+# method = clust_method;
+# gridsearch=false;
+# num_tree_restarts=100;
+# complexity= 0.0;
+# min_bucket=1;
+# maxdepth=3;
+# datafolderpath="../data/";
+# resultsfolderpath="../results/"
