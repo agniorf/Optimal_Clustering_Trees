@@ -35,8 +35,9 @@ function run_single(;data=data,
   true_sil, true_dunn = test_performance_general(X, true_assignments);
 
   results = DataFrame(seed = seed, data = name_short, criterion = cr,  
-      method = "True", K = Float64(true_k), silhouette = true_sil, dunn = true_dunn, 
-      ari_true = 1.0, runtime = 0.0);
+    geom_threshold = threshold, warm_start = warm_start,
+    method = "True", K = Float64(true_k), silhouette = true_sil, dunn = true_dunn, 
+    ari_true = 1.0, runtime = 0.0);
 
 
   ####### STEP 3: Set up kmeans warm start 
@@ -74,6 +75,7 @@ function run_single(;data=data,
   ari_true_icot = ifelse(true_k == leaf_cnt, randindex(true_assignments, icot_assignments)[1], -10)
 
   append!(results, DataFrame(seed = seed, data = name_short, criterion = cr,
+    geom_threshold = threshold, warm_start = warm_start,
     method = method, K = leaf_cnt, silhouette = icot_sil, dunn = icot_dunn, 
     ari_true = ari_true_icot, runtime = run_time_icot))
 
@@ -114,6 +116,7 @@ function run_single(;data=data,
   ari_true_oct = ifelse(true_k == oct_k, randindex(true_assignments, oct_assignments)[1], -10)
 
   append!(results, DataFrame(seed = seed, data = name_short, criterion = cr, 
+    geom_threshold = threshold, warm_start = warm_start,
     method = "OCT", K = oct_k, silhouette = oct_sil, dunn = oct_dunn, 
     ari_true = ari_true_oct, runtime = run_time_oct));
 
@@ -139,8 +142,9 @@ function run_single(;data=data,
 
     ### Add results to master DF
     to_add = DataFrame(seed = seed, data = name_short, criterion = cr, 
-    method = m, K = best_k, silhouette = sil, dunn = dunn, 
-    ari_true = ari_true, runtime = run_time);
+      geom_threshold = threshold, warm_start = warm_start,
+      method = m, K = best_k, silhouette = sil, dunn = dunn, 
+      ari_true = ari_true, runtime = run_time);
     append!(results, to_add)
 
     ### Add assignments to master DF

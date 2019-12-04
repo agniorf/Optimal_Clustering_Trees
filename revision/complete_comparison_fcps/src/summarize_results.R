@@ -3,7 +3,9 @@ library(tidyverse)
 
 setwd("../results/")
 
-filenames <- list.files(pattern="seed\\d\\.csv$", full.names=TRUE)
+filenames <- list.files(pattern="geom0.99-ws_none.csv$", full.names=TRUE)
+# filenames_assign <- list.files(pattern="assignments.csv$", full.names=TRUE)
+# filenames <- list.files(pattern="seed\\d\\.csv$", full.names=TRUE)
 
 df <- data.frame()
 
@@ -15,7 +17,7 @@ for (filename in filenames) {
   df <- rbind(df, df_next)
 } 
 
-write.csv(df, "../results_summary_dec3_noscaling.csv", row.names = F)
+#write.csv(df, "../results_summary_dec3_noscaling.csv", row.names = F)
 
 ### Do results vary across seeds?
 df %>% group_by(data, criterion, method) %>%

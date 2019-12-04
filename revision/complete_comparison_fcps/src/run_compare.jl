@@ -18,13 +18,15 @@ include("algorithm_comparison.jl")
 include("../../evaluation_tools_full.jl")
 
 
-datasets = ["Target.csv","Lsun.csv"];
-criter=[:silhouette,:dunnindex]
-clust_method=["ICOT_local"]
-warm_start = [:none]
-geom_search = [true]
-thresholds = [0.99]
-seedSplitList = [1,2,3,4,5]
+datasets = ["Atom.csv", "Chainlink.csv", "EngyTime.csv",
+ "Hepta.csv", "Lsun.csv", "Target.csv",
+ "Tetra.csv", "TwoDiamonds.csv", "WingNut.csv"];
+criter=[:silhouette,:dunnindex];
+clust_method=["ICOT_local"];
+warm_start = [:none];
+geom_search = [true];
+thresholds = [0.0,0.9,0.99];
+seedSplitList = [1,2,3,4,5];
 
 # datasets = ["Atom.csv", "Chainlink.csv", "EngyTime.csv",
 #  "Hepta.csv", "Lsun.csv", "Target.csv",
