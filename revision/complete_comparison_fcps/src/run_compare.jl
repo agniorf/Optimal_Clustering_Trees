@@ -21,9 +21,9 @@ include("../../evaluation_tools_full.jl")
 datasets = ["Target.csv","Lsun.csv"];
 criter=[:silhouette,:dunnindex]
 clust_method=["ICOT_local"]
-warm_start = [:oct]
-geom_search = [false]
-thresholds = [0.0]
+warm_start = [:none]
+geom_search = [true]
+thresholds = [0.99]
 seedSplitList = [1,2,3,4,5]
 
 # datasets = ["Atom.csv", "Chainlink.csv", "EngyTime.csv",
