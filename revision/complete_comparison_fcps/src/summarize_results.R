@@ -15,11 +15,7 @@ for (filename in filenames) {
   df <- rbind(df, df_next)
 } 
 
-
-df_dbs <- read.table(file = "all_dbscan.csv", sep = ",", header = T)
-df_dbs$filename <- "dbs_patch"
-
-write.csv(df, "../results_summary_nov26.csv", row.names = F)
+write.csv(df, "../results_summary_nov27.csv", row.names = F)
 
 ### Do results vary across seeds?
 df %>% group_by(data, criterion, method) %>%
@@ -48,7 +44,7 @@ df %>% filter(criterion == "dunnindex") %>%
 
 
 ### Runtime
-df %>% filter(criterion == "silhouette") %>%
+df %>% filter(criterion == "dunnindex") %>%
   select(data, method, runtime) %>%
   group_by(data, method) %>%
   summarize(result_cnt = n(), 
@@ -59,7 +55,7 @@ df %>% filter(criterion == "silhouette") %>%
 data <- c("Atom", "Chainlink", "EngyTime",
           "Hepta", "Lsun", "Target",
           "Tetra", "TwoDiamonds", "WingNut")
-seeds <- c(1,3,4,5,2)
+seeds <- c(1,2,3,4,5)
 criterion <- c("silhouette","dunnindex")
 
 df_match <- df %>% filter(method == "ICOT_local") %>%
@@ -68,4 +64,4 @@ df_match <- df %>% filter(method == "ICOT_local") %>%
 job_status <- as.data.frame(expand.grid(data, criterion, seeds)) %>%
   `colnames<-`(c("data","criterion","seed")) %>%
   left_join(., df_match) %>%
-  mutate(index = c(1:72, 1:18))
+  mutate(index = c(1:90))

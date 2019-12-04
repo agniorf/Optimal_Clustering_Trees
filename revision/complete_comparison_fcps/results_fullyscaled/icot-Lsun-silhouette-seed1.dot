@@ -2,7 +2,7 @@ digraph {
     1 [label=<  <TABLE BORDER="0" CELLPADDING="0">
       <TR>
     <TD>
-      <B>V2 &lt; 1.9603</B>
+      <B>V2 &lt; 2.0121</B>
     </TD>
   </TR>
 
@@ -45,12 +45,12 @@ digraph {
     2 [label=<  <TABLE BORDER="0" CELLPADDING="0">
       <TR>
     <TD>
-      <B>V3 &lt; 2.4613</B>
+      <B>V3 &lt; 2.4039</B>
     </TD>
   </TR>
 
     <TR>
-      <TD>216 samples</TD>
+      <TD>218 samples</TD>
     </TR>
     <TR>
   <TD>
@@ -59,17 +59,17 @@ digraph {
         <TR >
     <TD ALIGN="LEFT">1</TD>
     <TD ALIGN="RIGHT">2</TD>
-    <TD ALIGN="RIGHT">0.93%</TD>
+    <TD ALIGN="RIGHT">0.92%</TD>
   </TR>
   <TR >
     <TD ALIGN="LEFT">2</TD>
     <TD ALIGN="RIGHT">75</TD>
-    <TD ALIGN="RIGHT">34.72%</TD>
+    <TD ALIGN="RIGHT">34.40%</TD>
   </TR>
   <TR class="highlighted">
     <TD ALIGN="LEFT">3</TD>
-    <TD ALIGN="RIGHT">139</TD>
-    <TD ALIGN="RIGHT">64.35%</TD>
+    <TD ALIGN="RIGHT">141</TD>
+    <TD ALIGN="RIGHT">64.68%</TD>
   </TR>
   <TR >
     <TD ALIGN="LEFT">4</TD>
@@ -93,7 +93,7 @@ digraph {
   </TR>
 
     <TR>
-      <TD>141 samples</TD>
+      <TD>142 samples</TD>
     </TR>
     <TR>
   <TD>
@@ -102,17 +102,17 @@ digraph {
         <TR >
     <TD ALIGN="LEFT">1</TD>
     <TD ALIGN="RIGHT">1</TD>
-    <TD ALIGN="RIGHT">0.71%</TD>
+    <TD ALIGN="RIGHT">0.70%</TD>
   </TR>
   <TR >
     <TD ALIGN="LEFT">2</TD>
-    <TD ALIGN="RIGHT">1</TD>
-    <TD ALIGN="RIGHT">0.71%</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
   </TR>
   <TR class="highlighted">
     <TD ALIGN="LEFT">3</TD>
-    <TD ALIGN="RIGHT">139</TD>
-    <TD ALIGN="RIGHT">98.58%</TD>
+    <TD ALIGN="RIGHT">141</TD>
+    <TD ALIGN="RIGHT">99.30%</TD>
   </TR>
   <TR >
     <TD ALIGN="LEFT">4</TD>
@@ -134,7 +134,7 @@ digraph {
   </TR>
 
     <TR>
-      <TD>75 samples</TD>
+      <TD>76 samples</TD>
     </TR>
     <TR>
   <TD>
@@ -143,12 +143,12 @@ digraph {
         <TR >
     <TD ALIGN="LEFT">1</TD>
     <TD ALIGN="RIGHT">1</TD>
-    <TD ALIGN="RIGHT">1.33%</TD>
+    <TD ALIGN="RIGHT">1.32%</TD>
   </TR>
   <TR class="highlighted">
     <TD ALIGN="LEFT">2</TD>
-    <TD ALIGN="RIGHT">74</TD>
-    <TD ALIGN="RIGHT">98.67%</TD>
+    <TD ALIGN="RIGHT">75</TD>
+    <TD ALIGN="RIGHT">98.68%</TD>
   </TR>
   <TR >
     <TD ALIGN="LEFT">3</TD>
@@ -175,7 +175,7 @@ digraph {
   </TR>
 
     <TR>
-      <TD>184 samples</TD>
+      <TD>182 samples</TD>
     </TR>
     <TR>
   <TD>
@@ -184,7 +184,7 @@ digraph {
         <TR class="highlighted">
     <TD ALIGN="LEFT">1</TD>
     <TD ALIGN="RIGHT">99</TD>
-    <TD ALIGN="RIGHT">53.80%</TD>
+    <TD ALIGN="RIGHT">54.40%</TD>
   </TR>
   <TR >
     <TD ALIGN="LEFT">2</TD>
@@ -193,13 +193,13 @@ digraph {
   </TR>
   <TR >
     <TD ALIGN="LEFT">3</TD>
-    <TD ALIGN="RIGHT">2</TD>
-    <TD ALIGN="RIGHT">1.09%</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
   </TR>
   <TR >
     <TD ALIGN="LEFT">4</TD>
     <TD ALIGN="RIGHT">83</TD>
-    <TD ALIGN="RIGHT">45.11%</TD>
+    <TD ALIGN="RIGHT">45.60%</TD>
   </TR>
 
     </TABLE>
@@ -218,7 +218,7 @@ digraph {
   </TR>
 
     <TR>
-      <TD>85 samples</TD>
+      <TD>83 samples</TD>
     </TR>
     <TR>
   <TD>
@@ -236,13 +236,13 @@ digraph {
   </TR>
   <TR >
     <TD ALIGN="LEFT">3</TD>
-    <TD ALIGN="RIGHT">2</TD>
-    <TD ALIGN="RIGHT">2.35%</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
   </TR>
   <TR class="highlighted">
     <TD ALIGN="LEFT">4</TD>
     <TD ALIGN="RIGHT">83</TD>
-    <TD ALIGN="RIGHT">97.65%</TD>
+    <TD ALIGN="RIGHT">100.00%</TD>
   </TR>
 
     </TABLE>

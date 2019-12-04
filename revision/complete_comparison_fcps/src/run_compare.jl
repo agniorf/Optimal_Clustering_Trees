@@ -27,13 +27,14 @@ criter=[:silhouette,:dunnindex]
 clust_method=["ICOT_local"]
 
 #K-means warm start
-warm_start = [:oct]
+warm_start = [:none]
 
 #Geomsearch or Not
-geom_search = [true]
+geom_search = [false]
 
 #Geometric thresholds
-thresholds = [.99]
+# thresholds = [.99]
+thresholds = [0.0]
 
 seedSplitList = [1,2,3,4,5]
 
