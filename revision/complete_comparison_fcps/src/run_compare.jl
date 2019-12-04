@@ -17,26 +17,35 @@ include("evaluation_pipeline_full_compare.jl")
 include("algorithm_comparison.jl")
 include("../../evaluation_tools_full.jl")
 
-datasets = ["Atom.csv", "Chainlink.csv", "EngyTime.csv",
- "Hepta.csv", "Lsun.csv", "Target.csv",
- "Tetra.csv", "TwoDiamonds.csv", "WingNut.csv"];
 
+datasets = ["Target.csv","Lsun.csv"];
 criter=[:silhouette,:dunnindex]
-
-#Optimized or not?
 clust_method=["ICOT_local"]
-
-#K-means warm start
-warm_start = [:none]
-
-#Geomsearch or Not
+warm_start = [:oct]
 geom_search = [false]
-
-#Geometric thresholds
-# thresholds = [.99]
 thresholds = [0.0]
-
 seedSplitList = [1,2,3,4,5]
+
+# datasets = ["Atom.csv", "Chainlink.csv", "EngyTime.csv",
+#  "Hepta.csv", "Lsun.csv", "Target.csv",
+#  "Tetra.csv", "TwoDiamonds.csv", "WingNut.csv"];
+
+# criter=[:silhouette,:dunnindex]
+
+# #Optimized or not?
+# clust_method=["ICOT_local"]
+
+# #K-means warm start
+# warm_start = [:none]
+
+# #Geomsearch or Not
+# geom_search = [false]
+
+# #Geometric thresholds
+# # thresholds = [.99]
+# thresholds = [0.0]
+
+# seedSplitList = [1,2,3,4,5]
 
 paramList = collect(Iterators.product(datasets, criter, clust_method, warm_start, geom_search, thresholds, seedSplitList))[:]
 
