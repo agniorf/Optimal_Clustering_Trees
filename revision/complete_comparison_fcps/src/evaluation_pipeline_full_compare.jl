@@ -149,7 +149,7 @@ function run_single(;data=data,
   end
 
   #Results: Save results in an array to paste into Excel file 
-  filepath = "$name_short-$cr-seed$(seed)"
+  filepath = "$name_short-$cr-seed$(seed)-geom$(geom_threshold)-ws_$(warm_start)"
   # filepath_lnr = joinpath(resultsfolderpath, "lnr-$dataset_name-$cr-$method-lnr.jld")
  #    @save filepath_lnr lnr
 

@@ -15,7 +15,7 @@ for (filename in filenames) {
   df <- rbind(df, df_next)
 } 
 
-write.csv(df, "../results_summary_nov27.csv", row.names = F)
+write.csv(df, "../results_summary_dec3_noscaling.csv", row.names = F)
 
 ### Do results vary across seeds?
 df %>% group_by(data, criterion, method) %>%
