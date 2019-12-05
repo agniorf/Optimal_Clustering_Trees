@@ -23,9 +23,12 @@ datasets = ["Atom.csv", "Chainlink.csv", "EngyTime.csv",
  "Tetra.csv", "TwoDiamonds.csv", "WingNut.csv"];
 criter=[:silhouette,:dunnindex];
 clust_method=["ICOT_local"];
-warm_start = [:none];
+# warm_start = [:none];
+# geom_search = [true];
+# thresholds = [0.0,0.9,0.99];
+warm_start = [:oct];
 geom_search = [true];
-thresholds = [0.0,0.9,0.99];
+thresholds = [0.0,0.9];
 seedSplitList = [1,2,3,4,5];
 
 # datasets = ["Atom.csv", "Chainlink.csv", "EngyTime.csv",
