@@ -1,0 +1,435 @@
+digraph {
+    1 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>V2 &lt; 0.1061</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>1000 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR >
+    <TD ALIGN="LEFT">1</TD>
+    <TD ALIGN="RIGHT">111</TD>
+    <TD ALIGN="RIGHT">11.10%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">2</TD>
+    <TD ALIGN="RIGHT">110</TD>
+    <TD ALIGN="RIGHT">11.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">3</TD>
+    <TD ALIGN="RIGHT">136</TD>
+    <TD ALIGN="RIGHT">13.60%</TD>
+  </TR>
+  <TR class="highlighted">
+    <TD ALIGN="LEFT">4</TD>
+    <TD ALIGN="RIGHT">143</TD>
+    <TD ALIGN="RIGHT">14.30%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">5</TD>
+    <TD ALIGN="RIGHT">109</TD>
+    <TD ALIGN="RIGHT">10.90%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">6</TD>
+    <TD ALIGN="RIGHT">143</TD>
+    <TD ALIGN="RIGHT">14.30%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">7</TD>
+    <TD ALIGN="RIGHT">111</TD>
+    <TD ALIGN="RIGHT">11.10%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">8</TD>
+    <TD ALIGN="RIGHT">137</TD>
+    <TD ALIGN="RIGHT">13.70%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#EBEBEB",shape=box,fontname="bold arial",style="filled"];
+    1 -> 2 [labeldistance=2.5, labelangle=45, headlabel="True",fontname="arial"];
+    1 -> 7 [labeldistance=2.5, labelangle=-45, headlabel="False",fontname="arial"];
+    2 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>V3 &lt; 0.2576</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>769 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR >
+    <TD ALIGN="LEFT">1</TD>
+    <TD ALIGN="RIGHT">104</TD>
+    <TD ALIGN="RIGHT">13.52%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">2</TD>
+    <TD ALIGN="RIGHT">110</TD>
+    <TD ALIGN="RIGHT">14.30%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">3</TD>
+    <TD ALIGN="RIGHT">136</TD>
+    <TD ALIGN="RIGHT">17.69%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">4</TD>
+    <TD ALIGN="RIGHT">28</TD>
+    <TD ALIGN="RIGHT">3.64%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">5</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR class="highlighted">
+    <TD ALIGN="LEFT">6</TD>
+    <TD ALIGN="RIGHT">143</TD>
+    <TD ALIGN="RIGHT">18.60%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">7</TD>
+    <TD ALIGN="RIGHT">111</TD>
+    <TD ALIGN="RIGHT">14.43%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">8</TD>
+    <TD ALIGN="RIGHT">137</TD>
+    <TD ALIGN="RIGHT">17.82%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#EBEBEB",shape=box,fontname="bold arial",style="filled"];
+    2 -> 3;
+    2 -> 4;
+    3 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>predict 8</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>306 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR >
+    <TD ALIGN="LEFT">1</TD>
+    <TD ALIGN="RIGHT">1</TD>
+    <TD ALIGN="RIGHT">0.33%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">2</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">3</TD>
+    <TD ALIGN="RIGHT">44</TD>
+    <TD ALIGN="RIGHT">14.38%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">4</TD>
+    <TD ALIGN="RIGHT">28</TD>
+    <TD ALIGN="RIGHT">9.15%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">5</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">6</TD>
+    <TD ALIGN="RIGHT">96</TD>
+    <TD ALIGN="RIGHT">31.37%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">7</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR class="highlighted">
+    <TD ALIGN="LEFT">8</TD>
+    <TD ALIGN="RIGHT">137</TD>
+    <TD ALIGN="RIGHT">44.77%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#EBEBEB",shape=box,fontname="bold arial",style="filled",color=black];
+    4 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>V4 &lt; 0.1118</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>463 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR >
+    <TD ALIGN="LEFT">1</TD>
+    <TD ALIGN="RIGHT">103</TD>
+    <TD ALIGN="RIGHT">22.25%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">2</TD>
+    <TD ALIGN="RIGHT">110</TD>
+    <TD ALIGN="RIGHT">23.76%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">3</TD>
+    <TD ALIGN="RIGHT">92</TD>
+    <TD ALIGN="RIGHT">19.87%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">4</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">5</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">6</TD>
+    <TD ALIGN="RIGHT">47</TD>
+    <TD ALIGN="RIGHT">10.15%</TD>
+  </TR>
+  <TR class="highlighted">
+    <TD ALIGN="LEFT">7</TD>
+    <TD ALIGN="RIGHT">111</TD>
+    <TD ALIGN="RIGHT">23.97%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">8</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#EBEBEB",shape=box,fontname="bold arial",style="filled"];
+    4 -> 5;
+    4 -> 6;
+    5 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>predict 2</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>300 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR >
+    <TD ALIGN="LEFT">1</TD>
+    <TD ALIGN="RIGHT">103</TD>
+    <TD ALIGN="RIGHT">34.33%</TD>
+  </TR>
+  <TR class="highlighted">
+    <TD ALIGN="LEFT">2</TD>
+    <TD ALIGN="RIGHT">105</TD>
+    <TD ALIGN="RIGHT">35.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">3</TD>
+    <TD ALIGN="RIGHT">92</TD>
+    <TD ALIGN="RIGHT">30.67%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">4</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">5</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">6</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">7</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">8</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#EBEBEB",shape=box,fontname="bold arial",style="filled",color=black];
+    6 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>predict 7</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>163 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR >
+    <TD ALIGN="LEFT">1</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">2</TD>
+    <TD ALIGN="RIGHT">5</TD>
+    <TD ALIGN="RIGHT">3.07%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">3</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">4</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">5</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">6</TD>
+    <TD ALIGN="RIGHT">47</TD>
+    <TD ALIGN="RIGHT">28.83%</TD>
+  </TR>
+  <TR class="highlighted">
+    <TD ALIGN="LEFT">7</TD>
+    <TD ALIGN="RIGHT">111</TD>
+    <TD ALIGN="RIGHT">68.10%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">8</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#EBEBEB",shape=box,fontname="bold arial",style="filled",color=black];
+    7 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>predict 4</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>231 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR >
+    <TD ALIGN="LEFT">1</TD>
+    <TD ALIGN="RIGHT">7</TD>
+    <TD ALIGN="RIGHT">3.03%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">2</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">3</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR class="highlighted">
+    <TD ALIGN="LEFT">4</TD>
+    <TD ALIGN="RIGHT">115</TD>
+    <TD ALIGN="RIGHT">49.78%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">5</TD>
+    <TD ALIGN="RIGHT">109</TD>
+    <TD ALIGN="RIGHT">47.19%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">6</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">7</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">8</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#EBEBEB",shape=box,fontname="bold arial",style="filled",color=black];
+}
