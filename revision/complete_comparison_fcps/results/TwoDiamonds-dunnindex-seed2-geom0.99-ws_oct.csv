@@ -1,0 +1,8 @@
+"seed","data","criterion","geom_threshold","warm_start","method","K","silhouette","dunn","ari_true","runtime"
+2,"TwoDiamonds","dunnindex",0.99,"oct","True",2,0.485918709357733,0.0220048899755519,1,0
+2,"TwoDiamonds","dunnindex",0.99,"oct","ICOT_local",2,0.0893491757753027,0.0435439556146662,0,302.610932878
+2,"TwoDiamonds","dunnindex",0.99,"oct","OCT",8,0.280787998281614,0.00296104015653984,-10,0.325138139
+2,"TwoDiamonds","dunnindex",0.99,"oct","kmeans_plus",8,0.383852911560598,0.0276744172946305,-10,2.031491874
+2,"TwoDiamonds","dunnindex",0.99,"oct","hclust",9,0.383608109048395,0.0485822120364991,-10,2.312555589
+2,"TwoDiamonds","dunnindex",0.99,"oct","gmm",9,0.341484197379253,0.0200407291437262,-10,0.254209378
+2,"TwoDiamonds","dunnindex",0.99,"oct","dbscan",0.1,0.0473161567726449,0.01194496039692,-10,0.57672901

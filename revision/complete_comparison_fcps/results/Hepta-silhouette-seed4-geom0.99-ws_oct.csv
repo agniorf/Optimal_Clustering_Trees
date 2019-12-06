@@ -1,0 +1,8 @@
+"seed","data","criterion","geom_threshold","warm_start","method","K","silhouette","dunn","ari_true","runtime"
+4,"Hepta","silhouette",0.99,"oct","True",7,0.701701220874264,1.07618340765214,1,0
+4,"Hepta","silhouette",0.99,"oct","ICOT_local",4,0.455071807119679,0.342533365318007,-10,8.456327894
+4,"Hepta","silhouette",0.99,"oct","OCT",7,0.372975456024656,0.0274417123112856,0.49242569107585,0.069346126
+4,"Hepta","silhouette",0.99,"oct","kmeans_plus",7,0.701701220874264,1.07618340765214,1,0.454369855
+4,"Hepta","silhouette",0.99,"oct","hclust",7,0.701701220874264,1.07618340765214,1,0.496211291
+4,"Hepta","silhouette",0.99,"oct","gmm",9,0.589259941681629,0.1622665737472,-10,0.172594613
+4,"Hepta","silhouette",0.99,"oct","dbscan",1,0.701701220874264,1.07618340765214,-10,0.439702344
