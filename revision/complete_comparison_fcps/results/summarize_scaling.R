@@ -56,6 +56,9 @@ write.csv(job_status, "../scaling_job_status.csv", row.names = FALSE)
 
 write.csv(subset(job_status, is.na(runtime) & data != "EngyTime"), "failed_parameters.csv", row.names = FALSE)
 
+write.csv(subset(job_status, is.na(runtime) & data == "EngyTime"), "failed_parameters_engytime.csv", row.names = FALSE)
+
+
 ### Runtime
 df_match %>% filter(criterion == "silhouette") %>% 
   group_by(geom_threshold, warm_start) %>%
