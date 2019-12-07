@@ -1,0 +1,217 @@
+digraph {
+    1 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>V3 &lt; -1.0802</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>1000 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR >
+    <TD ALIGN="LEFT">1</TD>
+    <TD ALIGN="RIGHT">104</TD>
+    <TD ALIGN="RIGHT">10.40%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">2</TD>
+    <TD ALIGN="RIGHT">86</TD>
+    <TD ALIGN="RIGHT">8.60%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">3</TD>
+    <TD ALIGN="RIGHT">104</TD>
+    <TD ALIGN="RIGHT">10.40%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">4</TD>
+    <TD ALIGN="RIGHT">87</TD>
+    <TD ALIGN="RIGHT">8.70%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">5</TD>
+    <TD ALIGN="RIGHT">107</TD>
+    <TD ALIGN="RIGHT">10.70%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">6</TD>
+    <TD ALIGN="RIGHT">105</TD>
+    <TD ALIGN="RIGHT">10.50%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">7</TD>
+    <TD ALIGN="RIGHT">96</TD>
+    <TD ALIGN="RIGHT">9.60%</TD>
+  </TR>
+  <TR class="highlighted">
+    <TD ALIGN="LEFT">8</TD>
+    <TD ALIGN="RIGHT">108</TD>
+    <TD ALIGN="RIGHT">10.80%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">9</TD>
+    <TD ALIGN="RIGHT">96</TD>
+    <TD ALIGN="RIGHT">9.60%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">10</TD>
+    <TD ALIGN="RIGHT">107</TD>
+    <TD ALIGN="RIGHT">10.70%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#EBEBEB",shape=box,fontname="bold arial",style="filled"];
+    1 -> 2 [labeldistance=2.5, labelangle=45, headlabel="True",fontname="arial"];
+    1 -> 3 [labeldistance=2.5, labelangle=-45, headlabel="False",fontname="arial"];
+    2 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>predict 2</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>1 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR >
+    <TD ALIGN="LEFT">1</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR class="highlighted">
+    <TD ALIGN="LEFT">2</TD>
+    <TD ALIGN="RIGHT">1</TD>
+    <TD ALIGN="RIGHT">100.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">3</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">4</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">5</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">6</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">7</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">8</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">9</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">10</TD>
+    <TD ALIGN="RIGHT">0</TD>
+    <TD ALIGN="RIGHT">0.00%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#EBEBEB",shape=box,fontname="bold arial",style="filled",color=black];
+    3 [label=<  <TABLE BORDER="0" CELLPADDING="0">
+      <TR>
+    <TD>
+      <B>predict 8</B>
+    </TD>
+  </TR>
+
+    <TR>
+      <TD>999 samples</TD>
+    </TR>
+    <TR>
+  <TD>
+    <TABLE CELLSPACING="0">
+      
+        <TR >
+    <TD ALIGN="LEFT">1</TD>
+    <TD ALIGN="RIGHT">104</TD>
+    <TD ALIGN="RIGHT">10.41%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">2</TD>
+    <TD ALIGN="RIGHT">85</TD>
+    <TD ALIGN="RIGHT">8.51%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">3</TD>
+    <TD ALIGN="RIGHT">104</TD>
+    <TD ALIGN="RIGHT">10.41%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">4</TD>
+    <TD ALIGN="RIGHT">87</TD>
+    <TD ALIGN="RIGHT">8.71%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">5</TD>
+    <TD ALIGN="RIGHT">107</TD>
+    <TD ALIGN="RIGHT">10.71%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">6</TD>
+    <TD ALIGN="RIGHT">105</TD>
+    <TD ALIGN="RIGHT">10.51%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">7</TD>
+    <TD ALIGN="RIGHT">96</TD>
+    <TD ALIGN="RIGHT">9.61%</TD>
+  </TR>
+  <TR class="highlighted">
+    <TD ALIGN="LEFT">8</TD>
+    <TD ALIGN="RIGHT">108</TD>
+    <TD ALIGN="RIGHT">10.81%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">9</TD>
+    <TD ALIGN="RIGHT">96</TD>
+    <TD ALIGN="RIGHT">9.61%</TD>
+  </TR>
+  <TR >
+    <TD ALIGN="LEFT">10</TD>
+    <TD ALIGN="RIGHT">107</TD>
+    <TD ALIGN="RIGHT">10.71%</TD>
+  </TR>
+
+    </TABLE>
+  </TD>
+</TR>
+
+  </TABLE>
+>,fillcolor="#EBEBEB",shape=box,fontname="bold arial",style="filled",color=black];
+}
