@@ -1,6 +1,7 @@
 [Data]
 XVal = 10
 PruneSet = .25
+TestSet = .25
 
 [General]
 RandomSeed = 1
