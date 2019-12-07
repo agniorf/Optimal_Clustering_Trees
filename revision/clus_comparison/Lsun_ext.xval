@@ -1,0 +1,744 @@
+Clus run "lsun"
+***************
+
+Date: 12/6/19 10:00 PM
+File: Lsun_ext.xval
+Attributes: 3 (input: 2, output: 1)
+Missing values: No
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 1
+ResourceInfoLoaded = No
+
+[Data]
+File = Lsun_ext.arff
+TestSet = None
+PruneSet = 0.25
+PruneSetMax = Infinity
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 3
+Clustering = 1-2
+Descriptive = 1-2
+Key = None
+Disable = None
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = Infinity
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {None}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 25.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = Default
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+Run: 01
+*******
+
+Statistics
+----------
+
+FTValue (FTest): 1.0
+Induction Time: 0.011 sec
+Pruning Time: 0.003 sec
+Model information
+     Default: Nodes = 1 (Leaves: 1)
+     Original: Nodes = 15 (Leaves: 8)
+     Pruned: Nodes = 15 (Leaves: 8)
+
+Default Model
+*************
+
+[1]: 270
+
+Original Model
+**************
+
+V2 > 1.919251
++--yes: V3 > 0.997386
+|       +--yes: V2 > 2.987601
+|       |       +--yes: [1]: 28
+|       |       +--no:  [1]: 41
+|       +--no:  V2 > 2.948159
+|               +--yes: [1]: 29
+|               +--no:  [1]: 31
++--no:  V3 > 2.324431
+        +--yes: V3 > 3.973707
+        |       +--yes: [1]: 28
+        |       +--no:  [1]: 25
+        +--no:  V2 > 0.985995
+                +--yes: [1]: 46
+                +--no:  [1]: 42
+
+Pruned Model
+************
+
+V2 > 1.919251
++--yes: V3 > 0.997386
+|       +--yes: V2 > 2.987601
+|       |       +--yes: [1]: 28
+|       |       +--no:  [1]: 41
+|       +--no:  V2 > 2.948159
+|               +--yes: [1]: 29
+|               +--no:  [1]: 31
++--no:  V3 > 2.324431
+        +--yes: V3 > 3.973707
+        |       +--yes: [1]: 28
+        |       +--no:  [1]: 25
+        +--no:  V2 > 0.985995
+                +--yes: [1]: 46
+                +--no:  [1]: 42
+
+Run: 02
+*******
+
+Statistics
+----------
+
+FTValue (FTest): 1.0
+Induction Time: 0.004 sec
+Pruning Time: 0.001 sec
+Model information
+     Default: Nodes = 1 (Leaves: 1)
+     Original: Nodes = 15 (Leaves: 8)
+     Pruned: Nodes = 15 (Leaves: 8)
+
+Default Model
+*************
+
+[1]: 270
+
+Original Model
+**************
+
+V2 > 1.919251
++--yes: V3 > 0.982575
+|       +--yes: V2 > 2.895769
+|       |       +--yes: [1]: 34
+|       |       +--no:  [1]: 34
+|       +--no:  V2 > 2.886793
+|               +--yes: [1]: 32
+|               +--no:  [1]: 28
++--no:  V3 > 2.389184
+        +--yes: V3 > 3.99935
+        |       +--yes: [1]: 27
+        |       +--no:  [1]: 26
+        +--no:  V2 > 0.985995
+                +--yes: [1]: 46
+                +--no:  [1]: 43
+
+Pruned Model
+************
+
+V2 > 1.919251
++--yes: V3 > 0.982575
+|       +--yes: V2 > 2.895769
+|       |       +--yes: [1]: 34
+|       |       +--no:  [1]: 34
+|       +--no:  V2 > 2.886793
+|               +--yes: [1]: 32
+|               +--no:  [1]: 28
++--no:  V3 > 2.389184
+        +--yes: V3 > 3.99935
+        |       +--yes: [1]: 27
+        |       +--no:  [1]: 26
+        +--no:  V2 > 0.985995
+                +--yes: [1]: 46
+                +--no:  [1]: 43
+
+Run: 03
+*******
+
+Statistics
+----------
+
+FTValue (FTest): 1.0
+Induction Time: 0.003 sec
+Pruning Time: 0.001 sec
+Model information
+     Default: Nodes = 1 (Leaves: 1)
+     Original: Nodes = 15 (Leaves: 8)
+     Pruned: Nodes = 15 (Leaves: 8)
+
+Default Model
+*************
+
+[1]: 270
+
+Original Model
+**************
+
+V2 > 1.807774
++--yes: V3 > 0.997386
+|       +--yes: V2 > 2.94886
+|       |       +--yes: [1]: 32
+|       |       +--no:  [1]: 35
+|       +--no:  V2 > 2.886793
+|               +--yes: [1]: 27
+|               +--no:  [1]: 28
++--no:  V3 > 2.380564
+        +--yes: V3 > 3.99935
+        |       +--yes: [1]: 27
+        |       +--no:  [1]: 27
+        +--no:  V2 > 0.985995
+                +--yes: [1]: 48
+                +--no:  [1]: 46
+
+Pruned Model
+************
+
+V2 > 1.807774
++--yes: V3 > 0.997386
+|       +--yes: V2 > 2.94886
+|       |       +--yes: [1]: 32
+|       |       +--no:  [1]: 35
+|       +--no:  V2 > 2.886793
+|               +--yes: [1]: 27
+|               +--no:  [1]: 28
++--no:  V3 > 2.380564
+        +--yes: V3 > 3.99935
+        |       +--yes: [1]: 27
+        |       +--no:  [1]: 27
+        +--no:  V2 > 0.985995
+                +--yes: [1]: 48
+                +--no:  [1]: 46
+
+Run: 04
+*******
+
+Statistics
+----------
+
+FTValue (FTest): 1.0
+Induction Time: 0.003 sec
+Pruning Time: 0.001 sec
+Model information
+     Default: Nodes = 1 (Leaves: 1)
+     Original: Nodes = 17 (Leaves: 9)
+     Pruned: Nodes = 17 (Leaves: 9)
+
+Default Model
+*************
+
+[1]: 270
+
+Original Model
+**************
+
+V2 > 1.688165
++--yes: V3 > 0.997386
+|       +--yes: V2 > 2.895769
+|       |       +--yes: [1]: 31
+|       |       +--no:  [1]: 38
+|       +--no:  V2 > 2.696483
+|               +--yes: [1]: 43
+|               +--no:  [1]: 25
++--no:  V3 > 2.418634
+        +--yes: V3 > 3.99935
+        |       +--yes: [1]: 28
+        |       +--no:  [1]: 25
+        +--no:  V3 > 0.857928
+                +--yes: [1]: 25
+                +--no:  V2 > 0.828567
+                        +--yes: [1]: 27
+                        +--no:  [1]: 28
+
+Pruned Model
+************
+
+V2 > 1.688165
++--yes: V3 > 0.997386
+|       +--yes: V2 > 2.895769
+|       |       +--yes: [1]: 31
+|       |       +--no:  [1]: 38
+|       +--no:  V2 > 2.696483
+|               +--yes: [1]: 43
+|               +--no:  [1]: 25
++--no:  V3 > 2.418634
+        +--yes: V3 > 3.99935
+        |       +--yes: [1]: 28
+        |       +--no:  [1]: 25
+        +--no:  V3 > 0.857928
+                +--yes: [1]: 25
+                +--no:  V2 > 0.828567
+                        +--yes: [1]: 27
+                        +--no:  [1]: 28
+
+Run: 05
+*******
+
+Statistics
+----------
+
+FTValue (FTest): 1.0
+Induction Time: 0.002 sec
+Pruning Time: 0.001 sec
+Model information
+     Default: Nodes = 1 (Leaves: 1)
+     Original: Nodes = 17 (Leaves: 9)
+     Pruned: Nodes = 17 (Leaves: 9)
+
+Default Model
+*************
+
+[1]: 270
+
+Original Model
+**************
+
+V2 > 2.027834
++--yes: V3 > 0.992772
+|       +--yes: V2 > 2.983629
+|       |       +--yes: [1]: 31
+|       |       +--no:  [1]: 36
+|       +--no:  V2 > 3.055062
+|               +--yes: [1]: 30
+|               +--no:  [1]: 25
++--no:  V3 > 2.418634
+        +--yes: V3 > 4.070992
+        |       +--yes: [1]: 27
+        |       +--no:  [1]: 25
+        +--no:  V2 > 1.020964
+                +--yes: V3 > 0.720155
+                |       +--yes: [1]: 25
+                |       +--no:  [1]: 25
+                +--no:  [1]: 46
+
+Pruned Model
+************
+
+V2 > 2.027834
++--yes: V3 > 0.992772
+|       +--yes: V2 > 2.983629
+|       |       +--yes: [1]: 31
+|       |       +--no:  [1]: 36
+|       +--no:  V2 > 3.055062
+|               +--yes: [1]: 30
+|               +--no:  [1]: 25
++--no:  V3 > 2.418634
+        +--yes: V3 > 4.070992
+        |       +--yes: [1]: 27
+        |       +--no:  [1]: 25
+        +--no:  V2 > 1.020964
+                +--yes: V3 > 0.720155
+                |       +--yes: [1]: 25
+                |       +--no:  [1]: 25
+                +--no:  [1]: 46
+
+Run: 06
+*******
+
+Statistics
+----------
+
+FTValue (FTest): 1.0
+Induction Time: 0.003 sec
+Pruning Time: 0 sec
+Model information
+     Default: Nodes = 1 (Leaves: 1)
+     Original: Nodes = 15 (Leaves: 8)
+     Pruned: Nodes = 15 (Leaves: 8)
+
+Default Model
+*************
+
+[1]: 270
+
+Original Model
+**************
+
+V3 > 1.863353
++--yes: V2 > 1.49389
+|       +--yes: V2 > 2.895769
+|       |       +--yes: [1]: 29
+|       |       +--no:  [1]: 43
+|       +--no:  V3 > 3.678969
+|               +--yes: [1]: 39
+|               +--no:  [1]: 25
++--no:  V2 > 1.937908
+        +--yes: V2 > 2.904519
+        |       +--yes: [1]: 27
+        |       +--no:  [1]: 26
+        +--no:  V2 > 0.948862
+                +--yes: [1]: 46
+                +--no:  [1]: 35
+
+Pruned Model
+************
+
+V3 > 1.863353
++--yes: V2 > 1.49389
+|       +--yes: V2 > 2.895769
+|       |       +--yes: [1]: 29
+|       |       +--no:  [1]: 43
+|       +--no:  V3 > 3.678969
+|               +--yes: [1]: 39
+|               +--no:  [1]: 25
++--no:  V2 > 1.937908
+        +--yes: V2 > 2.904519
+        |       +--yes: [1]: 27
+        |       +--no:  [1]: 26
+        +--no:  V2 > 0.948862
+                +--yes: [1]: 46
+                +--no:  [1]: 35
+
+Run: 07
+*******
+
+Statistics
+----------
+
+FTValue (FTest): 1.0
+Induction Time: 0.002 sec
+Pruning Time: 0.001 sec
+Model information
+     Default: Nodes = 1 (Leaves: 1)
+     Original: Nodes = 15 (Leaves: 8)
+     Pruned: Nodes = 15 (Leaves: 8)
+
+Default Model
+*************
+
+[1]: 270
+
+Original Model
+**************
+
+V2 > 1.919251
++--yes: V3 > 0.997386
+|       +--yes: V2 > 2.993547
+|       |       +--yes: [1]: 32
+|       |       +--no:  [1]: 46
+|       +--no:  V2 > 2.882574
+|               +--yes: [1]: 27
+|               +--no:  [1]: 25
++--no:  V3 > 2.389184
+        +--yes: [1]: 43
+        +--no:  V2 > 0.837813
+                +--yes: V3 > 0.684541
+                |       +--yes: [1]: 25
+                |       +--no:  [1]: 31
+                +--no:  [1]: 41
+
+Pruned Model
+************
+
+V2 > 1.919251
++--yes: V3 > 0.997386
+|       +--yes: V2 > 2.993547
+|       |       +--yes: [1]: 32
+|       |       +--no:  [1]: 46
+|       +--no:  V2 > 2.882574
+|               +--yes: [1]: 27
+|               +--no:  [1]: 25
++--no:  V3 > 2.389184
+        +--yes: [1]: 43
+        +--no:  V2 > 0.837813
+                +--yes: V3 > 0.684541
+                |       +--yes: [1]: 25
+                |       +--no:  [1]: 31
+                +--no:  [1]: 41
+
+Run: 08
+*******
+
+Statistics
+----------
+
+FTValue (FTest): 1.0
+Induction Time: 0.002 sec
+Pruning Time: 0 sec
+Model information
+     Default: Nodes = 1 (Leaves: 1)
+     Original: Nodes = 17 (Leaves: 9)
+     Pruned: Nodes = 17 (Leaves: 9)
+
+Default Model
+*************
+
+[1]: 270
+
+Original Model
+**************
+
+V2 > 1.688165
++--yes: V3 > 0.997386
+|       +--yes: V2 > 2.993547
+|       |       +--yes: [1]: 27
+|       |       +--no:  [1]: 42
+|       +--no:  V2 > 2.577899
+|               +--yes: [1]: 40
+|               +--no:  [1]: 26
++--no:  V3 > 2.418634
+        +--yes: V3 > 4.153609
+        |       +--yes: [1]: 26
+        |       +--no:  [1]: 25
+        +--no:  V3 > 0.931252
+                +--yes: [1]: 25
+                +--no:  V2 > 0.799211
+                        +--yes: [1]: 30
+                        +--no:  [1]: 29
+
+Pruned Model
+************
+
+V2 > 1.688165
++--yes: V3 > 0.997386
+|       +--yes: V2 > 2.993547
+|       |       +--yes: [1]: 27
+|       |       +--no:  [1]: 42
+|       +--no:  V2 > 2.577899
+|               +--yes: [1]: 40
+|               +--no:  [1]: 26
++--no:  V3 > 2.418634
+        +--yes: V3 > 4.153609
+        |       +--yes: [1]: 26
+        |       +--no:  [1]: 25
+        +--no:  V3 > 0.931252
+                +--yes: [1]: 25
+                +--no:  V2 > 0.799211
+                        +--yes: [1]: 30
+                        +--no:  [1]: 29
+
+Run: 09
+*******
+
+Statistics
+----------
+
+FTValue (FTest): 1.0
+Induction Time: 0.002 sec
+Pruning Time: 0 sec
+Model information
+     Default: Nodes = 1 (Leaves: 1)
+     Original: Nodes = 13 (Leaves: 7)
+     Pruned: Nodes = 13 (Leaves: 7)
+
+Default Model
+*************
+
+[1]: 270
+
+Original Model
+**************
+
+V2 > 1.996396
++--yes: V3 > 0.997386
+|       +--yes: V2 > 2.993547
+|       |       +--yes: [1]: 34
+|       |       +--no:  [1]: 46
+|       +--no:  V2 > 3.093691
+|               +--yes: [1]: 25
+|               +--no:  [1]: 25
++--no:  V3 > 2.153101
+        +--yes: [1]: 48
+        +--no:  V2 > 0.985995
+                +--yes: [1]: 46
+                +--no:  [1]: 46
+
+Pruned Model
+************
+
+V2 > 1.996396
++--yes: V3 > 0.997386
+|       +--yes: V2 > 2.993547
+|       |       +--yes: [1]: 34
+|       |       +--no:  [1]: 46
+|       +--no:  V2 > 3.093691
+|               +--yes: [1]: 25
+|               +--no:  [1]: 25
++--no:  V3 > 2.153101
+        +--yes: [1]: 48
+        +--no:  V2 > 0.985995
+                +--yes: [1]: 46
+                +--no:  [1]: 46
+
+Run: 10
+*******
+
+Statistics
+----------
+
+FTValue (FTest): 1.0
+Induction Time: 0.001 sec
+Pruning Time: 0 sec
+Model information
+     Default: Nodes = 1 (Leaves: 1)
+     Original: Nodes = 15 (Leaves: 8)
+     Pruned: Nodes = 15 (Leaves: 8)
+
+Default Model
+*************
+
+[1]: 270
+
+Original Model
+**************
+
+V2 > 1.919251
++--yes: V3 > 0.997386
+|       +--yes: V2 > 2.895769
+|       |       +--yes: [1]: 36
+|       |       +--no:  [1]: 40
+|       +--no:  V2 > 2.904519
+|               +--yes: [1]: 31
+|               +--no:  [1]: 26
++--no:  V3 > 2.153101
+        +--yes: V3 > 3.863155
+        |       +--yes: [1]: 27
+        |       +--no:  [1]: 25
+        +--no:  V2 > 0.985853
+                +--yes: [1]: 42
+                +--no:  [1]: 43
+
+Pruned Model
+************
+
+V2 > 1.919251
++--yes: V3 > 0.997386
+|       +--yes: V2 > 2.895769
+|       |       +--yes: [1]: 36
+|       |       +--no:  [1]: 40
+|       +--no:  V2 > 2.904519
+|               +--yes: [1]: 31
+|               +--no:  [1]: 26
++--no:  V3 > 2.153101
+        +--yes: V3 > 3.863155
+        |       +--yes: [1]: 27
+        |       +--no:  [1]: 25
+        +--no:  V2 > 0.985853
+                +--yes: [1]: 42
+                +--no:  [1]: 43
+
+Summary
+*******
+
+Runs: 10
+Induction time: 0.033 sec
+Preprocessing time: 0 sec
+Mean number of tests
+     Original: 15.4
+     Pruned: 15.4
+
+Training error
+--------------
+
+Number of examples: 2700
+Mean absolute error (MAE)
+   Default        : [0]
+   Original       : [0]
+   Pruned         : [0]
+Mean squared error (MSE)
+   Default        : [0]
+   Original       : [0]
+   Pruned         : [0]
+Root mean squared error (RMSE)
+   Default        : [0]
+   Original       : [0]
+   Pruned         : [0]
+Weighted root mean squared error (RMSE) (Weights [1])
+   Default        : [0]
+   Original       : [0]
+   Pruned         : [0]
+Pearson correlation coefficient
+   Default        : [�], Avg r^2: �
+   Original       : [�], Avg r^2: �
+   Pruned         : [�], Avg r^2: �
+
+Validation error
+----------------
+
+Number of examples: 900
+Mean absolute error (MAE)
+   Default        : [0]
+   Original       : [0]
+   Pruned         : [0]
+Mean squared error (MSE)
+   Default        : [0]
+   Original       : [0]
+   Pruned         : [0]
+Root mean squared error (RMSE)
+   Default        : [0]
+   Original       : [0]
+   Pruned         : [0]
+Weighted root mean squared error (RMSE) (Weights [1])
+   Default        : [0]
+   Original       : [0]
+   Pruned         : [0]
+Pearson correlation coefficient
+   Default        : [�], Avg r^2: �
+   Original       : [�], Avg r^2: �
+   Pruned         : [�], Avg r^2: �
+
+Testing error
+-------------
+
+Number of examples: 400
+Mean absolute error (MAE)
+   Default        : [0]
+   Original       : [0]
+   Pruned         : [0]
+Mean squared error (MSE)
+   Default        : [0]
+   Original       : [0]
+   Pruned         : [0]
+Root mean squared error (RMSE)
+   Default        : [0]
+   Original       : [0]
+   Pruned         : [0]
+Weighted root mean squared error (RMSE) (Weights [1])
+   Default        : [0]
+   Original       : [0]
+   Pruned         : [0]
+Pearson correlation coefficient
+   Default        : [�], Avg r^2: �
+   Original       : [�], Avg r^2: �
+   Pruned         : [�], Avg r^2: �
+
