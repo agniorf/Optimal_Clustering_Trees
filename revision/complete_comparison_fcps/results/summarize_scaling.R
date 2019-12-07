@@ -15,6 +15,8 @@ for (filename in filenames) {
   df <- rbind(df, df_next)
 } 
 
+write.csv(df, file = paste0("../full_scaling_results.csv"), row.names = FALSE)
+
 # setwd("../results_fullyscaled/")
 # final_cols <- names(df)[1:(ncol(df)-1)]
 # filenames_scaled <- list.files(pattern="*seed\\d\\.csv$", full.names=TRUE)
@@ -52,7 +54,7 @@ job_status <- as.data.frame(expand.grid(data, criterion, thresholds, ws, seeds))
 
 write.csv(job_status, "../scaling_job_status.csv", row.names = FALSE)
 
-write.csv(subset(job_status, is.na(runtime), data != "EngyTime"), "failed_parameters.csv", row.names = FALSE)
+write.csv(subset(job_status, is.na(runtime) & data != "EngyTime"), "failed_parameters.csv", row.names = FALSE)
 
 ### Runtime
 df_match %>% filter(criterion == "silhouette") %>% 

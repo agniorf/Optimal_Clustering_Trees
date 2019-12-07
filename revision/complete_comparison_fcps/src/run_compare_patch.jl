@@ -17,7 +17,7 @@ include("evaluation_pipeline_full_compare.jl")
 include("algorithm_comparison.jl")
 include("../../evaluation_tools_full.jl")
 
-failed_params = CSV.read("../results/failed_parameters.csv")
+failed_params = CSV.read("../results/failed_parameters_engytime.csv")
 
 arg_in = parse(Int64, ARGS[1])
 
