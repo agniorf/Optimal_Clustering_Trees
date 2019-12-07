@@ -1,12 +1,13 @@
 [Data]
 XVal = 10
+TestSet = .25
 PruneSet = .25
 
 [General]
 RandomSeed = 1
 
 [Model]
-MinimalWeight = 25.0
+MinimalWeight = 5.0
 
 [Attributes]
 Target = 3

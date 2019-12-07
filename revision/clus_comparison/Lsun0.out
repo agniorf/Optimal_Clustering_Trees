@@ -1,7 +1,7 @@
 Clus run "lsun"
 ***************
 
-Date: 12/6/19 10:07 PM
+Date: 12/6/19 10:13 PM
 File: Lsun0.out
 Attributes: 3 (input: 2, output: 1)
 Missing values: No
@@ -14,7 +14,7 @@ ResourceInfoLoaded = No
 
 [Data]
 File = Lsun0.arff
-TestSet = None
+TestSet = 0.25
 PruneSet = 0.25
 PruneSetMax = Infinity
 XVal = 10
@@ -60,7 +60,7 @@ OutputDatabaseQueries = No
 MEstimate = 1.0
 
 [Model]
-MinimalWeight = 25.0
+MinimalWeight = 5.0
 MinimalNumberExamples = 0
 MinimalKnownWeight = 0.0
 ParamTuneNumberFolds = 10
@@ -86,62 +86,62 @@ Statistics
 ----------
 
 FTValue (FTest): 1.0
-Induction Time: 0.001 sec
-Pruning Time: 0 sec
+Induction Time: 0.003 sec
+Pruning Time: 0.001 sec
 Model information
      Default: Nodes = 1 (Leaves: 1)
-     Original: Nodes = 17 (Leaves: 9)
-     Pruned: Nodes = 17 (Leaves: 9)
+     Original: Nodes = 73 (Leaves: 37)
+     Pruned: Nodes = 73 (Leaves: 37)
 
 Training error
 --------------
 
-Number of examples: 300
+Number of examples: 225
 Mean absolute error (MAE)
-   Default        : [0.7605]
-   Original       : [0.0224]
-   Pruned         : [0.0224]
+   Default        : [0.7723]
+   Original       : [0]
+   Pruned         : [0]
 Mean squared error (MSE)
-   Default        : [0.7113]
-   Original       : [0.0112]
-   Pruned         : [0.0112]
+   Default        : [0.7199]
+   Original       : [0]
+   Pruned         : [0]
 Root mean squared error (RMSE)
-   Default        : [0.8434]
-   Original       : [0.1058]
-   Pruned         : [0.1058]
+   Default        : [0.8485]
+   Original       : [0]
+   Pruned         : [0]
 Weighted root mean squared error (RMSE) (Weights [1.455])
-   Default        : [1.0172]
-   Original       : [0.1276]
-   Pruned         : [0.1276]
+   Default        : [1.0233]
+   Original       : [0]
+   Pruned         : [0]
 Pearson correlation coefficient
    Default        : [�], Avg r^2: �
-   Original       : [0.9921], Avg r^2: 0.9843
-   Pruned         : [0.9921], Avg r^2: 0.9843
+   Original       : [1], Avg r^2: 1
+   Pruned         : [1], Avg r^2: 1
 
 Validation error
 ----------------
 
-Number of examples: 100
+Number of examples: 75
 Mean absolute error (MAE)
-   Default        : [0.7185]
-   Original       : [0.0364]
-   Pruned         : [0.0364]
+   Default        : [0.7324]
+   Original       : [0]
+   Pruned         : [0]
 Mean squared error (MSE)
-   Default        : [0.6274]
-   Original       : [0.0483]
-   Pruned         : [0.0483]
+   Default        : [0.6903]
+   Original       : [0]
+   Pruned         : [0]
 Root mean squared error (RMSE)
-   Default        : [0.7921]
-   Original       : [0.2199]
-   Pruned         : [0.2199]
+   Default        : [0.8308]
+   Original       : [0]
+   Pruned         : [0]
 Weighted root mean squared error (RMSE) (Weights [1.455])
-   Default        : [0.9553]
-   Original       : [0.2652]
-   Pruned         : [0.2652]
+   Default        : [1.002]
+   Original       : [0]
+   Pruned         : [0]
 Pearson correlation coefficient
    Default        : [�], Avg r^2: �
-   Original       : [0.9591], Avg r^2: 0.9199
-   Pruned         : [0.9591], Avg r^2: 0.9199
+   Original       : [1], Avg r^2: 1
+   Pruned         : [1], Avg r^2: 1
 
 Testing error
 -------------
@@ -149,69 +149,181 @@ Testing error
 Number of examples: 400
 Mean absolute error (MAE)
    Default        : [0.7525]
-   Original       : [0.0874]
-   Pruned         : [0.0908]
+   Original       : [0.0211]
+   Pruned         : [0.0214]
 Mean squared error (MSE)
    Default        : [0.697]
-   Original       : [0.051]
-   Pruned         : [0.0516]
+   Original       : [0.0211]
+   Pruned         : [0.0208]
 Root mean squared error (RMSE)
    Default        : [0.8349]
-   Original       : [0.2259]
-   Pruned         : [0.227]
+   Original       : [0.1453]
+   Pruned         : [0.1444]
 Weighted root mean squared error (RMSE) (Weights [1.455])
    Default        : [1.0069]
-   Original       : [0.2724]
-   Pruned         : [0.2738]
+   Original       : [0.1752]
+   Pruned         : [0.1741]
 Pearson correlation coefficient
    Default        : [-0.2266], Avg r^2: 0.0513
-   Original       : [0.9624], Avg r^2: 0.9263
-   Pruned         : [0.9621], Avg r^2: 0.9256
+   Original       : [0.9849], Avg r^2: 0.97
+   Pruned         : [0.9851], Avg r^2: 0.9703
 
 Default Model
 *************
 
-[1.803333]: 300
+[1.768889]: 225
 
 Original Model
 **************
 
-V2 > 1.736284
+V2 > 1.899647
 +--yes: V3 > 0.992772
-|       +--yes: V2 > 2.9383
-|       |       +--yes: [3]: 40
-|       |       +--no:  [3]: 43
-|       +--no:  V2 > 2.789323
-|               +--yes: [1]: 38
-|               +--no:  [1]: 34
-+--no:  V3 > 2.418634
-        +--yes: V3 > 4.103231
-        |       +--yes: [2]: 27
-        |       +--no:  [2]: 27
-        +--no:  V3 > 0.954967
-                +--yes: [1.84]: 25
-                +--no:  V2 > 0.884156
-                        +--yes: [1]: 31
-                        +--no:  [1]: 35
+|       +--yes: V2 > 2.878632
+|       |       +--yes: V3 > 2.33867
+|       |       |       +--yes: V2 > 3.162948
+|       |       |       |       +--yes: [3]: 6
+|       |       |       |       +--no:  [3]: 9
+|       |       |       +--no:  V2 > 3.23753
+|       |       |               +--yes: [3]: 5
+|       |       |               +--no:  V3 > 2.135258
+|       |       |                       +--yes: [3]: 7
+|       |       |                       +--no:  [3]: 5
+|       |       +--no:  V3 > 2.614829
+|       |               +--yes: V2 > 2.51471
+|       |               |       +--yes: V3 > 2.822901
+|       |               |       |       +--yes: [3]: 5
+|       |               |       |       +--no:  [3]: 5
+|       |               |       +--no:  [3]: 6
+|       |               +--no:  V3 > 2.277463
+|       |                       +--yes: [3]: 7
+|       |                       +--no:  [3]: 6
+|       +--no:  V2 > 2.948159
+|               +--yes: V2 > 3.392074
+|               |       +--yes: V3 > 0.349585
+|               |       |       +--yes: [1]: 8
+|               |       |       +--no:  [1]: 5
+|               |       +--no:  V3 > 0.420976
+|               |               +--yes: [1]: 6
+|               |               +--no:  [1]: 5
+|               +--no:  V2 > 2.412745
+|                       +--yes: V3 > 0.535719
+|                       |       +--yes: [1]: 5
+|                       |       +--no:  [1]: 9
+|                       +--no:  V3 > 0.520445
+|                               +--yes: [1]: 5
+|                               +--no:  [1]: 6
++--no:  V3 > 2.389184
+        +--yes: V3 > 3.81059
+        |       +--yes: V3 > 4.616232
+        |       |       +--yes: V2 > 1.142235
+        |       |       |       +--yes: [2]: 5
+        |       |       |       +--no:  [2]: 6
+        |       |       +--no:  V2 > 0.819666
+        |       |               +--yes: [2]: 8
+        |       |               +--no:  [2]: 6
+        |       +--no:  V2 > 0.892292
+        |               +--yes: [2]: 6
+        |               +--no:  [2]: 5
+        +--no:  V2 > 0.985995
+                +--yes: V3 > 0.978359
+                |       +--yes: [2]: 7
+                |       +--no:  V2 > 1.564616
+                |               +--yes: V3 > 0.387625
+                |               |       +--yes: [1]: 6
+                |               |       +--no:  [1]: 5
+                |               +--no:  V3 > 0.495985
+                |                       +--yes: V3 > 0.857799
+                |                       |       +--yes: [1]: 5
+                |                       |       +--no:  [1]: 8
+                |                       +--no:  [1]: 6
+                +--no:  V3 > 0.996298
+                        +--yes: [2]: 8
+                        +--no:  V2 > 0.520977
+                                +--yes: V3 > 0.434387
+                                |       +--yes: V3 > 0.612812
+                                |       |       +--yes: [1]: 5
+                                |       |       +--no:  [1]: 5
+                                |       +--no:  [1]: 7
+                                +--no:  V3 > 0.462131
+                                        +--yes: [1]: 5
+                                        +--no:  V2 > 0.258403
+                                                +--yes: [1]: 5
+                                                +--no:  [1]: 7
 
 Pruned Model
 ************
 
-V2 > 1.736284
+V2 > 1.899647
 +--yes: V3 > 0.992772
-|       +--yes: V2 > 2.9383
-|       |       +--yes: [3]: 40
-|       |       +--no:  [3]: 43
-|       +--no:  V2 > 2.789323
-|               +--yes: [1]: 38
-|               +--no:  [1]: 34
-+--no:  V3 > 2.418634
-        +--yes: V3 > 4.103231
-        |       +--yes: [2]: 27
-        |       +--no:  [2]: 27
-        +--no:  V3 > 0.954967
-                +--yes: [1.84]: 25
-                +--no:  V2 > 0.884156
-                        +--yes: [1]: 31
-                        +--no:  [1]: 35
+|       +--yes: V2 > 2.878632
+|       |       +--yes: V3 > 2.33867
+|       |       |       +--yes: V2 > 3.162948
+|       |       |       |       +--yes: [3]: 6
+|       |       |       |       +--no:  [3]: 9
+|       |       |       +--no:  V2 > 3.23753
+|       |       |               +--yes: [3]: 5
+|       |       |               +--no:  V3 > 2.135258
+|       |       |                       +--yes: [3]: 7
+|       |       |                       +--no:  [3]: 5
+|       |       +--no:  V3 > 2.614829
+|       |               +--yes: V2 > 2.51471
+|       |               |       +--yes: V3 > 2.822901
+|       |               |       |       +--yes: [3]: 5
+|       |               |       |       +--no:  [3]: 5
+|       |               |       +--no:  [3]: 6
+|       |               +--no:  V3 > 2.277463
+|       |                       +--yes: [3]: 7
+|       |                       +--no:  [3]: 6
+|       +--no:  V2 > 2.948159
+|               +--yes: V2 > 3.392074
+|               |       +--yes: V3 > 0.349585
+|               |       |       +--yes: [1]: 8
+|               |       |       +--no:  [1]: 5
+|               |       +--no:  V3 > 0.420976
+|               |               +--yes: [1]: 6
+|               |               +--no:  [1]: 5
+|               +--no:  V2 > 2.412745
+|                       +--yes: V3 > 0.535719
+|                       |       +--yes: [1]: 5
+|                       |       +--no:  [1]: 9
+|                       +--no:  V3 > 0.520445
+|                               +--yes: [1]: 5
+|                               +--no:  [1]: 6
++--no:  V3 > 2.389184
+        +--yes: V3 > 3.81059
+        |       +--yes: V3 > 4.616232
+        |       |       +--yes: V2 > 1.142235
+        |       |       |       +--yes: [2]: 5
+        |       |       |       +--no:  [2]: 6
+        |       |       +--no:  V2 > 0.819666
+        |       |               +--yes: [2]: 8
+        |       |               +--no:  [2]: 6
+        |       +--no:  V2 > 0.892292
+        |               +--yes: [2]: 6
+        |               +--no:  [2]: 5
+        +--no:  V2 > 0.985995
+                +--yes: V3 > 0.978359
+                |       +--yes: [2]: 7
+                |       +--no:  V2 > 1.564616
+                |               +--yes: V3 > 0.387625
+                |               |       +--yes: [1]: 6
+                |               |       +--no:  [1]: 5
+                |               +--no:  V3 > 0.495985
+                |                       +--yes: V3 > 0.857799
+                |                       |       +--yes: [1]: 5
+                |                       |       +--no:  [1]: 8
+                |                       +--no:  [1]: 6
+                +--no:  V3 > 0.996298
+                        +--yes: [2]: 8
+                        +--no:  V2 > 0.520977
+                                +--yes: V3 > 0.434387
+                                |       +--yes: V3 > 0.612812
+                                |       |       +--yes: [1]: 5
+                                |       |       +--no:  [1]: 5
+                                |       +--no:  [1]: 7
+                                +--no:  V3 > 0.462131
+                                        +--yes: [1]: 5
+                                        +--no:  V2 > 0.258403
+                                                +--yes: [1]: 5
+                                                +--no:  [1]: 7
 
