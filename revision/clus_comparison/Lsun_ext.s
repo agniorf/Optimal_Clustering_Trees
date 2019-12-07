@@ -1,3 +1,6 @@
+[Data]
+XVal = 10
+
 [General]
 RandomSeed = 1
 
