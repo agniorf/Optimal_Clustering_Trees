@@ -1,0 +1,177 @@
+Clus run "weather"
+******************
+
+Date: 12/2/19 1:51 PM
+File: test_weather.out
+Attributes: 4 (input: 4, output: 4)
+Missing values: No
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 1
+ResourceInfoLoaded = No
+
+[Data]
+File = test_weather.arff
+TestSet = None
+PruneSet = None
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 1-4
+Clustering = 1-4
+Descriptive = 1-4
+Key = None
+Disable = None
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = Infinity
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {None}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = None
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+Run: 01
+*******
+
+Statistics
+----------
+
+FTValue (FTest): 1.0
+Induction Time: 0.005 sec
+Pruning Time: 0 sec
+Model information
+     Default: Nodes = 1 (Leaves: 1)
+     Original: Nodes = 5 (Leaves: 3)
+
+Training error
+--------------
+
+Number of examples: 8
+Classification Error
+   Default: 
+   Attribute: outlook
+     REAL\PRED | sunny | rainy | overcast |
+     ----------------------------------------
+         sunny |     0 |     2 |        0 | 2
+         rainy |     0 |     4 |        0 | 4
+      overcast |     0 |     2 |        0 | 2
+     ----------------------------------------
+               |     0 |     8 |        0 | 8
+     Accuracy: 0.5
+     Cramer's coefficient: 0
+
+
+   Attribute: windy
+     REAL\PRED | yes | no |
+     ------------------------
+           yes |   0 |  3 | 3
+            no |   0 |  5 | 5
+     ------------------------
+               |   0 |  8 | 8
+     Accuracy: 0.625
+     Cramer's coefficient: 0
+
+   Original: 
+   Attribute: outlook
+     REAL\PRED | sunny | rainy | overcast |
+     ----------------------------------------
+         sunny |     2 |     0 |        0 | 2
+         rainy |     0 |     4 |        0 | 4
+      overcast |     1 |     1 |        0 | 2
+     ----------------------------------------
+               |     3 |     5 |        0 | 8
+     Accuracy: 0.75
+     Cramer's coefficient: 0.60553
+
+
+   Attribute: windy
+     REAL\PRED | yes | no |
+     ------------------------
+           yes |   3 |  0 | 3
+            no |   0 |  5 | 5
+     ------------------------
+               |   3 |  5 | 8
+     Accuracy: 1
+     Cramer's coefficient: 1
+
+Weighted mean squared error (MSE) for Nominal Attributes (Weights [1.6,2.133])
+   Default        : [1,1]: 1
+   Original       : [0.5333,0]: 0.2667
+Mean absolute error (MAE)
+   Default        : [7.125,14.75]: 10.9375
+   Original       : [2.6667,6.7083]: 4.6875
+Mean squared error (MSE)
+   Default        : [76.8594,275.4375]: 176.1484
+   Original       : [13.8333,57.2292]: 35.5312
+Root mean squared error (RMSE)
+   Default        : [8.7669,16.5963]: 13.2721
+   Original       : [3.7193,7.565]: 5.9608
+Weighted root mean squared error (RMSE) (Weights [0.013,0.004])
+   Default        : [1,1]: 1
+   Original       : [0.4242,0.4558]: 0.4403
+Pearson correlation coefficient
+   Default        : [�,�], Avg r^2: �
+   Original       : [0.9055,0.8901], Avg r^2: 0.8061
+
+Default Model
+*************
+
+[[rainy,no] [4.0,5.0]: 8 | [18.875,77.25]: 8]
+
+Original Model
+**************
+
+humidity > 70.0
++--yes: windy = yes
+|       +--yes: [[rainy,yes] [2.0,3.0]: 3 | [9.666667,86.666667]: 3]
+|       +--no:  [[rainy,no] [2.0,2.0]: 2 | [19,91.5]: 2]
++--no:  [[sunny,no] [2.0,3.0]: 3 | [28,58.333333]: 3]
+
