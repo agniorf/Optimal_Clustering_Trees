@@ -103,7 +103,7 @@ function run_single(;data=data,
 
   ####### STEP 5: RUN OCT WITH ASSIGNED LABELS
   println("\nRunning OCT with assigned labels")
-  oct_k = K_init; 
+  oct_k = K; 
   method_oct = string("OCT_", split(method, "_")[2]);
 
 
