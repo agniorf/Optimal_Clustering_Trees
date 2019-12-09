@@ -3,7 +3,7 @@ library(tidyverse)
 library("RColorBrewer")
 
 
-setwd("../results/")
+setwd("../results_kmeans0/")
 
 filenames <- list.files(pattern="ws_[a-z]*.csv$", full.names=TRUE)
 
@@ -17,7 +17,7 @@ for (filename in filenames) {
   df <- rbind(df, df_next)
 } 
 
-write.csv(df, file = paste0("../full_scaling_results.csv"), row.names = FALSE)
+#write.csv(df, file = paste0("../full_scaling_results.csv"), row.names = FALSE)
 
 ### Check job completion
 data <- c("Atom", "Chainlink", "EngyTime",

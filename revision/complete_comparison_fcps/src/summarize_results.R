@@ -1,9 +1,9 @@
 library(data.table)
 library(tidyverse)
 
-setwd("../results/")
+setwd("../results_kmeans0/")
 
-filenames <- list.files(pattern="geom0.99-ws_none.csv$", full.names=TRUE)
+filenames <- list.files(pattern="geom0.99-ws_oct.csv$", full.names=TRUE)
 # filenames_assign <- list.files(pattern="assignments.csv$", full.names=TRUE)
 # filenames <- list.files(pattern="seed\\d\\.csv$", full.names=TRUE)
 
