@@ -26,9 +26,9 @@ clust_method=["ICOT_local"];
 # warm_start = [:none];
 # geom_search = [true];
 # thresholds = [0.0,0.9,0.99];
-warm_start = [:oct,:none];
+warm_start = [:oct];
 geom_search = [true];
-thresholds = [0.0,0.9,0.99];
+thresholds = [0.99];
 seedSplitList = [1,2,3,4,5];
 
 paramList = collect(Iterators.product(datasets, criter, clust_method, warm_start, geom_search, thresholds, seedSplitList))[:]
