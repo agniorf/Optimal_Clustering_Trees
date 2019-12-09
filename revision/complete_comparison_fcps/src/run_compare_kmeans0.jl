@@ -18,7 +18,7 @@ include("algorithm_comparison.jl")
 include("../../evaluation_tools_full.jl")
 
 
-datasets = ["Atom.csv", "Chainlink.csv", 
+datasets = ["Atom.csv", "Chainlink.csv", "EngyTime.csv",
  "Hepta.csv", "Lsun.csv", "Target.csv",
  "Tetra.csv", "TwoDiamonds.csv", "WingNut.csv"];
 criter=[:silhouette,:dunnindex];
