@@ -1,5 +1,7 @@
 library(data.table)
 library(tidyverse)
+library("RColorBrewer")
+
 
 setwd("../results/")
 
@@ -17,24 +19,6 @@ for (filename in filenames) {
 
 write.csv(df, file = paste0("../full_scaling_results.csv"), row.names = FALSE)
 
-# setwd("../results_fullyscaled/")
-# final_cols <- names(df)[1:(ncol(df)-1)]
-# filenames_scaled <- list.files(pattern="*seed\\d\\.csv$", full.names=TRUE)
-# 
-# for (filename in filenames_scaled) {
-#   file_short <- substr(filename,3,nchar(filename)-4);
-#   
-#   df_raw <- read.table(file = filename, sep = ",", header = T)
-#   df_raw$geom_threshold <- 0.99
-#   df_raw$warm_start <- "oct"
-#   df <- df_raw %>% select(final_cols)
-#   write.csv(df, file = paste0("../results/",file_short, "-geom0.99-ws_oct.csv"), row.names = FALSE)
-#   
-#   df_assign <- read.table(file = paste0("../results_fullyscaled/", file_short, "_assignments.csv"), sep = ",", header = T)
-#   write.csv(df_assign, file = paste0("../results/", file_short, "-geom0.99-ws_oct_assignments.csv"), row.names = FALSE)
-# } 
-
-
 ### Check job completion
 data <- c("Atom", "Chainlink", "EngyTime",
           "Hepta", "Lsun", "Target",
@@ -45,41 +29,81 @@ thresholds = c(0.0,0.9,.99);
 ws = c("none","oct")
 
 df_match <- df %>% filter(method == "ICOT_local") %>%
-  select("data","criterion","geom_threshold","warm_start","seed","runtime")
-
-job_status <- as.data.frame(expand.grid(data, criterion, thresholds, ws, seeds)) %>%
-  `colnames<-`(c("data","criterion","geom_threshold","warm_start","seed")) %>%
-  left_join(., df_match, by = c("data", "criterion", "geom_threshold", "warm_start", "seed")) %>%
-  arrange(data, criterion, geom_threshold, warm_start, seed)
-
-write.csv(job_status, "../scaling_job_status.csv", row.names = FALSE)
-
-write.csv(subset(job_status, is.na(runtime) & data != "EngyTime"), "failed_parameters.csv", row.names = FALSE)
-
-write.csv(subset(job_status, is.na(runtime) & data == "EngyTime"), "failed_parameters_engytime.csv", row.names = FALSE)
+  select("data","criterion","geom_threshold","warm_start","seed","runtime") %>%
+  filter(data != "EngyTime")
+# 
+# job_status <- as.data.frame(expand.grid(data, criterion, thresholds, ws, seeds)) %>%
+#   `colnames<-`(c("data","criterion","geom_threshold","warm_start","seed")) %>%
+#   left_join(., df_match, by = c("data", "criterion", "geom_threshold", "warm_start", "seed")) %>%
+#   arrange(data, criterion, geom_threshold, warm_start, seed)
+# 
+# write.csv(job_status, "../scaling_job_status.csv", row.names = FALSE)
+# 
+# write.csv(subset(job_status, is.na(runtime) & data != "EngyTime"), "failed_parameters.csv", row.names = FALSE)
+# 
+# write.csv(subset(job_status, is.na(runtime) & data == "EngyTime"), "failed_parameters_engytime.csv", row.names = FALSE)
 
 
 ### Runtime
+runtime_avgs <- df_match %>% filter(data != "EngyTime") %>%
+  mutate(warm_start = if_else(warm_start == "oct", "K-means", "None")) %>%
+  group_by(criterion, geom_threshold, warm_start) %>%
+  summarize(result_cnt = n(),
+            avg_runtime = mean(runtime/60)) 
+
 df_match %>% filter(criterion == "silhouette") %>% 
   group_by(geom_threshold, warm_start) %>%
-  summarize(avg_runtime = mean(runtime/60)) 
+  summarize(result_cnt = n(),
+            avg_runtime = mean(runtime/60)) 
+
+pal <- brewer.pal(n = 6, "Blues")
+
+# sil_plot <- 
+  runtime_avgs %>%
+  filter(criterion == "dunnindex") %>%
+  ggplot(aes(x = as.factor(geom_threshold), y = avg_runtime, color = warm_start, group = warm_start)) + 
+  geom_line() + 
+  scale_colour_manual(values = c(pal[4], pal[6])) +
+  ggtitle("Effect of Scaling Methods on Algorithm Runtime", subtitle = "Silhouette Metric") + 
+  labs(x = "Geometric Search Threshold (T)", y="Average Runtime (Minutes)", color = "Warm Start") + 
+  theme(text=element_text(family="serif"))
+
+dunn_plot <- runtime_avgs %>%
+  filter(criterion == "dunnindex") %>%
+  mutate("Warm Start" = warm_start) %>%
+  ggplot(aes(x = as.factor(geom_threshold), y = avg_runtime, color = `Warm Start`, group = `Warm Start`)) + 
+  geom_line() + 
+  scale_colour_manual(values = c(pal[4], pal[6])) +
+  ggtitle("Effect of Scaling Methods on Algorithm Runtime", subtitle = "Dunn Index") + 
+  labs(x = "Geometric Search Threshold (T)", y="Average Runtime (Minutes)") + 
+  theme(text=element_text(family="serif"))
 
 
-### Silhouette Table
-df %>% filter(criterion == "silhouette") %>%
-  select(data, method, silhouette) %>%
-  group_by(data, method) %>%
-  summarize(result_cnt = n(), 
-            metric_score = mean(silhouette)) %>%
-  spread(method, metric_score) %>%
-  select(data, result_cnt, ICOT_local, dbscan, gmm, hclust, kmeans_plus, OCT,True)
+################ Find score difference in fully scaled vs. unscaled
+score_impact_sil <- df %>% filter(method == "ICOT_local" & criterion == "silhouette") %>%
+  mutate(scaling_level = if_else((warm_start == "oct" & geom_threshold == .99), "FullScaled",
+                                 if_else((warm_start == "none" & geom_threshold == 0), "Baseline", "Neither"))) %>%
+  filter(scaling_level != "Neither" & data != "EngyTime") %>%
+  group_by(data, criterion, scaling_level) %>%
+  summarize(score_icot = mean(silhouette)) %>%
+  spread(scaling_level, score_icot) %>%
+  mutate("Score Change" = paste0(round((FullScaled - Baseline)/Baseline,3)*100,"%")) %>%
+  rename("Baseline Score" = Baseline, "Fully Scaled Score" = FullScaled) 
 
-### Dunn Table
-df %>% filter(criterion == "dunnindex") %>%
-  select(data, method, dunn) %>%
-  group_by(data, method) %>%
-  summarize(result_cnt = n(), 
-            metric_score = mean(dunn)) %>%
-  spread(method, metric_score) %>%
-  select(data, result_cnt, ICOT_local, dbscan, gmm, hclust, kmeans_plus, OCT,True)
+score_impact_dunn <- df %>% filter(method == "ICOT_local" & criterion == "dunnindex") %>%
+  mutate(scaling_level = if_else((warm_start == "oct" & geom_threshold == .99), "FullScaled",
+                                 if_else((warm_start == "none" & geom_threshold == 0), "Baseline", "Neither"))) %>%
+  filter(scaling_level != "Neither" & data != "EngyTime") %>%
+  group_by(data, criterion, scaling_level) %>%
+  summarize(score_icot = mean(dunn)) %>%
+  spread(scaling_level, score_icot) %>%
+  mutate("Score Change" = paste0(round((FullScaled - Baseline)/Baseline,3)*100,"%")) %>%
+  rename("Baseline Score" = Baseline, "Fully Scaled Score" = FullScaled) 
 
+
+score_impact %>% 
+  group_by(metric) %>%
+  summarize(avg_baseline = mean(`Baseline Score`), avg_scaled = mean(`Fully Scaled Score`),
+            avg_loss = mean(`Score Change`))
+
+score_impact

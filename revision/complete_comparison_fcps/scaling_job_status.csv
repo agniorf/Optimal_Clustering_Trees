@@ -67,8 +67,8 @@
 "Chainlink","dunnindex",0,"oct",1,18623.964273002
 "Chainlink","dunnindex",0,"oct",2,20487.200899912
 "Chainlink","dunnindex",0,"oct",3,23019.864269942
-"Chainlink","dunnindex",0,"oct",4,NA
-"Chainlink","dunnindex",0,"oct",5,NA
+"Chainlink","dunnindex",0,"oct",4,14366.264989445
+"Chainlink","dunnindex",0,"oct",5,18804.909991163
 "Chainlink","dunnindex",0.9,"none",1,6856.366501175
 "Chainlink","dunnindex",0.9,"none",2,6577.619696485
 "Chainlink","dunnindex",0.9,"none",3,6546.143720713
@@ -98,7 +98,7 @@
 "Chainlink","silhouette",0,"oct",2,4093.700251362
 "Chainlink","silhouette",0,"oct",3,3353.064714797
 "Chainlink","silhouette",0,"oct",4,3456.743982759
-"Chainlink","silhouette",0,"oct",5,NA
+"Chainlink","silhouette",0,"oct",5,3720.782389391
 "Chainlink","silhouette",0.9,"none",1,1765.733577846
 "Chainlink","silhouette",0.9,"none",2,1570.962048689
 "Chainlink","silhouette",0.9,"none",3,1458.885438133
@@ -165,10 +165,10 @@
 "EngyTime","silhouette",0.9,"none",4,NA
 "EngyTime","silhouette",0.9,"none",5,NA
 "EngyTime","silhouette",0.9,"oct",1,31801.318353794
-"EngyTime","silhouette",0.9,"oct",2,NA
-"EngyTime","silhouette",0.9,"oct",3,NA
+"EngyTime","silhouette",0.9,"oct",2,34135.259258452
+"EngyTime","silhouette",0.9,"oct",3,27242.519628639
 "EngyTime","silhouette",0.9,"oct",4,28493.700993171
-"EngyTime","silhouette",0.9,"oct",5,NA
+"EngyTime","silhouette",0.9,"oct",5,29149.752816203
 "EngyTime","silhouette",0.99,"none",1,NA
 "EngyTime","silhouette",0.99,"none",2,NA
 "EngyTime","silhouette",0.99,"none",3,NA
@@ -338,7 +338,7 @@
 "Target","silhouette",0,"oct",2,1100.729787922
 "Target","silhouette",0,"oct",3,1006.909098341
 "Target","silhouette",0,"oct",4,1468.146388894
-"Target","silhouette",0,"oct",5,NA
+"Target","silhouette",0,"oct",5,1238.984047042
 "Target","silhouette",0.9,"none",1,537.072027515
 "Target","silhouette",0.9,"none",2,538.666555052
 "Target","silhouette",0.9,"none",3,579.122808035
@@ -437,7 +437,7 @@
 "TwoDiamonds","dunnindex",0.9,"oct",1,583.805356485
 "TwoDiamonds","dunnindex",0.9,"oct",2,673.556349921
 "TwoDiamonds","dunnindex",0.9,"oct",3,1320.92706916
-"TwoDiamonds","dunnindex",0.9,"oct",4,NA
+"TwoDiamonds","dunnindex",0.9,"oct",4,1147.689017819
 "TwoDiamonds","dunnindex",0.9,"oct",5,792.577483403
 "TwoDiamonds","dunnindex",0.99,"none",1,1131.439206784
 "TwoDiamonds","dunnindex",0.99,"none",2,1202.596693401
@@ -486,8 +486,8 @@
 "WingNut","dunnindex",0,"none",5,11128.153192677
 "WingNut","dunnindex",0,"oct",1,8466.632947849
 "WingNut","dunnindex",0,"oct",2,8274.728515982
-"WingNut","dunnindex",0,"oct",3,NA
-"WingNut","dunnindex",0,"oct",4,NA
+"WingNut","dunnindex",0,"oct",3,9302.364745825
+"WingNut","dunnindex",0,"oct",4,7671.4308231
 "WingNut","dunnindex",0,"oct",5,8963.751081629
 "WingNut","dunnindex",0.9,"none",1,3512.314631297
 "WingNut","dunnindex",0.9,"none",2,3428.151607147
@@ -498,12 +498,12 @@
 "WingNut","dunnindex",0.9,"oct",2,821.482629633
 "WingNut","dunnindex",0.9,"oct",3,1163.786437621
 "WingNut","dunnindex",0.9,"oct",4,983.788784546
-"WingNut","dunnindex",0.9,"oct",5,NA
+"WingNut","dunnindex",0.9,"oct",5,901.337499903
 "WingNut","dunnindex",0.99,"none",1,2396.725556795
 "WingNut","dunnindex",0.99,"none",2,2197.794523646
 "WingNut","dunnindex",0.99,"none",3,2250.67115676
 "WingNut","dunnindex",0.99,"none",4,2392.345046971
-"WingNut","dunnindex",0.99,"none",5,NA
+"WingNut","dunnindex",0.99,"none",5,2210.146368718
 "WingNut","dunnindex",0.99,"oct",1,200.959837429
 "WingNut","dunnindex",0.99,"oct",2,208.214838606
 "WingNut","dunnindex",0.99,"oct",3,228.214254938
