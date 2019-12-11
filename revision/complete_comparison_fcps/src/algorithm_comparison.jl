@@ -49,6 +49,7 @@ function run_dbscan(X, epsilon; seed = 1, minpts = 5, normalize = false)
 	@rput seed
 	@rput normalize
 	R"
+	library(ClusterR)
 	library(dbscan)
 
 	if (normalize){
@@ -84,6 +85,7 @@ function run_hclust(X, K; seed = 1, m = "average", normalize = false)
 	@rput m
 	@rput normalize
 	R"
+	library(ClusterR)
 	if (normalize){
 		X = center_scale(X, mean_center = T, sd_scale = T)  
 	}

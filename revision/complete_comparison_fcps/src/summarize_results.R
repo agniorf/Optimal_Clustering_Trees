@@ -57,7 +57,7 @@ df %>% filter(criterion == "dunnindex") %>%
   summarize(result_cnt = n(), 
             metric_score = mean(dunn)) %>%
   spread(method, metric_score) %>%
-  select(data, result_cnt, ICOT_local, dbscan, gmm, hclust, kmeans_plus, OCT,True)
+  select(data, result_cnt, ICOT_local, OCT, kmeans_plus, hclust, gmm, dbscan,True)
 
 
 ### Runtime

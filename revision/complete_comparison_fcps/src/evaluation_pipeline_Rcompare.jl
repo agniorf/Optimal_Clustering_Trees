@@ -50,7 +50,7 @@ function run_single_R(;data=data,
   # true_k = length(unique(y)); 
   # min_k = max(min(leaf_cnt,true_k)-2,2); max_k = max(true_k, leaf_cnt)+2;
   min_k = 2; max_k = 10;
-  eps_range = .1:.05:1.0;
+  eps_range = .1:.01:1.0;
 
   # Return a dictionary of scores and assignments for each k, as well as the best k value (max score)
   for m in ["kmeans_plus","hclust","gmm","dbscan"]
@@ -65,7 +65,7 @@ function run_single_R(;data=data,
     to_add = DataFrame(seed = seed, data = name_short, criterion = cr, 
       geom_threshold = threshold, warm_start = warm_start,
       method = m, K = best_k, silhouette = sil, dunn = dunn, 
-      ari_true = ari_true, runtime = run_time);
+      ari_true = ari_true, runtime = run_time)
     append!(results, to_add)
 
     ### Add assignments to master DF
