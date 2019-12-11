@@ -1,0 +1,6 @@
+seed,data,criterion,geom_threshold,warm_start,method,K,silhouette,dunn,ari_true,runtime
+3,TwoDiamonds,dunnindex,0.99,oct,True,2.0,0.48591870935773296,0.022004889975551917,1.0,0.0
+3,TwoDiamonds,dunnindex,0.99,oct,kmeans_plus,8.0,0.3855358623199369,0.02740777027451619,-10.0,4.793874448
+3,TwoDiamonds,dunnindex,0.99,oct,hclust,9.0,0.3836081090483955,0.04858221203649906,-10.0,2.114331672
+3,TwoDiamonds,dunnindex,0.99,oct,gmm,7.0,0.34095616661742445,0.017624276697490636,-10.0,0.243189045
+3,TwoDiamonds,dunnindex,0.99,oct,dbscan,0.1,0.04742603138217521,0.005368614292649572,-10.0,0.646041692

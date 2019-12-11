@@ -1,0 +1,6 @@
+seed,data,criterion,geom_threshold,warm_start,method,K,silhouette,dunn,ari_true,runtime
+2,Chainlink,silhouette,0.99,oct,True,2.0,0.15763478498426092,0.26492048403569285,1.0,0.0
+2,Chainlink,silhouette,0.99,oct,kmeans_plus,10.0,0.48902799194541674,0.03166974204539513,-10.0,5.569850603
+2,Chainlink,silhouette,0.99,oct,hclust,10.0,0.4957143380455367,0.037347862999815074,-10.0,2.655610101
+2,Chainlink,silhouette,0.99,oct,gmm,9.0,0.4070551493991747,0.008218948336061179,-10.0,0.240586937
+2,Chainlink,silhouette,0.99,oct,dbscan,0.1,0.21334651929431558,0.019316392650151025,-10.0,0.712642318
