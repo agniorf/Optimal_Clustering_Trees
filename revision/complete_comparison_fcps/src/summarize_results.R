@@ -5,25 +5,30 @@ setwd("../results_kmeans0/")
 
 filenames <- list.files(pattern="geom0.99-ws_oct.csv$", full.names=TRUE)
 filenames_assign <- list.files(pattern="geom0.99-ws_oct_assignments.csv$", full.names=TRUE)
-# filenames <- list.files(pattern="seed\\d\\.csv$", full.names=TRUE)
-
 df <- data.frame()
 
 for (filename in filenames) {
   file_short <- substr(filename,3,nchar(filename)-4);
   
-  df_next <- read.table(file = filename, sep = ",", header = T)
+  ## Add ICOT/OCT results
+  df_next <- read.table(file = filename, sep = ",", header = T) %>% 
+    filter(method %in% c("ICOT_local", "OCT"))
+  df_next$filename <- file_short
+  df <- rbind(df, df_next)
+  
+  ## Add R results
+  df_next <- read.table(file = paste0("../results_R/",filename), sep = ",", header = T)
   df_next$filename <- file_short
   df <- rbind(df, df_next)
 } 
 
+df_assign <- data.frame()
 for (filename in filenames_assign) {
   file_short <- substr(filename,3,nchar(filename)-4);
-  
-  df_next <- read.table(file = filename, sep = ",", header = T) %>%
+  df_next <- read.table(file = paste0("../results_R/",filename), sep = ",", header = T) %>%
     summarize_each(n_distinct)
   df_next$filename <- file_short
-  df <- rbind(df, df_next)
+  df_assign <- rbind(df_assign, df_next)
 } 
 
 #write.csv(df, "../results_summary_dec3_noscaling.csv", row.names = F)
