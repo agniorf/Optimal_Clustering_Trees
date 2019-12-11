@@ -14,6 +14,7 @@ global_logger(logger)
 include("../../../../ICOT/src/ICOT.jl")
 
 include("evaluation_pipeline_kmeans0.jl")
+include("evaluation_pipeline_Rcompare.jl")
 include("algorithm_comparison.jl")
 include("../../evaluation_tools_full.jl")
 
@@ -28,7 +29,7 @@ clust_method=["ICOT_local"];
 # thresholds = [0.0,0.9,0.99];
 warm_start = [:oct];
 geom_search = [true];
-thresholds = [0.0,.9];
+thresholds = [.99];
 seedSplitList = [1,2,3,4,5];
 
 paramList = collect(Iterators.product(datasets, criter, clust_method, warm_start, geom_search, thresholds, seedSplitList))[:]
@@ -41,7 +42,7 @@ println("Dataset: ", data)
 println("Seed: ", seed)
 println("Validation criterion: ", criterion)
 
-run_single(;data=data,
+run_single_R(;data=data,
              cr=criterion,
              method = clust_method,
              warm_start = warm_start,
@@ -53,6 +54,7 @@ run_single(;data=data,
              complexity= 0.0,
              min_bucket=1,
              maxdepth=3,
+             normalize_R = true,
              datafolderpath="../data/",
-             resultsfolderpath="../results_kmeans0/")
+             resultsfolderpath="../results_R/")
  

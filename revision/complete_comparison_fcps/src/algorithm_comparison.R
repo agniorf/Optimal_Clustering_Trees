@@ -2,7 +2,7 @@ library(ClusterR)
 library(dbscan)
 
 ## 
-df <- read.csv("../data/Atom.csv")
+df <- read.csv("../data/Lsun.csv")
 X = df[, -ncol(df)]   # data (excluding the response variable)
 y = df[, ncol(df)]    # the response variable
 dat = center_scale(X, mean_center = T, sd_scale = T)  # centering and scaling the data
@@ -34,7 +34,7 @@ kmplus_assignments <- km$clusters
 ########### DBSCAN ##############
 # Key parameters: eps (higher = fewer clusters), minPts
 kNNdistplot(X, k = 5)
-eps <- .1
+eps <- .2
 dbs <- dbscan(X, eps, minPts = 5, weights = NULL, borderPoints = TRUE)
 plot(dat, col=dbs$cluster)
 points(dat[dbs$cluster==0,], pch = 3, col = "grey")

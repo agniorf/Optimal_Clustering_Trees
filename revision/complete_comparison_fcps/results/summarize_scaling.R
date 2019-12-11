@@ -17,7 +17,7 @@ for (filename in filenames) {
   df <- rbind(df, df_next)
 } 
 
-#write.csv(df, file = paste0("../full_scaling_results.csv"), row.names = FALSE)
+write.csv(df, file = paste0("../full_scaling_results_kmeans0.csv"), row.names = FALSE)
 
 ### Check job completion
 data <- c("Atom", "Chainlink", "EngyTime",
@@ -29,18 +29,17 @@ thresholds = c(0.0,0.9,.99);
 ws = c("none","oct")
 
 df_match <- df %>% filter(method == "ICOT_local") %>%
-  select("data","criterion","geom_threshold","warm_start","seed","runtime") %>%
-  filter(data != "EngyTime")
+  select("data","criterion","geom_threshold","warm_start","seed","runtime") 
+
 # 
-# job_status <- as.data.frame(expand.grid(data, criterion, thresholds, ws, seeds)) %>%
-#   `colnames<-`(c("data","criterion","geom_threshold","warm_start","seed")) %>%
-#   left_join(., df_match, by = c("data", "criterion", "geom_threshold", "warm_start", "seed")) %>%
-#   arrange(data, criterion, geom_threshold, warm_start, seed)
-# 
-# write.csv(job_status, "../scaling_job_status.csv", row.names = FALSE)
-# 
+job_status <- as.data.frame(expand.grid(data, criterion, thresholds, ws, seeds)) %>%
+  `colnames<-`(c("data","criterion","geom_threshold","warm_start","seed")) %>%
+  left_join(., df_match, by = c("data", "criterion", "geom_threshold", "warm_start", "seed")) %>%
+  arrange(data, criterion, geom_threshold, warm_start, seed)
+
+write.csv(job_status, "../scaling_job_status.csv", row.names = FALSE)
+
 # write.csv(subset(job_status, is.na(runtime) & data != "EngyTime"), "failed_parameters.csv", row.names = FALSE)
-# 
 # write.csv(subset(job_status, is.na(runtime) & data == "EngyTime"), "failed_parameters_engytime.csv", row.names = FALSE)
 
 
@@ -51,7 +50,8 @@ runtime_avgs <- df_match %>% filter(data != "EngyTime") %>%
   summarize(result_cnt = n(),
             avg_runtime = mean(runtime/60)) 
 
-df_match %>% filter(criterion == "silhouette") %>% 
+df_match %>% filter(data != "EngyTime") %>%
+  filter(criterion == "silhouette") %>% 
   group_by(geom_threshold, warm_start) %>%
   summarize(result_cnt = n(),
             avg_runtime = mean(runtime/60)) 
@@ -64,7 +64,7 @@ pal <- brewer.pal(n = 6, "Blues")
   ggplot(aes(x = as.factor(geom_threshold), y = avg_runtime, color = warm_start, group = warm_start)) + 
   geom_line() + 
   scale_colour_manual(values = c(pal[4], pal[6])) +
-  ggtitle("Effect of Scaling Methods on Algorithm Runtime", subtitle = "Silhouette Metric") + 
+  ggtitle("Effect of Scaling Methods on Algorithm Runtime", subtitle = "Dunn Index") + 
   labs(x = "Geometric Search Threshold (T)", y="Average Runtime (Minutes)", color = "Warm Start") + 
   theme(text=element_text(family="serif"))
 

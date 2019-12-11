@@ -15,7 +15,8 @@ function run_single(;data=data,
                  num_tree_restarts=100,
                  complexity=0.0,
                  min_bucket=1,
-                 maxdepth=3,                
+                 maxdepth=3,
+                 normalize_R = false,                
                  datafolderpath=datafolderpath,
                  resultsfolderpath=resultsfolderpath)
 
@@ -156,7 +157,7 @@ function run_single(;data=data,
   for m in ["kmeans_plus","hclust","gmm","dbscan"]
     println("Method = $m")
     k_range = ifelse(m == "dbscan", eps_range, min_k:max_k)
-    run_time = @elapsed best_k, assignments = eval_method(X, k_range, seed, cr, m);
+    run_time = @elapsed best_k, assignments = eval_method(X, k_range, seed, cr, m, normalize = normalize_R);
     sil, dunn = test_performance_general(X, assignments);
 
     ari_true = ifelse(true_k == best_k, randindex(true_assignments, assignments)[1], -10)

@@ -4,7 +4,7 @@ library(tidyverse)
 setwd("../results_kmeans0/")
 
 filenames <- list.files(pattern="geom0.99-ws_oct.csv$", full.names=TRUE)
-# filenames_assign <- list.files(pattern="assignments.csv$", full.names=TRUE)
+filenames_assign <- list.files(pattern="geom0.99-ws_oct_assignments.csv$", full.names=TRUE)
 # filenames <- list.files(pattern="seed\\d\\.csv$", full.names=TRUE)
 
 df <- data.frame()
@@ -17,6 +17,15 @@ for (filename in filenames) {
   df <- rbind(df, df_next)
 } 
 
+for (filename in filenames_assign) {
+  file_short <- substr(filename,3,nchar(filename)-4);
+  
+  df_next <- read.table(file = filename, sep = ",", header = T) %>%
+    summarize_each(n_distinct)
+  df_next$filename <- file_short
+  df <- rbind(df, df_next)
+} 
+
 #write.csv(df, "../results_summary_dec3_noscaling.csv", row.names = F)
 
 ### Do results vary across seeds?
@@ -24,7 +33,8 @@ df %>% group_by(data, criterion, method) %>%
   summarize(result_cnt = n(),
             unique_sil = n_distinct(silhouette),
             unique_dunn = n_distinct(dunn)) %>%
-  filter(unique_sil + unique_dunn > 2)
+  filter(unique_sil + unique_dunn > 2) %>%
+  filter(data == "EngyTime")
 
 ### Silhouette Table
 df %>% filter(criterion == "silhouette") %>%
@@ -33,7 +43,7 @@ df %>% filter(criterion == "silhouette") %>%
   summarize(result_cnt = n(), 
             metric_score = mean(silhouette)) %>%
   spread(method, metric_score) %>%
-  select(data, result_cnt, ICOT_local, dbscan, gmm, hclust, kmeans_plus, OCT,True)
+  select(data, result_cnt, ICOT_local, OCT, kmeans_plus, hclust, gmm, dbscan,True)
 
 ### Dunn Table
 df %>% filter(criterion == "dunnindex") %>%

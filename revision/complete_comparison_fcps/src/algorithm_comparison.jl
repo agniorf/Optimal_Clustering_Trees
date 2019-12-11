@@ -1,12 +1,16 @@
-function run_gmm(X, K; seed = 1, km_it_cnt = 20, em_it_cnt = 20)
+function run_gmm(X, K; seed = 1, km_it_cnt = 20, em_it_cnt = 20, normalize = false)
 	## Generally > 10 sufficient for km_it_cnt, em_it_cnt
 	@rput X 
 	@rput K
 	@rput km_it_cnt
 	@rput em_it_cnt
 	@rput seed
+	@rput normalize
 	R"
 	library(ClusterR)
+	if (normalize){
+		X = center_scale(X, mean_center = T, sd_scale = T)  
+	}
 	gmm = GMM(X, K, dist_mode = 'maha_dist', seed_mode = 'random_subset',
 	  km_iter = km_it_cnt, em_iter = em_it_cnt, verbose = F, seed = seed)          
 	## predict centroids, covariance matrix and weights
@@ -17,14 +21,18 @@ function run_gmm(X, K; seed = 1, km_it_cnt = 20, em_it_cnt = 20)
 	return Array{Int64}(assignments)
 end
 
-function run_kmeansplus(X, K; seed = 1, init_cnt = 100, max_it_cnt = 100)
+function run_kmeansplus(X, K; seed = 1, init_cnt = 100, max_it_cnt = 100, normalize = false)
 	@rput X 
 	@rput K
 	@rput init_cnt
 	@rput max_it_cnt
 	@rput seed
+	@rput normalize
 	R"
 	library(ClusterR)
+	if (normalize){
+		X = center_scale(X, mean_center = T, sd_scale = T)  
+	}
 	km = KMeans_rcpp(X, clusters = K, 
 	                 num_init = init_cnt, max_iters = max_it_cnt, 
 	                 initializer = 'kmeans++', seed = seed)
@@ -34,13 +42,18 @@ function run_kmeansplus(X, K; seed = 1, init_cnt = 100, max_it_cnt = 100)
 	return Array{Int64}(assignments)
 end
 
-function run_dbscan(X, epsilon; seed = 1, minpts = 5)
+function run_dbscan(X, epsilon; seed = 1, minpts = 5, normalize = false)
 	@rput X 
 	@rput epsilon
 	@rput minpts
 	@rput seed
+	@rput normalize
 	R"
 	library(dbscan)
+
+	if (normalize){
+		X = center_scale(X, mean_center = T, sd_scale = T)  
+	}
 
 	getmode <- function(v) {
 		uniqv <- setdiff(unique(v),0)
@@ -63,13 +76,18 @@ function run_dbscan(X, epsilon; seed = 1, minpts = 5)
 	return Array{Int64}(assignments)
 end
 
-function run_hclust(X, K; seed = 1, m = "average")
+function run_hclust(X, K; seed = 1, m = "average", normalize = false)
 	distance_matrix = create_distance_matrix_numeric(convert(Matrix{Float64},X))
 	@rput distance_matrix
 	@rput K
 	@rput seed
 	@rput m
+	@rput normalize
 	R"
+	if (normalize){
+		X = center_scale(X, mean_center = T, sd_scale = T)  
+	}
+
 	set.seed(seed)
 	clusters <- hclust(as.dist(distance_matrix), method = m)
 	assignments <- cutree(clusters, K)
@@ -78,7 +96,7 @@ function run_hclust(X, K; seed = 1, m = "average")
 	return Array{Int64}(assignments)
 end
 
-function eval_method(X, param_range, seed, cr, method)
+function eval_method(X, param_range, seed, cr, method; normalize = false)
 	@assert method in ["gmm", "kmeans_plus", "dbscan", "hclust"]
 	score_dict = Dict{Float64,Float64}()
 	assignments_dict = Dict{Float64,Array{Int64}}()
@@ -87,13 +105,13 @@ function eval_method(X, param_range, seed, cr, method)
 	for k in param_range
 		Random.seed!(seed)
 		if method == "gmm"
-			assignments = run_gmm(X, k, seed = seed)
+			assignments = run_gmm(X, k, seed = seed, normalize = normalize)
 		elseif method == "kmeans_plus"
-			assignments = run_kmeansplus(X, k, seed = seed)
+			assignments = run_kmeansplus(X, k, seed = seed, normalize = normalize)
 		elseif method == "dbscan"
-			assignments = run_dbscan(X, k, seed = seed)
+			assignments = run_dbscan(X, k, seed = seed, normalize = normalize)
 		elseif method == "hclust"
-			assignments = run_hclust(X, k, seed = seed)
+			assignments = run_hclust(X, k, seed = seed, normalize = normalize)
 		end
 		score_dict[k] = cluster_score(distance_matrix, assignments, cr)
 		assignments_dict[k] = assignments
