@@ -14,22 +14,6 @@ global_logger(logger)
 include("../../../ICOT/src/ICOT.jl")
 include("../evaluation_tools_full.jl")
 
-datasets = ["Atom", "Chainlink", "EngyTime",
- "Hepta", "Lsun", "Target",
- "Tetra", "TwoDiamonds", "WingNut"];
-criter=[:silhouette,:dunnindex];
-
-results = DataFrame(data = String[], criterion = Symbol[], 
-  method = String[], K = Int64[], score = Float64[], runtime = Float64[]);
-
-for data_name in datasets, cr in criter
-	run_time = @elapsed best_k, score, assignments = eval_clus(data_name, cr);
-	to_add = DataFrame(data = data_name, criterion = cr, 
-	  method = "Clus", K = best_k, score = score, runtime = run_time);
-	append!(results, to_add)
-end
-
-
 function parse_clus(data_name, depth)
 	## Generally > 10 sufficient for km_it_cnt, em_it_cnt
 	dims = size(CSV.read("data/$(data_name).csv"))
@@ -62,4 +46,21 @@ function eval_clus(data_name, cr; param_range = 1:3, normalize = false)
 	bestk = collect(keys(score_dict))[findmax(collect(values(score_dict)))[2]]
 	println("Best K = $bestk: Score = $(round(score_dict[bestk],digits=3))")
 	return bestk, score_dict[bestk], assignments_dict[bestk]
+end
+
+
+### Run experiments
+datasets = ["Atom", "Chainlink", "EngyTime",
+ "Hepta", "Lsun", "Target",
+ "Tetra", "TwoDiamonds", "WingNut"];
+criter=[:silhouette,:dunnindex];
+
+results = DataFrame(data = String[], criterion = Symbol[], 
+  method = String[], K = Int64[], score = Float64[], runtime = Float64[]);
+
+for data_name in datasets, cr in criter
+	run_time = @elapsed best_k, score, assignments = eval_clus(data_name, cr);
+	to_add = DataFrame(data = data_name, criterion = cr, 
+	  method = "Clus", K = best_k, score = score, runtime = run_time);
+	append!(results, to_add)
 end
