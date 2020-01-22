@@ -1,7 +1,7 @@
 Clus run "lsun"
 ***************
 
-Date: 1/21/20 9:41 PM
+Date: 1/21/20 9:52 PM
 File: Lsun.out
 Attributes: 2 (input: 2, output: 2)
 Missing values: No
@@ -50,7 +50,7 @@ BranchFrequency = No
 ShowInfo = {Count}
 PrintModelAndExamples = No
 WriteErrorFile = No
-WritePredictions = {Train}
+WritePredictions = {Test, Train}
 ModelIDFiles = No
 WriteCurves = No
 OutputPythonModel = No
@@ -86,8 +86,8 @@ Statistics
 ----------
 
 FTValue (FTest): 1.0
-Induction Time: 0.002 sec
-Pruning Time: 0 sec
+Induction Time: 0.009 sec
+Pruning Time: 0.002 sec
 Model information
      Default: Nodes = 1 (Leaves: 1)
      Original: Nodes = 7 (Leaves: 4)
@@ -142,31 +142,6 @@ Pearson correlation coefficient
    Default        : [-0,0], Avg r^2: 0
    Original       : [0.8997,0.9211], Avg r^2: 0.8289
    Pruned         : [0.8997,0.9211], Avg r^2: 0.8289
-
-Testing error
--------------
-
-Number of examples: 400
-Mean absolute error (MAE)
-   Default        : [0.9885,1.2693]: 1.1289
-   Original       : [0.3865,0.4281]: 0.4073
-   Pruned         : [0.3865,0.4281]: 0.4073
-Mean squared error (MSE)
-   Default        : [1.1947,2.1259]: 1.6603
-   Original       : [0.2213,0.3429]: 0.2821
-   Pruned         : [0.2213,0.3429]: 0.2821
-Root mean squared error (RMSE)
-   Default        : [1.093,1.458]: 1.2885
-   Original       : [0.4704,0.5856]: 0.5311
-   Pruned         : [0.4704,0.5856]: 0.5311
-Weighted root mean squared error (RMSE) (Weights [0.846,0.472])
-   Default        : [1.0055,1.0019]: 1.0037
-   Original       : [0.4327,0.4024]: 0.4178
-   Pruned         : [0.4327,0.4024]: 0.4178
-Pearson correlation coefficient
-   Default        : [-0.1546,-0.0694], Avg r^2: 0.0144
-   Original       : [0.9016,0.9155], Avg r^2: 0.8255
-   Pruned         : [0.9016,0.9155], Avg r^2: 0.8255
 
 Default Model
 *************
