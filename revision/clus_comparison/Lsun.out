@@ -1,7 +1,7 @@
 Clus run "lsun"
 ***************
 
-Date: 1/21/20 9:52 PM
+Date: 1/21/20 9:58 PM
 File: Lsun.out
 Attributes: 2 (input: 2, output: 2)
 Missing values: No
@@ -50,7 +50,7 @@ BranchFrequency = No
 ShowInfo = {Count}
 PrintModelAndExamples = No
 WriteErrorFile = No
-WritePredictions = {Test, Train}
+WritePredictions = {Train}
 ModelIDFiles = No
 WriteCurves = No
 OutputPythonModel = No
