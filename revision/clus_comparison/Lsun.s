@@ -1,5 +1,4 @@
 [Data]
-XVal = 10
 PruneSet = .25
 TestSet = None
 
@@ -21,4 +20,4 @@ Descriptive = 1-2
 Heuristic = VarianceReduction
 
 [Output]
-WritePredictions = Train
+WritePredictions = {Train,Test}
