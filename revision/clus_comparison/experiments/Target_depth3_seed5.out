@@ -1,7 +1,7 @@
 Clus run df_normalized
 **********************
 
-Date: 1/22/20 3:10 PM
+Date: 1/22/20 3:47 PM
 File: Target_depth3_seed5.out
 Attributes: 2 (input: 2, output: 2)
 Missing values: No
@@ -86,8 +86,8 @@ Statistics
 ----------
 
 FTValue (FTest): 1.0
-Induction Time: 0.015 sec
-Pruning Time: 0.003 sec
+Induction Time: 0.017 sec
+Pruning Time: 0.004 sec
 Model information
      Default: Nodes = 1 (Leaves: 1)
      Original: Nodes = 15 (Leaves: 8)

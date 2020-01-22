@@ -1,0 +1,188 @@
+Clus run df_normalized
+**********************
+
+Date: 1/22/20 3:47 PM
+File: Target_depth3_seed4.out
+Attributes: 2 (input: 2, output: 2)
+Missing values: No
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 4
+ResourceInfoLoaded = No
+
+[Data]
+File = Target_depth3_seed4.arff
+TestSet = None
+PruneSet = 0.25
+PruneSetMax = Infinity
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 1-2
+Clustering = 1-2
+Descriptive = 1-2
+Key = None
+Disable = None
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = 3
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Train}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = ReducedErrorVSB
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+Run: 01
+*******
+
+Statistics
+----------
+
+FTValue (FTest): 1.0
+Induction Time: 0.016 sec
+Pruning Time: 0.004 sec
+Model information
+     Default: Nodes = 1 (Leaves: 1)
+     Original: Nodes = 15 (Leaves: 8)
+     Pruned: Nodes = 15 (Leaves: 8)
+
+Training error
+--------------
+
+Number of examples: 577
+Mean absolute error (MAE)
+   Default        : [0.7402,0.7103]: 0.7253
+   Original       : [0.3504,0.2649]: 0.3077
+   Pruned         : [0.3504,0.2649]: 0.3077
+Mean squared error (MSE)
+   Default        : [1.0154,0.9443]: 0.9799
+   Original       : [0.2652,0.1193]: 0.1923
+   Pruned         : [0.2652,0.1193]: 0.1923
+Root mean squared error (RMSE)
+   Default        : [1.0077,0.9718]: 0.9899
+   Original       : [0.515,0.3454]: 0.4385
+   Pruned         : [0.515,0.3454]: 0.4385
+Weighted root mean squared error (RMSE) (Weights [1.001,1.001])
+   Default        : [1.0083,0.9724]: 0.9905
+   Original       : [0.5153,0.3457]: 0.4388
+   Pruned         : [0.5153,0.3457]: 0.4388
+Pearson correlation coefficient
+   Default        : [0,�], Avg r^2: �
+   Original       : [0.8595,0.9347], Avg r^2: 0.8062
+   Pruned         : [0.8595,0.9347], Avg r^2: 0.8062
+
+Validation error
+----------------
+
+Number of examples: 193
+Mean absolute error (MAE)
+   Default        : [0.6782,0.7465]: 0.7123
+   Original       : [0.3752,0.2858]: 0.3305
+   Pruned         : [0.3752,0.2858]: 0.3305
+Mean squared error (MSE)
+   Default        : [0.9487,1.1626]: 1.0556
+   Original       : [0.2823,0.1771]: 0.2297
+   Pruned         : [0.2823,0.1771]: 0.2297
+Root mean squared error (RMSE)
+   Default        : [0.974,1.0782]: 1.0274
+   Original       : [0.5313,0.4208]: 0.4792
+   Pruned         : [0.5313,0.4208]: 0.4792
+Weighted root mean squared error (RMSE) (Weights [1.001,1.001])
+   Default        : [0.9746,1.0789]: 1.0281
+   Original       : [0.5317,0.421]: 0.4795
+   Pruned         : [0.5317,0.421]: 0.4795
+Pearson correlation coefficient
+   Default        : [0,-0], Avg r^2: 0
+   Original       : [0.8394,0.9219], Avg r^2: 0.7772
+   Pruned         : [0.8394,0.9219], Avg r^2: 0.7772
+
+Default Model
+*************
+
+[-0.003317,-0.018201]: 577
+
+Original Model
+**************
+
+V2 > 0.546211478136271
++--yes: V3 > -0.109991271191004
+|       +--yes: V3 > 0.976209105235584
+|       |       +--yes: [1.270541,1.50612]: 33
+|       |       +--no:  [1.688089,0.519764]: 25
+|       +--no:  V3 > -1.15227352845081
+|               +--yes: [1.727292,-0.477802]: 35
+|               +--no:  [1.103314,-1.559965]: 28
++--no:  V3 > -0.52712554809825
+        +--yes: V3 > 0.472526431154791
+        |       +--yes: [-0.936353,1.45145]: 72
+        |       +--no:  [-0.120705,-0.023359]: 308
+        +--no:  V2 > -1.05311217789381
+                +--yes: [-0.268253,-1.771337]: 36
+                +--no:  [-1.578514,-1.158436]: 40
+
+Pruned Model
+************
+
+V2 > 0.546211478136271
++--yes: V3 > -0.109991271191004
+|       +--yes: V3 > 0.976209105235584
+|       |       +--yes: [1.270541,1.50612]: 33
+|       |       +--no:  [1.688089,0.519764]: 25
+|       +--no:  V3 > -1.15227352845081
+|               +--yes: [1.727292,-0.477802]: 35
+|               +--no:  [1.103314,-1.559965]: 28
++--no:  V3 > -0.52712554809825
+        +--yes: V3 > 0.472526431154791
+        |       +--yes: [-0.936353,1.45145]: 72
+        |       +--no:  [-0.120705,-0.023359]: 308
+        +--no:  V2 > -1.05311217789381
+                +--yes: [-0.268253,-1.771337]: 36
+                +--no:  [-1.578514,-1.158436]: 40
+

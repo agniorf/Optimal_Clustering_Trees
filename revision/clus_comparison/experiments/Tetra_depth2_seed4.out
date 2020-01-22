@@ -1,0 +1,172 @@
+Clus run df_normalized
+**********************
+
+Date: 1/22/20 3:47 PM
+File: Tetra_depth2_seed4.out
+Attributes: 3 (input: 3, output: 3)
+Missing values: No
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 4
+ResourceInfoLoaded = No
+
+[Data]
+File = Tetra_depth2_seed4.arff
+TestSet = None
+PruneSet = 0.25
+PruneSetMax = Infinity
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 1-3
+Clustering = 1-3
+Descriptive = 1-3
+Key = None
+Disable = None
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = 2
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Train}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = ReducedErrorVSB
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+Run: 01
+*******
+
+Statistics
+----------
+
+FTValue (FTest): 1.0
+Induction Time: 0.01 sec
+Pruning Time: 0.002 sec
+Model information
+     Default: Nodes = 1 (Leaves: 1)
+     Original: Nodes = 7 (Leaves: 4)
+     Pruned: Nodes = 7 (Leaves: 4)
+
+Training error
+--------------
+
+Number of examples: 300
+Mean absolute error (MAE)
+   Default        : [0.7686,0.8068,0.862]: 0.8125
+   Original       : [0.6897,0.4894,0.4124]: 0.5305
+   Pruned         : [0.6897,0.4894,0.4124]: 0.5305
+Mean squared error (MSE)
+   Default        : [0.9049,0.9807,1.093]: 0.9928
+   Original       : [0.7937,0.3579,0.2472]: 0.4663
+   Pruned         : [0.7937,0.3579,0.2472]: 0.4663
+Root mean squared error (RMSE)
+   Default        : [0.9512,0.9903,1.0455]: 0.9964
+   Original       : [0.8909,0.5982,0.4972]: 0.6828
+   Pruned         : [0.8909,0.5982,0.4972]: 0.6828
+Weighted root mean squared error (RMSE) (Weights [1.003,1.003,1.003])
+   Default        : [0.9524,0.9915,1.0468]: 0.9977
+   Original       : [0.892,0.599,0.4978]: 0.6837
+   Pruned         : [0.892,0.599,0.4978]: 0.6837
+Pearson correlation coefficient
+   Default        : [-0,�,0], Avg r^2: �
+   Original       : [0.3505,0.7969,0.8797], Avg r^2: 0.5106
+   Pruned         : [0.3505,0.7969,0.8797], Avg r^2: 0.5106
+
+Validation error
+----------------
+
+Number of examples: 100
+Mean absolute error (MAE)
+   Default        : [0.9575,0.8433,0.6624]: 0.8211
+   Original       : [0.8897,0.5247,0.3937]: 0.6027
+   Pruned         : [0.8897,0.5247,0.3937]: 0.6027
+Mean squared error (MSE)
+   Default        : [1.2756,1.0485,0.7161]: 1.0134
+   Original       : [1.1713,0.3986,0.233]: 0.601
+   Pruned         : [1.1713,0.3986,0.233]: 0.601
+Root mean squared error (RMSE)
+   Default        : [1.1294,1.024,0.8462]: 1.0067
+   Original       : [1.0823,0.6313,0.4827]: 0.7752
+   Pruned         : [1.0823,0.6313,0.4827]: 0.7752
+Weighted root mean squared error (RMSE) (Weights [1.003,1.003,1.003])
+   Default        : [1.1309,1.0253,0.8473]: 1.008
+   Original       : [1.0836,0.6321,0.4833]: 0.7762
+   Pruned         : [1.0836,0.6321,0.4833]: 0.7762
+Pearson correlation coefficient
+   Default        : [-0,-0,�], Avg r^2: �
+   Original       : [0.2856,0.7869,0.8253], Avg r^2: 0.4607
+   Pruned         : [0.2856,0.7869,0.8253], Avg r^2: 0.4607
+
+Default Model
+*************
+
+[-0.007163,-0.01246,0.035613]: 300
+
+Original Model
+**************
+
+V4 > 0.491647970421072
++--yes: V2 > -0.101908025181011
+|       +--yes: [0.354264,0.022093,1.615533]: 49
+|       +--no:  [-0.500666,-0.022859,1.437521]: 32
++--no:  V3 > -0.532391163733244
+        +--yes: [0.208378,0.681943,-0.497157]: 139
+        +--no:  [-0.405637,-1.235989,-0.567163]: 80
+
+Pruned Model
+************
+
+V4 > 0.491647970421072
++--yes: V2 > -0.101908025181011
+|       +--yes: [0.354264,0.022093,1.615533]: 49
+|       +--no:  [-0.500666,-0.022859,1.437521]: 32
++--no:  V3 > -0.532391163733244
+        +--yes: [0.208378,0.681943,-0.497157]: 139
+        +--no:  [-0.405637,-1.235989,-0.567163]: 80
+
