@@ -1,0 +1,172 @@
+Clus run df_normalized
+**********************
+
+Date: 1/22/20 3:10 PM
+File: Target_depth2_seed1.out
+Attributes: 2 (input: 2, output: 2)
+Missing values: No
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 1
+ResourceInfoLoaded = No
+
+[Data]
+File = Target_depth2_seed1.arff
+TestSet = None
+PruneSet = 0.25
+PruneSetMax = Infinity
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 1-2
+Clustering = 1-2
+Descriptive = 1-2
+Key = None
+Disable = None
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = 2
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Train}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = ReducedErrorVSB
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+Run: 01
+*******
+
+Statistics
+----------
+
+FTValue (FTest): 1.0
+Induction Time: 0.013 sec
+Pruning Time: 0.002 sec
+Model information
+     Default: Nodes = 1 (Leaves: 1)
+     Original: Nodes = 7 (Leaves: 4)
+     Pruned: Nodes = 7 (Leaves: 4)
+
+Training error
+--------------
+
+Number of examples: 577
+Mean absolute error (MAE)
+   Default        : [0.7402,0.7103]: 0.7253
+   Original       : [0.4762,0.4828]: 0.4795
+   Pruned         : [0.4762,0.4828]: 0.4795
+Mean squared error (MSE)
+   Default        : [1.0154,0.9443]: 0.9799
+   Original       : [0.4037,0.4072]: 0.4054
+   Pruned         : [0.4037,0.4072]: 0.4054
+Root mean squared error (RMSE)
+   Default        : [1.0077,0.9718]: 0.9899
+   Original       : [0.6353,0.6381]: 0.6367
+   Pruned         : [0.6353,0.6381]: 0.6367
+Weighted root mean squared error (RMSE) (Weights [1.001,1.001])
+   Default        : [1.0083,0.9724]: 0.9905
+   Original       : [0.6358,0.6385]: 0.6371
+   Pruned         : [0.6358,0.6385]: 0.6371
+Pearson correlation coefficient
+   Default        : [0,�], Avg r^2: �
+   Original       : [0.7762,0.7542], Avg r^2: 0.5856
+   Pruned         : [0.7762,0.7542], Avg r^2: 0.5856
+
+Validation error
+----------------
+
+Number of examples: 193
+Mean absolute error (MAE)
+   Default        : [0.6782,0.7465]: 0.7123
+   Original       : [0.4732,0.5268]: 0.5
+   Pruned         : [0.4732,0.5268]: 0.5
+Mean squared error (MSE)
+   Default        : [0.9487,1.1626]: 1.0556
+   Original       : [0.4447,0.5355]: 0.4901
+   Pruned         : [0.4447,0.5355]: 0.4901
+Root mean squared error (RMSE)
+   Default        : [0.974,1.0782]: 1.0274
+   Original       : [0.6669,0.7318]: 0.7001
+   Pruned         : [0.6669,0.7318]: 0.7001
+Weighted root mean squared error (RMSE) (Weights [1.001,1.001])
+   Default        : [0.9746,1.0789]: 1.0281
+   Original       : [0.6673,0.7323]: 0.7005
+   Pruned         : [0.6673,0.7323]: 0.7005
+Pearson correlation coefficient
+   Default        : [0,-0], Avg r^2: 0
+   Original       : [0.7303,0.7407], Avg r^2: 0.541
+   Pruned         : [0.7303,0.7407], Avg r^2: 0.541
+
+Default Model
+*************
+
+[-0.003317,-0.018201]: 577
+
+Original Model
+**************
+
+V2 > 0.546211478136271
++--yes: V3 > -0.109991271191004
+|       +--yes: [1.450519,1.080967]: 58
+|       +--no:  [1.449968,-0.958764]: 63
++--no:  V3 > -0.52712554809825
+        +--yes: [-0.275249,0.256079]: 380
+        +--no:  [-0.957864,-1.448758]: 76
+
+Pruned Model
+************
+
+V2 > 0.546211478136271
++--yes: V3 > -0.109991271191004
+|       +--yes: [1.450519,1.080967]: 58
+|       +--no:  [1.449968,-0.958764]: 63
++--no:  V3 > -0.52712554809825
+        +--yes: [-0.275249,0.256079]: 380
+        +--no:  [-0.957864,-1.448758]: 76
+
