@@ -20,4 +20,4 @@ Descriptive = 1-2
 Heuristic = VarianceReduction
 
 [Output]
-WritePredictions = {Train,Test}
+WritePredictions = Train
