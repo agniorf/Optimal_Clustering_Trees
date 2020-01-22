@@ -11,10 +11,12 @@ for (file in c("Atom", "Chainlink", "EngyTime",
       df <- read.csv(paste0("data/", file, ".csv"), stringsAsFactors = FALSE)
       ## Delete label and save modified file in ARFF format
       df$label <- NULL
-      df_normalized = center_scale(df, mean_center = T, sd_scale = T)  
+      n = nrow(df)
+      p = ncol(df)
+      df_normalized = center_scale(df, mean_center = T, sd_scale = T) %>% as.data.frame() %>%
+        `colnames<-`(names(df)[1:p])
       data_file <- write.arff(df_normalized, paste0("experiments/",file,"_depth",depth,"_seed",seed,".arff"))
-      n = nrow(df_normalized)
-      p = ncol(df_normalized)
+    
       
       ## Set up experiments
       experiment_script <- paste0("[Data]
@@ -51,7 +53,8 @@ for (file in c("Atom", "Chainlink", "EngyTime",
                "Tetra", "TwoDiamonds", "WingNut")) {
   for (depth in c(1,2,3)){
     for (seed in 1:5){
-      print(cat("java -jar ~/software/Clus/Clus.jar experiments/",file,"_depth",depth,"_seed",seed,".s", sep = ""))
+      cat("\njava -jar ~/software/Clus/Clus.jar experiments/",file,"_depth",depth,"_seed",seed,".s", 
+          sep = "")
 }}}
 ## Look at results
 result_file <- read.arff(paste0(file,"_depth",depth,"_seed",seed,".train.1.pred.arff"))

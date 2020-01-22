@@ -1,4 +1,6 @@
 @relation df_normalized
+@attribute V2 numeric
+@attribute V3 numeric
 @data
 -1.82280088762153,-0.00273623106761483
 -1.73363273725462,-0.233987952166167
