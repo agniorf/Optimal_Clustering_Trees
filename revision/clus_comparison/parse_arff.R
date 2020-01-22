@@ -38,12 +38,13 @@ Heuristic = VarianceReduction
 [Output]
 WritePredictions = {Train}
 ")
-  write_file(experiment_script, paste0(file,"/depth",depth,".s"))
+  write_file(experiment_script, paste0(file,"_depth",depth,".s"))
   
 }
 
 
 
 ## Look at results
-result_file <- read.arff(paste0(file,"Lsun.train.1.pred.arff"))
+result_file <- read.arff(paste0(file,"_depth",depth,".train.1.pred.arff"))
+X <- result_file[,1:p]
 assignments <- result_file$`Pruned-models` %>% as.integer()
