@@ -1,0 +1,164 @@
+Clus run df
+***********
+
+Date: 1/22/20 2:18 PM
+File: TwoDiamonds_depth1.out
+Attributes: 2 (input: 2, output: 2)
+Missing values: No
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 1
+ResourceInfoLoaded = No
+
+[Data]
+File = TwoDiamonds_depth1.arff
+TestSet = None
+PruneSet = 0.25
+PruneSetMax = Infinity
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 1-2
+Clustering = 1-2
+Descriptive = 1-2
+Key = None
+Disable = None
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = 1
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Train}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 5.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = ReducedErrorVSB
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+Run: 01
+*******
+
+Statistics
+----------
+
+FTValue (FTest): 1.0
+Induction Time: 0.009 sec
+Pruning Time: 0.001 sec
+Model information
+     Default: Nodes = 1 (Leaves: 1)
+     Original: Nodes = 3 (Leaves: 2)
+     Pruned: Nodes = 3 (Leaves: 2)
+
+Training error
+--------------
+
+Number of examples: 600
+Mean absolute error (MAE)
+   Default        : [1.0322,0.359]: 0.6956
+   Original       : [0.3287,0.3595]: 0.3441
+   Pruned         : [0.3287,0.3595]: 0.3441
+Mean squared error (MSE)
+   Default        : [1.2327,0.1914]: 0.7121
+   Original       : [0.1669,0.1913]: 0.1791
+   Pruned         : [0.1669,0.1913]: 0.1791
+Root mean squared error (RMSE)
+   Default        : [1.1103,0.4375]: 0.8438
+   Original       : [0.4086,0.4373]: 0.4232
+   Pruned         : [0.4086,0.4373]: 0.4232
+Weighted root mean squared error (RMSE) (Weights [0.796,5.354])
+   Default        : [0.9906,1.0125]: 1.0016
+   Original       : [0.3645,1.012]: 0.7606
+   Pruned         : [0.3645,1.012]: 0.7606
+Pearson correlation coefficient
+   Default        : [0,�], Avg r^2: �
+   Original       : [0.9298,0.0312], Avg r^2: 0.4328
+   Pruned         : [0.9298,0.0312], Avg r^2: 0.4328
+
+Validation error
+----------------
+
+Number of examples: 200
+Mean absolute error (MAE)
+   Default        : [1.063,0.3378]: 0.7004
+   Original       : [0.3698,0.3385]: 0.3541
+   Pruned         : [0.3698,0.3385]: 0.3541
+Mean squared error (MSE)
+   Default        : [1.3303,0.1727]: 0.7515
+   Original       : [0.1992,0.1737]: 0.1864
+   Pruned         : [0.1992,0.1737]: 0.1864
+Root mean squared error (RMSE)
+   Default        : [1.1534,0.4156]: 0.8669
+   Original       : [0.4463,0.4167]: 0.4318
+   Pruned         : [0.4463,0.4167]: 0.4318
+Weighted root mean squared error (RMSE) (Weights [0.796,5.354])
+   Default        : [1.0291,0.9617]: 0.996
+   Original       : [0.3982,0.9643]: 0.7377
+   Pruned         : [0.3982,0.9643]: 0.7377
+Pearson correlation coefficient
+   Default        : [�,0], Avg r^2: �
+   Original       : [0.9221,-0.0667], Avg r^2: 0.4274
+   Pruned         : [0.9221,-0.0667], Avg r^2: 0.4274
+
+Default Model
+*************
+
+[2.07528,0.002507]: 600
+
+Original Model
+**************
+
+V2 > 2.0
++--yes: [3.0872,-0.010877]: 306
++--no:  [1.022057,0.016438]: 294
+
+Pruned Model
+************
+
+V2 > 2.0
++--yes: [3.0872,-0.010877]: 306
++--no:  [1.022057,0.016438]: 294
+
