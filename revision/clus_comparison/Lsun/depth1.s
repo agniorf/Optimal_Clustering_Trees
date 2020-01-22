@@ -9,7 +9,7 @@ RandomSeed = 1
 MinimalWeight = 5.0
 
 [Constraints]
-MaxDepth = 2
+MaxDepth = 1
 
 [Attributes]
 Target = 1-2
