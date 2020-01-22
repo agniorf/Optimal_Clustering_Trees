@@ -1,5 +1,5 @@
 [Data]
-PruneSet = .25
+PruneSet = None
 TestSet = None
 
 [General]
@@ -20,4 +20,4 @@ Descriptive = 1-2
 Heuristic = VarianceReduction
 
 [Output]
-WritePredictions = Train
+WritePredictions = {Train}
