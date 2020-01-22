@@ -1,6 +1,7 @@
 library(data.table)
 library(tidyverse)
 library("RColorBrewer")
+cbPalette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 
 
 setwd("../results_kmeans0/")
@@ -20,7 +21,7 @@ for (filename in filenames) {
 write.csv(df, file = paste0("../full_scaling_results_kmeans0.csv"), row.names = FALSE)
 
 ### Check job completion
-data <- c("Atom", "Chainlink", "EngyTime",
+data <- c("Atom", "Chainlink",
           "Hepta", "Lsun", "Target",
           "Tetra", "TwoDiamonds", "WingNut")
 seeds <- c(1,2,3,4,5)
@@ -45,39 +46,42 @@ write.csv(job_status, "../scaling_job_status.csv", row.names = FALSE)
 
 ### Runtime
 runtime_avgs <- df_match %>% filter(data != "EngyTime") %>%
-  mutate(warm_start = if_else(warm_start == "oct", "K-means", "None")) %>%
+  mutate(warm_start = if_else(warm_start == "oct", "K-means", "None"),
+         geom_threshold = as.factor(geom_threshold)) %>%
   group_by(criterion, geom_threshold, warm_start) %>%
   summarize(result_cnt = n(),
-            avg_runtime = mean(runtime/60)) 
+            avg_runtime = mean(runtime/60),
+            sd_runtime = sd(runtime/60)) 
 
 df_match %>% filter(data != "EngyTime") %>%
   filter(criterion == "silhouette") %>% 
   group_by(geom_threshold, warm_start) %>%
   summarize(result_cnt = n(),
-            avg_runtime = mean(runtime/60)) 
+            avg_runtime = mean(runtime/60),
+            sd_runtime = sd(runtime/60))
 
-pal <- brewer.pal(n = 6, "Blues")
-
-# sil_plot <- 
-  runtime_avgs %>%
-  filter(criterion == "dunnindex") %>%
-  ggplot(aes(x = as.factor(geom_threshold), y = avg_runtime, color = warm_start, group = warm_start)) + 
-  geom_line() + 
-  scale_colour_manual(values = c(pal[4], pal[6])) +
-  ggtitle("Effect of Scaling Methods on Algorithm Runtime", subtitle = "Dunn Index") + 
-  labs(x = "Geometric Search Threshold (T)", y="Average Runtime (Minutes)", color = "Warm Start") + 
-  theme(text=element_text(family="serif"))
+sil_plot <- runtime_avgs %>%
+  filter(criterion == "silhouette") %>%
+  ggplot(aes(x = geom_threshold, y = avg_runtime, color = warm_start, group = warm_start)) + 
+  scale_colour_manual(values=cbPalette)+
+  geom_line() +
+  geom_point()+
+  theme_light()+
+  theme(text = element_text(size=15)) + 
+  labs(x = "Geometric Search Threshold (T)", y="Average Runtime (Minutes)", color = "Warm Start")
 
 dunn_plot <- runtime_avgs %>%
   filter(criterion == "dunnindex") %>%
-  mutate("Warm Start" = warm_start) %>%
-  ggplot(aes(x = as.factor(geom_threshold), y = avg_runtime, color = `Warm Start`, group = `Warm Start`)) + 
-  geom_line() + 
-  scale_colour_manual(values = c(pal[4], pal[6])) +
-  ggtitle("Effect of Scaling Methods on Algorithm Runtime", subtitle = "Dunn Index") + 
-  labs(x = "Geometric Search Threshold (T)", y="Average Runtime (Minutes)") + 
-  theme(text=element_text(family="serif"))
+  ggplot(aes(x = geom_threshold, y = avg_runtime, color = warm_start, group = warm_start)) + 
+  scale_colour_manual(values=cbPalette)+
+  geom_line() +
+  geom_point()+
+  theme_light()+
+  theme(text = element_text(size=15)) + 
+  labs(x = "Geometric Search Threshold (T)", y="Average Runtime (Minutes)", color = "Warm Start")
 
+sil_plot
+dunn_plot
 
 ################ Find score difference in fully scaled vs. unscaled
 score_impact_sil <- df %>% filter(method == "ICOT_local" & criterion == "silhouette") %>%

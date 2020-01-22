@@ -1,5 +1,7 @@
 library(data.table)
 library(tidyverse)
+library(stringr)
+library(gridExtra)
 
 setwd("../results_kmeans0/")
 
@@ -38,8 +40,7 @@ df %>% group_by(data, criterion, method) %>%
   summarize(result_cnt = n(),
             unique_sil = n_distinct(silhouette),
             unique_dunn = n_distinct(dunn)) %>%
-  filter(unique_sil + unique_dunn > 2) %>%
-  filter(data == "EngyTime")
+  filter(unique_sil + unique_dunn > 2) 
 
 ### Silhouette Table
 df %>% filter(criterion == "silhouette") %>%
@@ -66,7 +67,8 @@ df %>% filter(criterion == "dunnindex") %>%
   group_by(data, method) %>%
   summarize(result_cnt = n(), 
             runtime = mean(runtime)/60) %>%
-  spread(method, runtime)
+  spread(method, runtime) %>%
+  select(data, result_cnt, ICOT_local, OCT, kmeans_plus, hclust, gmm, dbscan)
 
 ### Check job completion
 data <- c("Atom", "Chainlink", "EngyTime",
@@ -82,3 +84,13 @@ job_status <- as.data.frame(expand.grid(data, criterion, seeds)) %>%
   `colnames<-`(c("data","criterion","seed")) %>%
   left_join(., df_match) %>%
   mutate(index = c(1:90))
+
+### Sensitivity to training criterion choice
+df %>%
+  group_by(criterion) %>%
+  summarize(sm = mean(silhouette),
+            di = mean(dunn)) %>%
+  arrange(desc(criterion))
+
+(.149-.177)/.177
+(.416-.475)/.475

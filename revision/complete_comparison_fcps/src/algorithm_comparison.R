@@ -3,6 +3,7 @@ library(dbscan)
 
 ## 
 df <- read.csv("../data/WingNut.csv")
+df <- read.csv("~/Dropbox (MIT)/research/clustering/Experiments/FHS/data/data_4_one_hot.csv")
 X = df[, -ncol(df)]   # data (excluding the response variable)
 y = df[, ncol(df)]    # the response variable
 dat = center_scale(X, mean_center = T, sd_scale = T)  # centering and scaling the data
@@ -58,6 +59,6 @@ getmode <- function(v) {
 
 
 ########## HIERARCHICAL #########
-a = as.matrix(dist(X))
-clusters <- hclust(as.dist((X), method = 'average')
-clusterCut <- cutree(clusters, 5)
+# a = as.matrix(dist(X))
+# clusters <- hclust(as.dist(X), method = 'average')
+# clusterCut <- cutree(clusters, 5)
