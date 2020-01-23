@@ -1,0 +1,147 @@
+Clus run df_normalized
+**********************
+
+Date: 1/23/20 11:14 AM
+File: Tetra_depth2_seed4.out
+Attributes: 3 (input: 3, output: 3)
+Missing values: No
+
+[General]
+Verbose = 1
+Compatibility = Latest
+RandomSeed = 4
+ResourceInfoLoaded = No
+
+[Data]
+File = Tetra_depth2_seed4.arff
+TestSet = None
+PruneSet = None
+XVal = 10
+RemoveMissingTarget = No
+NormalizeData = None
+
+[Attributes]
+Target = 1-3
+Clustering = 1-3
+Descriptive = 1-3
+Key = None
+Disable = None
+Weights = Normalize
+ClusteringWeights = 1.0
+ReduceMemoryNominalAttrs = No
+
+[Constraints]
+Syntactic = None
+MaxSize = Infinity
+MaxError = 0.0
+MaxDepth = 2
+
+[Output]
+ShowModels = {Default, Pruned, Others}
+TrainErrors = Yes
+ValidErrors = Yes
+TestErrors = Yes
+AllFoldModels = Yes
+AllFoldErrors = No
+AllFoldDatasets = No
+UnknownFrequency = No
+BranchFrequency = No
+ShowInfo = {Count}
+PrintModelAndExamples = No
+WriteErrorFile = No
+WritePredictions = {Train}
+ModelIDFiles = No
+WriteCurves = No
+OutputPythonModel = No
+OutputDatabaseQueries = No
+
+[Nominal]
+MEstimate = 1.0
+
+[Model]
+MinimalWeight = 2.0
+MinimalNumberExamples = 0
+MinimalKnownWeight = 0.0
+ParamTuneNumberFolds = 10
+ClassWeights = 0.0
+NominalSubsetTests = Yes
+
+[Tree]
+Heuristic = VarianceReduction
+PruningMethod = M5
+M5PruningMult = 2.0
+FTest = 1.0
+BinarySplit = Yes
+ConvertToRules = No
+AlternativeSplits = No
+Optimize = {}
+MSENominal = No
+SplitSampling = None
+InductionOrder = DepthFirst
+
+Run: 01
+*******
+
+Statistics
+----------
+
+FTValue (FTest): 1.0
+Induction Time: 0.011 sec
+Pruning Time: 0.001 sec
+Model information
+     Default: Nodes = 1 (Leaves: 1)
+     Original: Nodes = 7 (Leaves: 4)
+     Pruned: Nodes = 7 (Leaves: 4)
+
+Training error
+--------------
+
+Number of examples: 400
+Mean absolute error (MAE)
+   Default        : [0.817,0.8156,0.8048]: 0.8125
+   Original       : [0.3643,0.8147,0.4053]: 0.5281
+   Pruned         : [0.3643,0.8147,0.4053]: 0.5281
+Mean squared error (MSE)
+   Default        : [0.9975,0.9975,0.9975]: 0.9975
+   Original       : [0.1973,0.9971,0.2429]: 0.4791
+   Pruned         : [0.1973,0.9971,0.2429]: 0.4791
+Root mean squared error (RMSE)
+   Default        : [0.9987,0.9987,0.9987]: 0.9987
+   Original       : [0.4442,0.9985,0.4929]: 0.6922
+   Pruned         : [0.4442,0.9985,0.4929]: 0.6922
+Weighted root mean squared error (RMSE) (Weights [1.003,1.003,1.003])
+   Default        : [1,1,1]: 1
+   Original       : [0.4447,0.9998,0.4935]: 0.693
+   Pruned         : [0.4447,0.9998,0.4935]: 0.693
+Pearson correlation coefficient
+   Default        : [-0,-0,0], Avg r^2: 0
+   Original       : [0.8957,0.0212,0.8698], Avg r^2: 0.5197
+   Pruned         : [0.8957,0.0212,0.8698], Avg r^2: 0.5197
+
+Default Model
+*************
+
+[0,0,-0]: 400
+
+Original Model
+**************
+
+V4 > 0.491647970421072
++--yes: V2 > -0.0120564587641389
+|       +--yes: [0.380401,0.036508,1.594419]: 54
+|       +--no:  [-0.460998,-0.048463,1.436102]: 44
++--no:  V2 > 0.364570983871507
+        +--yes: [1.444115,-0.004543,-0.50486]: 98
+        +--no:  [-0.695005,0.002972,-0.489269]: 204
+
+Pruned Model
+************
+
+V4 > 0.491647970421072
++--yes: V2 > -0.0120564587641389
+|       +--yes: [0.380401,0.036508,1.594419]: 54
+|       +--no:  [-0.460998,-0.048463,1.436102]: 44
++--no:  V2 > 0.364570983871507
+        +--yes: [1.444115,-0.004543,-0.50486]: 98
+        +--no:  [-0.695005,0.002972,-0.489269]: 204
+

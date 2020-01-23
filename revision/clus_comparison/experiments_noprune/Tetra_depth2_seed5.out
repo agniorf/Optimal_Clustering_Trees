@@ -1,7 +1,7 @@
 Clus run df_normalized
 **********************
 
-Date: 1/23/20 11:04 AM
+Date: 1/23/20 11:14 AM
 File: Tetra_depth2_seed5.out
 Attributes: 3 (input: 3, output: 3)
 Missing values: No
@@ -86,8 +86,8 @@ Statistics
 ----------
 
 FTValue (FTest): 1.0
-Induction Time: 0.011 sec
-Pruning Time: 0 sec
+Induction Time: 0.012 sec
+Pruning Time: 0.001 sec
 Model information
      Default: Nodes = 1 (Leaves: 1)
      Original: Nodes = 7 (Leaves: 4)

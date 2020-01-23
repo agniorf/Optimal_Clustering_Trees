@@ -1,7 +1,7 @@
 Clus run df_normalized
 **********************
 
-Date: 1/23/20 11:04 AM
+Date: 1/23/20 11:12 AM
 File: Chainlink_depth2_seed2.out
 Attributes: 3 (input: 3, output: 3)
 Missing values: No
@@ -86,7 +86,7 @@ Statistics
 ----------
 
 FTValue (FTest): 1.0
-Induction Time: 0.018 sec
+Induction Time: 0.017 sec
 Pruning Time: 0.001 sec
 Model information
      Default: Nodes = 1 (Leaves: 1)

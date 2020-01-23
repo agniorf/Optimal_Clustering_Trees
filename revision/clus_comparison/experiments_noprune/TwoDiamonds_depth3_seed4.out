@@ -1,7 +1,7 @@
 Clus run df_normalized
 **********************
 
-Date: 1/23/20 11:05 AM
+Date: 1/23/20 11:14 AM
 File: TwoDiamonds_depth3_seed4.out
 Attributes: 2 (input: 2, output: 2)
 Missing values: No
@@ -86,7 +86,7 @@ Statistics
 ----------
 
 FTValue (FTest): 1.0
-Induction Time: 0.019 sec
+Induction Time: 0.018 sec
 Pruning Time: 0.001 sec
 Model information
      Default: Nodes = 1 (Leaves: 1)
