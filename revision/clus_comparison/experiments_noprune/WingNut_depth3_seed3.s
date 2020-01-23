@@ -1,0 +1,21 @@
+[Data]
+                                  PruneSet = None
+                                  TestSet = None
+                                  
+                                  [General]
+                                  RandomSeed = 3
+
+                                  [Constraints]
+                                  MaxDepth = 3
+                                  
+                                  [Attributes]
+                                  Target = 1-2
+                                  Clustering = 1-2 
+                                  Descriptive = 1-2 
+                                  
+                                  [Tree]
+                                  Heuristic = VarianceReduction
+                                  
+                                  [Output]
+                                  WritePredictions = {Train}
+                                  
