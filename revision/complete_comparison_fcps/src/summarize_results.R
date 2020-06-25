@@ -94,3 +94,25 @@ df %>%
 
 (.149-.177)/.177
 (.416-.475)/.475
+
+
+# Compare assignments (6/25/2020) -----------------------------------------
+
+library(aricode)
+data <- c("Atom", "Chainlink", "EngyTime",
+          "Hepta", "Lsun", "Target",
+          "Tetra", "TwoDiamonds", "WingNut")
+df_nmi = head(assignments,0)
+df_nmi$data
+
+res = do.call(rbind, lapply(data, function(i){
+  assignments = read.table(paste0('./',i,'-silhouette-seed5-geom0.99-ws_oct_assignments.csv'), sep = ",", header = T)
+  res = sapply(names(df_nmi), function(col){NMI(assignments$truth, pull(assignments[col]), variant = 'joint')})
+  res = as.data.frame(t(res))
+  res$name = i
+  return(res)
+}))
+
+res %>% summary()
+
+                      
